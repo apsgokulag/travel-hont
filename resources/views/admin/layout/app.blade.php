@@ -82,10 +82,13 @@
             </div>
             <div class="sidebar__item">
               <div class="sidebar__button ">
-                <a href="#" class="d-flex items-center text-15 lh-1 fw-500">
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="d-flex items-center text-15 lh-1 fw-500">
                   <img src="{{ asset('img/dashboard/sidebar/log-out.svg') }}" alt="image" class="mr-15">
                   Logout
                 </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                </form>
               </div>
             </div>
     
