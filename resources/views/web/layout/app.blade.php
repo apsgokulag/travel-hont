@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="{{ asset('css/vendors.css') }}">
   <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
-  <title>{{ env('APP_NAME') }}</title>
+  <title>{{ ucfirst(Route::currentRouteName()); }}</title>
 
 </head>
 
@@ -27,14 +27,14 @@
     <main>
 
 
-        <header data-add-bg="bg-dark-1" class="header bg-green js-header" data-x="header" data-x-toggle="is-menu-opened">
+        <header data-add-bg="@if (Route::is('home')) {{ 'bg-dark-1' }} @endif" class="header js-header @if (Route::is('home')) {{ 'bg-green' }} @else {{ 'bg-white' }} @endif" data-x="header" data-x-toggle="is-menu-opened">
         <div data-anim="fade" class="header__container px-30 sm:px-20">
             <div class="row justify-between items-center">
 
             <div class="col-auto">
                 <div class="d-flex items-center">
                 <a href="{{ route('home') }}" class="header-logo mr-20" data-x="header-logo" data-x-toggle="is-logo-dark">
-                    <img src="{{ asset('img/general/logo-light.svg') }}" alt="logo icon">
+                    <img src="@if (Route::is('home')) {{ asset('img/general/logo-light.svg') }} @else {{ asset('img/general/logo-dark.svg') }} @endif" alt="logo icon">
                     <img src="{{ asset('img/general/logo-dark.svg') }}" alt="logo icon">
                 </a>
 
@@ -46,15 +46,11 @@
                     <div class="mobile-bg js-mobile-bg"></div>
 
                     <div class="menu js-navList">
-                        <ul class="menu__nav text-white -is-active">
-
-
-
-                        <li>
-                            <a href="{{ route('home') }}">
-                            Home
-                            </a>
-                        </li>                       
+                        <ul class="menu__nav -is-active @if (Route::is('home')) {{ 'text-white' }} @endif">
+                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="{{ route('about') }}">About</a></li>
+                            <li><a href="{{ route('packages') }}">Packages</a></li>
+                            <li><a href="{{ route('contact') }}">Contact</a></li>
                         </ul>
                     </div>
 
@@ -74,10 +70,7 @@
 
 
                 <div class="d-flex items-center ml-20 is-menu-opened-hide md:d-none">
-                
-                    <a href=""
-                    class="button px-30 fw-400 text-14 border-white -outline-white h-50 text-white ml-20">Sign In /
-                    Register</a>
+                    <a href="" class="button px-30 fw-400 text-14 h-50 ml-20 @if (Route::is('home')) {{ 'border-white -outline-white text-white' }} @else {{ '-outline-blue-1 text-blue-1' }} @endif">Sign In / Register</a>
                 </div>
 
                 <div class="d-none xl:d-flex x-gap-20 items-center pl-30 text-white" data-x="header-mobile-icons"

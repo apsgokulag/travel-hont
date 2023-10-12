@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', function(){ return view('web.about'); })->name('about');
+Route::get('/packages', function(){ return view('web.packages'); })->name('packages');
+Route::get('/contact', function(){ return view('web.contact'); })->name('contact');
+Route::get('/single-package', function(){ return view('web.singlepackage'); })->name('singlepackage');
 
 Route::middleware([
     'auth:sanctum',
