@@ -445,7 +445,7 @@
 
               <div class="col-auto">
                 <h4 class="text-26 text-white fw-600">Your Travel Journey Starts Here</h4>
-                <div class="text-white">Sign up and we'll send the best deals to you</div>
+                <div class="text-white">Sign uppp and we'll send the best deals to you</div>
               </div>
             </div>
           </div>
