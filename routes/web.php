@@ -20,12 +20,13 @@ Route::get('/packages', function(){ return view('web.packages'); })->name('packa
 Route::get('/contact', function(){ return view('web.contact'); })->name('contact');
 Route::get('/single-package', function(){ return view('web.singlepackage'); })->name('singlepackage');
 
+Route::redirect('/admin', 'admin/dashboard');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
 });
