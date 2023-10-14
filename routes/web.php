@@ -29,4 +29,13 @@ Route::middleware([
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+    Route::get('/admin/packages', function () {
+        return view('admin.packages');
+    })->name('admin.packages');
+    Route::get('/admin/bookings', function () {
+        return view('admin.bookings');
+    })->name('admin.bookings');
+    Route::get('/admin/settings', function () {
+        return view('admin.settings');
+    })->name('admin.settings');
 });
