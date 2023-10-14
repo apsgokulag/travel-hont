@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\PackageContoller as AdminPackageController;
 use App\Http\Controllers\web\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,16 +27,19 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
-    Route::get('/admin/packages', function () {
-        return view('admin.packages');
-    })->name('admin.packages');
-    Route::get('/admin/bookings', function () {
-        return view('admin.bookings');
-    })->name('admin.bookings');
-    Route::get('/admin/settings', function () {
-        return view('admin.settings');
-    })->name('admin.settings');
+    Route::prefix('/admin/')->group(function(){        
+        Route::get('dashboard', function () {
+            return view('admin.dashboard');
+        })->name('admin.dashboard'); 
+        Route::controller(AdminPackageController::class)->group(function (){
+            Route::get('packages/create', 'create')->name('admin.packages.create');
+            Route::get('packages/{category?}', 'packages')->name('admin.packages.list');
+        });
+        Route::get('bookings', function () {
+            return view('admin.bookings');
+        })->name('admin.bookings');
+        Route::get('settings', function () {
+            return view('admin.settings');
+        })->name('admin.settings');
+    });
 });
