@@ -13,13 +13,6 @@
     </div>
   </div>
 
-
-  <div class="py-30 px-30 rounded-4 bg-white shadow-3">
-    <h3 class="text-22 fw-500 mb-2">Basic Details</h3>
-    <div class="form-input">
-      <input type="text" class="form-control-sm" required>
-      <label class="lh-1 text-16 text-light-1">Package Name</label>
-    </div>
-  </div>
+  @livewire('admin.packages.create')
 
 @endsection

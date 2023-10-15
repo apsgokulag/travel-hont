@@ -3,6 +3,8 @@
 
 
 <head>
+
+  <title>{{ ucfirst(Route::currentRouteName()); }}</title>
   <!-- Required meta tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +18,7 @@
   <link rel="stylesheet" href="{{ asset('css/vendors.css') }}">
   <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
-  <title>{{ ucfirst(Route::currentRouteName()); }}</title>
+  @stack('styles')
 
 </head>
 
@@ -159,9 +161,12 @@
               </footer>
             </div>
         </div>
-    </div>
+    </div>    
     <script src="{{ asset('js/vendors.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+
+    @stack('scripts')
+    
   </body>
   
   

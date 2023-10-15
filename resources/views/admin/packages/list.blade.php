@@ -14,7 +14,15 @@
   </div>
 
 
-  <div class="py-30 px-30 rounded-4 bg-white shadow-3">
+  <div class="py-30 px-30 rounded-4 bg-white shadow-3">    
+    @if (session('success'))
+      <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 4000)">
+        <div  class="d-flex items-center justify-between bg-success-1 pl-10 pr-10 py-10 rounded-8">
+          <div class="text-success-2 lh-1 fw-500"> {{ session('success') }} </div>
+          <div class="text-success-2 text-14 icon-close"></div>
+        </div> 
+      </div>       
+    @endif
     <div class="tabs -underline-2 js-tabs">
       <div class="tabs__controls row x-gap-40 y-gap-10 lg:x-gap-20 ">
         <div class="col-auto">
@@ -32,52 +40,9 @@
 
         <div class="tabs__pane -tab-item-1 is-tab-el-active">
           <div class="overflow-scroll scroll-bar-1">
-            <table class="table-4 -border-bottom col-12">
-              <thead class="bg-light-2">
-                <tr>                 
-                  <th>Name</th>
-                  <th>Reviews</th>
-                  <th>Bookings</th>                
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>                 
-                  <td>
-                    <a href="" class="fw-500">
-                      Crowne Plaza Hotel
-                    </a>
-                    <span class="d-block text-12 mt-2 text-muted">Created on 12-Jun-2023</span>
-                  </td>                  
-                  <td>
-                    <div class="rounded-4 size-35 bg-blue-1 text-white flex-center text-12 fw-600">4.8</div>
-                  </td>
-                  <td>
-                    <a href="">12 Bookings</a>
-                  </td>
-                  <td><span class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-green-1 text-green-2">Published</span></td>
-                  <td>
-                    <div class="row x-gap-10 y-gap-10 items-center">                      
+           
+            @livewire('admin.packages.table', ['category' => $category],)
 
-                      <div class="col-auto">
-                        <a href="db-vendor-add-hotel.html?packageId=6&type=edit" class="flex-center bg-light-2 rounded-4 size-35">
-                          <i class="icon-edit text-16 text-light-1"></i>
-                        </a>
-                      </div>
-
-                      <div class="col-auto">
-                        <a href="#" class="flex-center bg-light-2 rounded-4 size-35">
-                          <i class="icon-trash-2 text-16 text-light-1"></i>
-                        </a>
-                      </div>
-
-                    </div>
-                  </td>
-                </tr>
-
-              </tbody>
-            </table>
           </div>
         </div>
 
@@ -87,3 +52,7 @@
   </div>
 
 @endsection
+
+@push('scripts')
+  <script src="//unpkg.com/alpinejs" defer></script>
+@endpush
