@@ -33,7 +33,8 @@ Route::middleware([
         })->name('admin.dashboard'); 
         Route::controller(AdminPackageController::class)->group(function (){
             Route::get('packages/create', 'create')->name('admin.packages.create');
-            Route::get('packages/{category?}', 'packages')->name('admin.packages.list');
+            Route::get('packages/{category?}', 'list')->name('admin.packages.list');
+            Route::get('packages/{slug}/edit', 'edit')->name('admin.packages.edit');
         });
         Route::get('bookings', function () {
             return view('admin.bookings');

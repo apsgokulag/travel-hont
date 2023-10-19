@@ -24,12 +24,12 @@
                 <td>
                     <a href="">12 Bookings</a>
                 </td>
-                <td><span class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-green-1 text-green-2">Published</span></td>
+                <td><span class="rounded-100 py-4 px-10 text-center text-14 fw-500 {{ $package->status == 'published'?'bg-green-1 text-green-2':'bg-red-3 text-red-2' }} text-capitalize">{{ $package->status }}</span></td>
                 <td>
                     <div class="row x-gap-10 y-gap-10 items-center">                      
     
                     <div class="col-auto">
-                        <a href="db-vendor-add-hotel.html?packageId=6&type=edit" class="flex-center bg-light-2 rounded-4 size-35">
+                        <a href="{{ route('admin.packages.edit', ['slug' => $package->slug]) }}" class="flex-center bg-light-2 rounded-4 size-35">
                         <i class="icon-edit text-16 text-light-1"></i>
                         </a>
                     </div>

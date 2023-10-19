@@ -11,7 +11,20 @@ class Table extends Component
 
     public function mount($category){
         $this->category = $category;
-        $this->packages = Package::all();
+        switch ($this->category) {
+            case 'active':                
+                $this->packages = Package::where('status', 'published')->get();
+                break; 
+            case 'draft':                
+                $this->packages = Package::where('status', 'draft')->get();
+                break;   
+            case 'deleted':                
+                $this->packages = Package::onlyTrashed()->get();
+                break;   
+            default:
+            $this->packages = collect();
+                break;                    
+        }        
     }
     public function render()
     {

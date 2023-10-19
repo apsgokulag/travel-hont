@@ -18,6 +18,12 @@
   <link rel="stylesheet" href="{{ asset('css/vendors.css') }}">
   <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
+  <style>
+    .text-capitalize{
+      text-transform: capitalize;
+    }
+  </style>
+
   @stack('styles')
 
 </head>
@@ -132,7 +138,7 @@
                   <div class="col-auto">
                     <div class="row y-gap-20 items-center">
                       <div class="col-auto">
-                        <div class="text-14 lh-14 mr-30">© 2022 GoTrip LLC All rights reserved.</div>
+                        <div class="text-14 lh-14 mr-30">© {{ date('Y') }} GoTrip LLC All rights reserved.</div>
                       </div>
 
                       <div class="col-auto">
@@ -149,14 +155,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-
-                  <div class="col-auto">
-                    <div class="d-flex x-gap-5 y-gap-5 items-center">
-                      <button class="text-14 fw-500 underline">English (US)</button>
-                      <button class="text-14 fw-500 underline">USD</button>
-                    </div>
-                  </div>
+                  </div>               
                 </div>
               </footer>
             </div>
