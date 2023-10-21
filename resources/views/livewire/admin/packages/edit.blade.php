@@ -2,11 +2,13 @@
     <form wire:submit.prevent="submit" method="post">
         <div 
             x-data="{
+                description : @entangle('form.description'),
                 init(){
                     var quill = new Quill($refs.description, {
                         theme: 'snow',
                         placeholder: 'Full Description about the Package *',
                     });
+                    document.getElementsByClassName('ql-editor')[0].innerHTML = this.description;
                     quill.on('text-change', function () {
                         let value = document.getElementsByClassName('ql-editor')[0].innerHTML;
                         @this.set('form.description', value, false)
@@ -65,10 +67,20 @@
             @error('form.images.*')               
                 <span class="text-red-1">{{ $message }}</span>                
             @enderror
+            @foreach ($form->uploadedImages as $image)
+                <div class="panel mb-1">
+                    <div class="panel-body d-flex justify-content-between">
+                        <a href="">
+                            <img src="{{ asset($image->getFullUrl()) }}" width="150" height="150" class="img-thumbnail" alt="{{ $form->package->name }}">
+                        </a>
+                        <a href=""><i class="icon-trash"></i> Delete</a>
+                    </div>
+                </div>
+            @endforeach
         </div> 
         <button class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
             <span wire:loading.remove wire:target="submit">
-                Create Package
+                Update Package
             </span>
             <span wire:loading wire:target="submit">
                 Please wait...

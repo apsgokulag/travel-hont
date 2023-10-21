@@ -22,5 +22,6 @@ class PackageContoller extends Controller
         $package = Package::findBySlug($slug);
         if(!$package)
             return redirect(route('admin.packages.list'))->with('error', 'Package not found.');
+        return view('admin.packages.edit', compact('package'));
     }
 }

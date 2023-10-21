@@ -23,9 +23,9 @@
         <div class="col-auto">
           <a href="{{ route('admin.packages.list', ['category' => 'active']) }}" class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 {{ $category == 'active'?'is-tab-el-active':'' }}">Active</a>
         </div>
-        <div class="col-auto">
+        {{-- <div class="col-auto">
           <a href="{{ route('admin.packages.list', ['category' => 'draft']) }}" class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 {{ $category == 'draft'?'is-tab-el-active':'' }}">Draft</a>
-        </div>
+        </div> --}}
         <div class="col-auto">
           <a href="{{ route('admin.packages.list', ['category' => 'deleted']) }}" class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 {{ $category == 'deleted'?'is-tab-el-active':'' }}">Deleted</a>
         </div>        
