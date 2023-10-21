@@ -15,13 +15,8 @@
 
 
   <div class="py-30 px-30 rounded-4 bg-white shadow-3">    
-    @if (session('success'))
-      <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 4000)">
-        <div  class="d-flex items-center justify-between bg-success-1 pl-10 pr-10 py-10 rounded-8">
-          <div class="text-success-2 lh-1 fw-500"> {{ session('success') }} </div>
-          <div class="text-success-2 text-14 icon-close"></div>
-        </div> 
-      </div>       
+    @if (session('success') || session('error'))
+      <x-support.alert message="{{ session('success')??session('error') }}" type="{{  session('success')?'success':'error' }}"/>      
     @endif
     <div class="tabs -underline-2 js-tabs">
       <div class="tabs__controls row x-gap-40 y-gap-10 lg:x-gap-20 ">
