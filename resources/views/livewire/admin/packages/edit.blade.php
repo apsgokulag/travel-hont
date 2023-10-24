@@ -67,16 +67,9 @@
             @error('form.images.*')               
                 <span class="text-red-1">{{ $message }}</span>                
             @enderror
-            @foreach ($form->uploadedImages as $image)
-                <div class="panel mb-1">
-                    <div class="panel-body d-flex justify-content-between">
-                        <a href="">
-                            <img src="{{ asset($image->getFullUrl()) }}" width="150" height="150" class="img-thumbnail" alt="{{ $form->package->name }}">
-                        </a>
-                        <a href=""><i class="icon-trash"></i> Delete</a>
-                    </div>
-                </div>
-            @endforeach
+
+            @livewire('admin.packages.images', ['package' => $package], key('gallery-images'.$package->id))
+            
         </div> 
         <button class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
             <span wire:loading.remove wire:target="submit">

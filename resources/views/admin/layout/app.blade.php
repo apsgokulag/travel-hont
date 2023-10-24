@@ -164,8 +164,37 @@
     <script src="{{ asset('js/vendors.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 
-    @stack('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      });
+      window.addEventListener('swal:notification',function(e){ 
+        Toast.fire({
+            icon: e.detail[0].icon,
+            title: e.detail[0].title
+        });
+      }); 
+      window.addEventListener('swal:block-notification',function(e){ 
+        Swal.fire({
+            icon: e.detail[0].icon,
+            title: e.detail[0].title,
+            timer: 2000,
+            timerProgressBar: true,
+        });
+      });
+    </script>
     
+    @stack('scripts')
+
   </body>
   
   

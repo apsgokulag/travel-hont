@@ -39,7 +39,6 @@ class PackageForm extends Form
             'name' => $package->name,
             'overview' => $package->overview,
             'description' => $package->description,
-            'uploadedImages' => $package->getMedia(),
         ]);
     }
 
