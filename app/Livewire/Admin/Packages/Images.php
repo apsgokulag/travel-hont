@@ -24,10 +24,8 @@ class Images extends Component
     public function delete(Int $imageId)
     {
         DB::transaction(function () use ($imageId) {
-            $image = $this->images->firstOrFail(function ($item) use($imageId) {
-                return $item->id == $imageId;
-            });
-            $image->delete();
+            $this->package->deleteMedia($imageId); 
+            $this->package->refresh();           
             $this->getAllPackageImages();
             $this->dispatch('swal:block-notification', [
                 'icon' => 'success',

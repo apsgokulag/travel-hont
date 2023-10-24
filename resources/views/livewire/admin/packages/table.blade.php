@@ -24,22 +24,43 @@
                 <td>
                     <a href="">12 Bookings</a>
                 </td>
-                <td><span class="rounded-100 py-4 px-10 text-center text-14 fw-500 {{ $package->status == 'published'?'bg-green-1 text-green-2':'bg-red-3 text-red-2' }} text-capitalize">{{ $package->status }}</span></td>
+                <td><span class="rounded-100 py-4 px-10 text-center text-14 fw-500 {{ $package->status && !$package->deleted_at == 'published'?'bg-green-1 text-green-2':'bg-red-3 text-red-2' }} text-capitalize">{{ !$package->deleted_at?$package->status:'Deleted' }}</span></td>
                 <td>
                     <div class="row x-gap-10 y-gap-10 items-center">                      
-    
-                    <div class="col-auto">
-                        <a href="{{ route('admin.packages.edit', ['slug' => $package->slug]) }}" class="flex-center bg-light-2 rounded-4 size-35">
-                        <i class="icon-edit text-16 text-light-1"></i>
-                        </a>
-                    </div>
-    
-                    <div class="col-auto">
-                        <a href="#" class="flex-center bg-light-2 rounded-4 size-35">
-                        <i class="icon-trash-2 text-16 text-light-1"></i>
-                        </a>
-                    </div>
-    
+                        @if ($package->deleted_at)
+                            <p class="text-12 text-red-1">Deleted on {{ date('d-F, Y', strtotime($package->deleted_at)) }}</p>
+                        @else                            
+                            <div class="col-auto">
+                                <a href="{{ route('admin.packages.edit', ['slug' => $package->slug]) }}" class="flex-center bg-light-2 rounded-4 size-35">
+                                <i class="icon-edit text-16 text-light-1"></i>
+                                </a>
+                            </div>
+            
+                            <div class="col-auto">
+                                <a 
+                                    x-data="{                                                                                                                                                
+                                        deleteConfirm(){                                                                              
+                                            Swal.fire({
+                                                icon: 'warning',
+                                                title: 'Do you want to Delete ?',
+                                                text:'You won\'t be able to revert this!',
+                                                showCancelButton: true,
+                                                confirmButtonColor: '#3085d6',
+                                                cancelButtonColor: '#d33',
+                                                confirmButtonText: 'Delete',
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    $wire.delete({{ $package->id }});
+                                                }
+                                            });
+                                        }
+                                    }"
+                                    @click.prevent="deleteConfirm()"
+                                    href="#" class="flex-center bg-light-2 rounded-4 size-35">
+                                    <i class="icon-trash-2 text-16 text-light-1"></i>
+                                </a>
+                            </div>
+                        @endif
                     </div>
                 </td>
                 </tr>

@@ -10,7 +10,15 @@ class Table extends Component
     public $category, $packages = [];
 
     public function mount($category){
-        $this->category = $category;
+        $this->category = $category;  
+        $this->getPackages();
+    }
+    public function render()
+    {
+        return view('livewire.admin.packages.table');
+    }
+    public function getPackages()
+    {
         switch ($this->category) {
             case 'active':                
                 $this->packages = Package::where('status', 'published')->get();
@@ -24,10 +32,16 @@ class Table extends Component
             default:
             $this->packages = collect();
                 break;                    
-        }        
+        } 
     }
-    public function render()
+    public function delete(Int $packageId)
     {
-        return view('livewire.admin.packages.table');
+        $package = Package::find($packageId);
+        $package->delete();
+        $this->getPackages();
+        $this->dispatch('swal:block-notification', [
+            'icon' => 'success',
+            'title' => 'Package deleted successfully',
+        ]);
     }
 }

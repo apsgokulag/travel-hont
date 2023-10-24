@@ -25,6 +25,7 @@
                             }
                         }"
                         @click.prevent="deleteConfirm()"
+                        class="mt-1 text-red-1"
                         href=""><i class="icon-trash"></i> Delete</a>          
                 </div>
             </div>
