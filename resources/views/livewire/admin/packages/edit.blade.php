@@ -71,6 +71,44 @@
             @livewire('admin.packages.images', ['package' => $package], key('gallery-images'.$package->id))
             
         </div> 
+        <div class="py-30 px-30 rounded-4 bg-white shadow-3 mb-2">
+            <div class="d-flex justify-between">
+                <h3 class="text-22 fw-500 mb-2">Pricing</h3>
+                <div>
+                    <select class="form-select" wire:model="form.price.currency_id">
+                        @if (!$package->price?->currency_id)                            
+                            <option> -- Select Currency -- </option>
+                        @endif
+                        @foreach ($form->currencies as $currency)                                                        
+                            <option value="{{ $currency->id }}">{{ $currency->code }}</option>
+                        @endforeach
+                    </select>
+                    @error('form.price.currency_id')               
+                        <span class="text-red-1">{{ $message }}</span>                
+                    @enderror
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-input my-2">
+                        <input type="number" wire:model="form.price.adult_amount"  class="form-control-sm" min="0" max="10000000" onkeypress="return /^[\d./-]+$/.test(event.key)">
+                        <label class="lh-1 text-16 text-light-1">Adult Amount *</label>
+                    </div>
+                    @error('form.price.adult_amount')               
+                        <span class="text-red-1">{{ $message }}</span>                
+                    @enderror
+                </div>
+                <div class="col-md-6">
+                    <div class="form-input my-2">
+                        <input type="number" wire:model="form.price.children_amount"  class="form-control-sm" min="0" max="10000000" onkeypress="return /^[\d./-]+$/.test(event.key)">
+                        <label class="lh-1 text-16 text-light-1">Children Amount *</label>    
+                    </div>
+                    @error('form.price.children_amount')               
+                        <span class="text-red-1">{{ $message }}</span>                
+                    @enderror
+                </div>
+            </div>            
+        </div>
         <button class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
             <span wire:loading.remove wire:target="submit">
                 Update Package

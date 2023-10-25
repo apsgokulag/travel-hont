@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms\admin;
 
+use App\Models\Currency;
 use App\Models\Package;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Rule;
@@ -23,14 +24,30 @@ class PackageForm extends Form
     #[Rule(['form.images.*' => 'nullable|sometimes|image'])]
     public $images = [];
 
-    public $uploadedImages = [];
+    #[Rule(['form.price.currency_id' => 'required|numeric', 'form.price.adult_amount' => 'required|numeric|min:0|max:10000000', 'form.price.children_amount' => 'required|numeric|min:0|max:10000000'])]
+    public $price = [];   
 
+    public $uploadedImages = [];
+    public $currencies = [];
+
+    public function __construct()
+    {
+        $this->fill([
+            'currencies' => Currency::all(),
+        ]);
+    }
+    
     protected $messages = [
         'name.required' => 'Please type package :attribute',
         'overview.required' => 'Please type :attribute',
         'description.required' => 'Please type :attribute',
         'images.*.image' => 'Please upload valid image',
-    ];
+        'price.currency_id.required' => 'Please select currency',
+        'form.price.adult_amount.required' => 'Please type amount',
+        'price.adult_amount.min' => 'Please type valid amount',
+        'price.children_amount.required' => 'Please type amount',
+        'price.children_amount.min' => 'Please type valid amount',
+    ];   
 
     public function setPackage(Package $package)
     {
@@ -39,6 +56,9 @@ class PackageForm extends Form
             'name' => $package->name,
             'overview' => $package->overview,
             'description' => $package->description,
+            'price.currency_id' => $package->price?->currency_id,
+            'price.adult_amount' => $package->price?->adult_amount,
+            'price.children_amount' => $package->price?->children_amount,            
         ]);
     }
 
@@ -55,6 +75,12 @@ class PackageForm extends Form
                 foreach ($this->images as $key => $image) {
                     $package->addMedia($image)->toMediaCollection();
                 }
+            $package->price()->create([
+                'package_id' => $package->id,
+                'currency_id' => $this->price['currency_id'],
+                'adult_amount' => $this->price['adult_amount'],
+                'children_amount' => $this->price['children_amount'],
+            ]);
             session()->flash('success', 'Package successfully created.');            
         }) ;
     }
@@ -70,6 +96,14 @@ class PackageForm extends Form
                 foreach ($this->images as $key => $image) {
                     $this->package->addMedia($image)->toMediaCollection();
                 }
+            $this->package->price()->updateOrCreate(
+                ['package_id' => $this->package->id],
+                [
+                    'currency_id' => $this->price['currency_id'],
+                    'adult_amount' => $this->price['adult_amount'],
+                    'children_amount' => $this->price['children_amount'],
+                ]
+            );
             session()->flash('success', 'Package successfully updated.');
         });
     }

@@ -4,7 +4,6 @@ namespace App\Livewire\Admin\Packages;
 
 use App\Livewire\Forms\admin\PackageForm;
 use App\Models\Package;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -15,11 +14,10 @@ class Edit extends Component
     public Package $package;
 
     public PackageForm $form;  
-    
-
+        
     public function mount()
     {
-        $this->form->setPackage($this->package); 
+        $this->form->setPackage($this->package);         
     }
 
 
