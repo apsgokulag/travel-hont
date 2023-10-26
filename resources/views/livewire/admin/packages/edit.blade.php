@@ -79,7 +79,7 @@
                         @if (!$package->price?->currency_id)                            
                             <option> -- Select Currency -- </option>
                         @endif
-                        @foreach ($form->currencies as $currency)                                                        
+                        @foreach ($currencies as $currency)                                                        
                             <option value="{{ $currency->id }}">{{ $currency->code }}</option>
                         @endforeach
                     </select>

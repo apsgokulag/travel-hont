@@ -72,7 +72,7 @@
                 <div>
                     <select class="form-select" wire:model="form.price.currency_id">                                                    
                         <option> -- Select Currency -- </option>
-                        @foreach ($form->currencies as $currency)                                                        
+                        @foreach ($currencies as $currency)                                                        
                             <option value="{{ $currency->id }}">{{ $currency->code }}</option>
                         @endforeach
                     </select>

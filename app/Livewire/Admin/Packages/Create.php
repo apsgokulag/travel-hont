@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Packages;
 
 use App\Livewire\Forms\admin\PackageForm;
+use App\Models\Currency;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -11,6 +12,13 @@ class Create extends Component
     use WithFileUploads;
     
     public PackageForm $form;    
+    
+    public $currencies = [];
+
+    public function mount()
+    { 
+        $this->currencies = Currency::all();
+    }
 
     public function render()
     {

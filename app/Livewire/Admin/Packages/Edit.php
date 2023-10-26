@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Packages;
 
 use App\Livewire\Forms\admin\PackageForm;
+use App\Models\Currency;
 use App\Models\Package;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -14,12 +15,14 @@ class Edit extends Component
     public Package $package;
 
     public PackageForm $form;  
+
+    public $currencies = [];
         
     public function mount()
     {
-        $this->form->setPackage($this->package);         
+        $this->form->setPackage($this->package);   
+        $this->currencies = Currency::all();
     }
-
 
     public function render()
     {

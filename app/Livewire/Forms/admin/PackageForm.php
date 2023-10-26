@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Forms\admin;
 
-use App\Models\Currency;
 use App\Models\Package;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Rule;
@@ -29,25 +28,21 @@ class PackageForm extends Form
 
     public $uploadedImages = [];
     public $currencies = [];
-
-    public function __construct()
-    {
-        $this->fill([
-            'currencies' => Currency::all(),
-        ]);
-    }
     
-    protected $messages = [
-        'name.required' => 'Please type package :attribute',
-        'overview.required' => 'Please type :attribute',
-        'description.required' => 'Please type :attribute',
-        'images.*.image' => 'Please upload valid image',
-        'price.currency_id.required' => 'Please select currency',
-        'form.price.adult_amount.required' => 'Please type amount',
-        'price.adult_amount.min' => 'Please type valid amount',
-        'price.children_amount.required' => 'Please type amount',
-        'price.children_amount.min' => 'Please type valid amount',
-    ];   
+    public function messages() 
+    {
+        return [
+            'name.required' => 'Please type package :attribute',
+            'overview.required' => 'Please type :attribute',
+            'description.required' => 'Please type :attribute',
+            'images.*.image' => 'Please upload valid image',
+            'price.currency_id.required' => 'Please select currency',
+            'price.adult_amount.required' => 'Please type amount',
+            'price.adult_amount.min' => 'Please type valid amount',
+            'price.children_amount.required' => 'Please type amount',
+            'price.children_amount.min' => 'Please type valid amount',
+        ]; 
+    }  
 
     public function setPackage(Package $package)
     {
