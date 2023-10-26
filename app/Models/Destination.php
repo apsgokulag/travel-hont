@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Package extends Model implements HasMedia
+class Destination extends Model implements HasMedia
 {
     use HasFactory, SoftDeletes, HasSlug, InteractsWithMedia;
 
@@ -36,13 +35,9 @@ class Package extends Model implements HasMedia
             ->fit(Manipulations::FIT_CROP, 300, 300)
             ->nonQueued();
     }
-    public function price(): HasOne
-    {
-        return $this->hasOne(Price::class);
-    }
 
-    public function destinations(): BelongsToMany
+    public function packages(): BelongsToMany
     {
-        return $this->belongsToMany(Destination::class, 'destinations_packages')->withTimestamps();
+        return $this->belongsToMany(Package::class, 'destinations_packages')->withTimestamps();
     }
 }
