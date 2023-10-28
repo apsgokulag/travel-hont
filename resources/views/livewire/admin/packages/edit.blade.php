@@ -109,6 +109,9 @@
                 </div>
             </div>            
         </div>
+        <div class="py-30 px-30 rounded-4 bg-white shadow-3 mb-2">
+            <h3 class="text-22 fw-500 mb-2">Destinations</h3>
+        </div>
         <button class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
             <span wire:loading.remove wire:target="submit">
                 Update Package
