@@ -2,6 +2,10 @@
 @extends('web.layout.app')
 
 @section('content')
+@php
+  $json = array("name" => "Package name", "starRating" => 5, "highlights" => array("In London City Centre", "Airport transfer", "Front desk [24-hour]", "Premium TV channels"), "overview" => '<p>Description of this package</p>', "facilities" => array("Non-smoking rooms", "Free WiFi", "Parking", "Kitchen", "Living Area", "Safety & security"), "landmarks" => array(array('place' => 'Royal Pump Room Museum', 'distance' => '0.1 km'), array('place' => 'Royal Pump Room Museum', 'distance' => '0.1 km'), array('place' => 'Royal Pump Room Museum', 'distance' => '0.1 km'), array('place' => 'Royal Pump Room Museum', 'distance' => '0.1 km'), 'faqs' => array(array('que' => 'What do I need to hire a car?', 'ans' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.'), array('que' => 'What do I need to hire a car?', 'ans' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.'), array('que' => 'What do I need to hire a car?', 'ans' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.'))));
+  
+@endphp
   <div class="header-margin"></div>
 
   <section class="pt-40">
@@ -10,20 +14,14 @@
         <div class="col-auto">
           <div class="row x-gap-20  items-center">
             <div class="col-auto">
-              <h1 class="text-30 sm:text-25 fw-600">Warwick Allerton Hotel Chicago</h1>
+              <h1 class="text-30 sm:text-25 fw-600">{{ $json['name'] }}</h1>
             </div>
 
             <div class="col-auto">
 
-              <i class="icon-star text-10 text-yellow-1"></i>
-
-              <i class="icon-star text-10 text-yellow-1"></i>
-
-              <i class="icon-star text-10 text-yellow-1"></i>
-
-              <i class="icon-star text-10 text-yellow-1"></i>
-
-              <i class="icon-star text-10 text-yellow-1"></i>
+              @for ($i=0; $i <$json['starRating']; $i++)
+                <i class="icon-star text-10 text-yellow-1"></i>
+              @endfor
 
             </div>
           </div>
@@ -120,33 +118,14 @@
               <h3 class="text-22 fw-500">Property highlights</h3>
               <div class="row y-gap-20 pt-30">
 
-                <div class="col-lg-3 col-6">
-                  <div class="text-center">
-                    <i class="icon-city text-24 text-blue-1"></i>
-                    <div class="text-15 lh-1 mt-10">In London City Centre</div>
+                @foreach ($json['highlights'] as $eachHighlight)
+                  <div class="col-lg-3 col-6">
+                    <div class="text-center">
+                      <i class="icon-airplane text-24 text-blue-1"></i>
+                      <div class="text-15 lh-1 mt-10">{{ $eachHighlight }}</div>
+                    </div>
                   </div>
-                </div>
-
-                <div class="col-lg-3 col-6">
-                  <div class="text-center">
-                    <i class="icon-airplane text-24 text-blue-1"></i>
-                    <div class="text-15 lh-1 mt-10">Airport transfer</div>
-                  </div>
-                </div>
-
-                <div class="col-lg-3 col-6">
-                  <div class="text-center">
-                    <i class="icon-bell-ring text-24 text-blue-1"></i>
-                    <div class="text-15 lh-1 mt-10">Front desk [24-hour]</div>
-                  </div>
-                </div>
-
-                <div class="col-lg-3 col-6">
-                  <div class="text-center">
-                    <i class="icon-tv text-24 text-blue-1"></i>
-                    <div class="text-15 lh-1 mt-10">Premium TV channels</div>
-                  </div>
-                </div>
+                @endforeach
 
               </div>
             </div>
@@ -154,61 +133,23 @@
             <div id="overview" class="col-12">
               <h3 class="text-22 fw-500 pt-40 border-top-light">Overview</h3>
               <p class="text-dark-1 text-15 mt-20">
-                You can directly book the best price if your travel dates are available, all discounts are already
-                included. In the following house description you will find all information about our listing.
-                <br><br>
-                2-room terraced house on 2 levels. Comfortable and cosy furnishings: 1 room with 1 french bed and
-                radio. Shower, sep. WC. Upper floor: (steep stair) living/dining room with 1 sofabed (110 cm, length
-                180 cm), TV. Exit to the balcony. Small kitchen (2 hot plates, oven,
+                {!! $json['overview'] !!}
               </p>
-              <a href="#" class="d-block text-14 text-blue-1 fw-500 underline mt-10">Show More</a>
+              <!-- <a href="#" class="d-block text-14 text-blue-1 fw-500 underline mt-10">Show More</a> -->
             </div>
 
             <div class="col-12">
               <h3 class="text-22 fw-500 pt-40 border-top-light">Most Popular Facilities</h3>
               <div class="row y-gap-10 pt-20">
 
-                <div class="col-md-5">
-                  <div class="d-flex x-gap-15 y-gap-15 items-center">
-                    <i class="icon-no-smoke"></i>
-                    <div class="text-15">Non-smoking rooms</div>
+                @foreach ($json['facilities'] as $eachFacility)
+                  <div class="col-md-5">
+                    <div class="d-flex x-gap-15 y-gap-15 items-center">
+                      <i class="icon-no-smoke"></i>
+                      <div class="text-15">{{ $eachFacility }}</div>
+                    </div>
                   </div>
-                </div>
-
-                <div class="col-md-5">
-                  <div class="d-flex x-gap-15 y-gap-15 items-center">
-                    <i class="icon-wifi"></i>
-                    <div class="text-15">Free WiFi</div>
-                  </div>
-                </div>
-
-                <div class="col-md-5">
-                  <div class="d-flex x-gap-15 y-gap-15 items-center">
-                    <i class="icon-parking"></i>
-                    <div class="text-15">Parking</div>
-                  </div>
-                </div>
-
-                <div class="col-md-5">
-                  <div class="d-flex x-gap-15 y-gap-15 items-center">
-                    <i class="icon-kitchen"></i>
-                    <div class="text-15">Kitchen</div>
-                  </div>
-                </div>
-
-                <div class="col-md-5">
-                  <div class="d-flex x-gap-15 y-gap-15 items-center">
-                    <i class="icon-living-room"></i>
-                    <div class="text-15">Living Area</div>
-                  </div>
-                </div>
-
-                <div class="col-md-5">
-                  <div class="d-flex x-gap-15 y-gap-15 items-center">
-                    <i class="icon-shield"></i>
-                    <div class="text-15">Safety &amp; security</div>
-                  </div>
-                </div>
+                @endforeach
 
               </div>
             </div>
