@@ -29,6 +29,16 @@ class Edit extends Component
         return view('livewire.admin.packages.edit');
     }
 
+    public function addDestination()
+    {
+        $this->form->addDestination();
+    }
+
+    public function deleteDestination($destinationIndex)
+    {
+        $this->form->deleteDestination($destinationIndex);
+    }
+
     public function submit()
     {
         $this->validate();

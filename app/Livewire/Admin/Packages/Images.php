@@ -23,6 +23,7 @@ class Images extends Component
     }
     public function delete(Int $imageId)
     {
+        
         DB::transaction(function () use ($imageId) {
             $this->package->deleteMedia($imageId); 
             $this->package->refresh();           

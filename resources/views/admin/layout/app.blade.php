@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&amp;display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="{{ asset('assets/lightbox/simpleLightbox.css') }}">
   <!-- Stylesheets -->
   <link rel="stylesheet" href="{{ asset('css/vendors.css') }}">
   <link rel="stylesheet" href="{{ asset('css/main.css') }}">
@@ -163,7 +163,7 @@
     </div>    
     <script src="{{ asset('js/vendors.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-
+    <script src="{{ asset('assets/lightbox/simpleLightbox.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
       const Toast = Swal.mixin({

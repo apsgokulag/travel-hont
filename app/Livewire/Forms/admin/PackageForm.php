@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms\admin;
 
+use App\Models\Destination;
 use App\Models\Package;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Rule;
@@ -28,6 +29,9 @@ class PackageForm extends Form
 
     public $uploadedImages = [];
     public $currencies = [];
+
+    #[Rule(['form.destinations.*.name' => 'required|max:250', 'form.destinations.*.overview' => 'required|max:500'])]
+    public $destinations = [];
     
     public function messages() 
     {
@@ -41,6 +45,9 @@ class PackageForm extends Form
             'price.adult_amount.min' => 'Please type valid amount',
             'price.children_amount.required' => 'Please type amount',
             'price.children_amount.min' => 'Please type valid amount',
+            'price.children_amount.min' => 'Please type valid amount',
+            'destinations.*.name.required' => 'Please type destination name',
+            'destinations.*.overview.required' => 'Please type destination overview',
         ]; 
     }  
 
@@ -53,7 +60,11 @@ class PackageForm extends Form
             'description' => $package->description,
             'price.currency_id' => $package->price?->currency_id,
             'price.adult_amount' => $package->price?->adult_amount,
-            'price.children_amount' => $package->price?->children_amount,            
+            'price.children_amount' => $package->price?->children_amount,   
+            'destinations' => collect($package->destinations)->map(function ($destination){
+                $destination->image = null;
+                return $destination;
+            })->toArray(),
         ]);
     }
 
@@ -80,7 +91,7 @@ class PackageForm extends Form
         }) ;
     }
 
-    public function update(){
+    public function update(){ 
         DB::transaction( function (){
             $this->package->update([
                 'name' => $this->name,
@@ -99,7 +110,43 @@ class PackageForm extends Form
                     'children_amount' => $this->price['children_amount'],
                 ]
             );
+            $destinationIds = [];
+            if($this->destinations){
+                foreach ($this->destinations as $key => $destination) {                    
+                    if($destination['id']){                        
+                        if($destination['image']){
+                            $oldDestination = Destination::find($destination['id']);
+                            $oldDestination->addMedia($destination['image'])->toMediaCollection();
+                        }
+                        $destinationIds[] = $destination['id'];
+                    }
+                    else{
+                        $newDestination = Destination::create([
+                            'name' => $destination['name'],
+                            'overview' => $destination['overview'],
+                        ]);
+                        if($destination['image'])
+                            $newDestination->addMedia($destination['image'])->toMediaCollection();
+                        $destinationIds[] = $newDestination->id;
+                    }
+                }
+            }
+            $this->package->destinations()->sync($destinationIds);
             session()->flash('success', 'Package successfully updated.');
         });
+    }
+
+    public function addDestination()
+    {
+        $this->destinations[] = [
+            'id' => null,
+            'name' => null,
+            'overview' => null,
+            'image' => null,
+        ];        
+    }
+    public function deleteDestination($destinationIndex)
+    {        
+        array_splice($this->destinations, $destinationIndex, 1);
     }
 }

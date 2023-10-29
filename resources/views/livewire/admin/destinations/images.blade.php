@@ -1,5 +1,5 @@
 <div>
-    <div class="d-flex flex-wrap lightbox-package-image-gallery">       
+    <div class="d-flex flex-wrap lightbox-destination-image-gallery">       
         @foreach ($images as $image)  
             <div class="border d-flex flex-column me-1">
                 <a href="{{ asset($image->getFullUrl()) }}" class="image">
@@ -35,7 +35,7 @@
 
 @push('styles')
 <style>
-    .lightbox-package-image-gallery img{
+    .lightbox-destination-image-gallery img{
         width: 120px;
         height: 120px;
         object-fit: cover;
@@ -43,8 +43,8 @@
 </style>
 @endpush
 
-@push('scripts')    
+@push('scripts')
     <script>
-         new SimpleLightbox({elements: '.lightbox-package-image-gallery a.image'});       
+         new SimpleLightbox({elements: '.lightbox-destination-image-gallery a.image'});       
     </script>    
 @endpush

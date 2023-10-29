@@ -18,14 +18,14 @@
             class="py-30 px-30 rounded-4 bg-white shadow-3 mb-2">
             <h3 class="text-22 fw-500 mb-2">Basic Details</h3>
             <div class="form-input my-2">
-                <input type="text" wire:model="form.name" class="form-control-sm">
+                <input type="text" wire:model="form.name" class="form-control-sm" maxlength="250">
                 <label class="lh-1 text-16 text-light-1">Package Name *</label>
             </div>
             @error('form.name')               
                 <span class="text-red-1">{{ $message }}</span>                
             @enderror
             <div class="form-input my-2">
-                <textarea wire:model="form.overview" class="form-control-sm"></textarea>
+                <textarea wire:model="form.overview" class="form-control-sm" maxlength="500"></textarea>
                 <label class="lh-1 text-16 text-light-1">Overview *</label>
             </div> 
             @error('form.overview')               
@@ -68,7 +68,7 @@
                 <span class="text-red-1">{{ $message }}</span>                
             @enderror
 
-            @livewire('admin.packages.images', ['package' => $package], key('gallery-images'.$package->id))
+            @livewire('admin.packages.images', ['package' => $package], key('package-gallery-images-'.$package->id))
             
         </div> 
         <div class="py-30 px-30 rounded-4 bg-white shadow-3 mb-2">
@@ -110,7 +110,50 @@
             </div>            
         </div>
         <div class="py-30 px-30 rounded-4 bg-white shadow-3 mb-2">
-            <h3 class="text-22 fw-500 mb-2">Destinations</h3>
+            <h3 class="text-22 fw-500 mb-2">Destinations</h3>            
+            <div class="my-1">                    
+                @foreach ($form->destinations as $destination)   
+                    <div class="p-2 mt-2 mx-1" wire:key="destination-{{ $loop->index }}">
+                        <div class="row shadow-4 rounded-4">
+                            <div class="col-md-12 d-flex justify-between align-content-center">
+                                <h6 class="text-22 fw-500 mb-2 my-3">Destination {{ $loop->index+1 }}</h6>
+                                <a href="" wire:click.prevent="deleteDestination({{ $loop->index }})" class="button h-20 my-3 text-red-1 bg-red-50"><i class="icon-trash-2"></i> Delete</a>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-input my-2">
+                                    <input type="file" wire:model="form.destinations.{{ $loop->index }}.image"  class="form-control-sm form-control-file" accept="image/*">
+                                    <label class="lh-1 text-16 text-light-1" style="top: 15px">Image</label>    
+                                </div>
+                                @error('form.destinations.'.$loop->index.'.image')               
+                                    <span class="text-red-1">{{ $message }}</span>                
+                                @enderror
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-input my-2">
+                                    <input type="text" wire:model="form.destinations.{{ $loop->index }}.name"  class="form-control-sm">
+                                    <label class="lh-1 text-16 text-light-1">Destination Name *</label>    
+                                </div>
+                                @error('form.destinations.'.$loop->index.'.name')               
+                                    <span class="text-red-1">{{ $message }}</span>                
+                                @enderror
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-input my-2">
+                                    <textarea wire:model="form.destinations.{{ $loop->index }}.overview" class="form-control-sm" maxlength="500"></textarea>
+                                    <label class="lh-1 text-16 text-light-1">Overview *</label>
+                                </div> 
+                                @error('form.destinations.'.$loop->index.'.overview')              
+                                    <span class="text-red-1">{{ $message }}</span>                
+                                @enderror
+                            </div>
+                            <div class="col-md-12">                                
+                                @livewire('admin.destinations.images', ['destinationId' => $destination['id']], key('destinaiton-gallery-images-'.$destination['id']))
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <a href="" wire:click.prevent="addDestination()" class="button h-50 px-24 -dark-1 text-blue-1 border-blue-1">Add New Destination</a>
         </div>
         <button class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
             <span wire:loading.remove wire:target="submit">
