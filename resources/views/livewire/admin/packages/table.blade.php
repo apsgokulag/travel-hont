@@ -13,7 +13,7 @@
             @foreach ($packages as $package)                
                 <tr>                 
                 <td>
-                    <a href="" class="fw-500">
+                    <a href="{{ route('admin.packages.edit', ['slug' => $package->slug]) }}" class="fw-500">
                         {{ $package->name }}
                     </a>
                     <span class="d-block text-12 mt-2 text-muted">Created on {{ date('d - F, Y', strtotime($package->created_at)) }}</span>

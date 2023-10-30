@@ -2,7 +2,7 @@
     <div class="d-flex flex-wrap lightbox-destination-image-gallery">       
         @foreach ($images as $image)  
             <div class="border d-flex flex-column me-1">
-                <a href="{{ asset($image->getFullUrl()) }}" class="image">
+                <a href="{{ asset($image->getFullUrl()) }}" x-ref="lightboxImageGallery" class="image">
                     <img src="{{ asset($image->getFullUrl()) }}" class="img-thumbnail" alt="">
                 </a>
                 <div class="d-flex justify-content-center align-items-center">                    
@@ -41,10 +41,4 @@
         object-fit: cover;
     }
 </style>
-@endpush
-
-@push('scripts')
-    <script>
-         new SimpleLightbox({elements: '.lightbox-destination-image-gallery a.image'});       
-    </script>    
 @endpush

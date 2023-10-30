@@ -24,7 +24,16 @@ class Create extends Component
     {
         return view('livewire.admin.packages.create');
     }
+    
+    public function addDestination()
+    {
+        $this->form->addDestination();
+    }
 
+    public function deleteDestination($destinationIndex)
+    {
+        $this->form->deleteDestination($destinationIndex);
+    }
     public function submit()
     {
         $this->validate();

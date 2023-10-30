@@ -164,6 +164,9 @@
     <script src="{{ asset('js/vendors.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('assets/lightbox/simpleLightbox.js') }}"></script>
+    <script>
+      new SimpleLightbox({elements: '.lightbox-destination-image-gallery a.image'});       
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
       const Toast = Swal.mixin({
