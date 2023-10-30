@@ -5236,7 +5236,7 @@
 
           <div class="row y-gap-30">
 
-            <div class="col-12">
+            {{-- <div class="col-12">
 
               <div class="border-top-light pt-30">
                 <div class="row x-gap-20 y-gap-20">
@@ -5350,733 +5350,94 @@
                 </div>
               </div>
 
-            </div>
+            </div> --}}
 
-            <div class="col-12">
+            @foreach ($packages as $package)
+              <div class="col-12">
 
-              <div class="border-top-light pt-30">
-                <div class="row x-gap-20 y-gap-20">
-                  <div class="col-md-auto">
-
-                    <div class="cardImage ratio ratio-1:1 w-250 md:w-1/1 rounded-4">
-                      <div class="cardImage__content">
-
-
-                        <div class="cardImage-slider rounded-4 overflow-hidden js-cardImage-slider">
-                          <div class="swiper-wrapper">
-
-                            <div class="swiper-slide">
-                              <img class="col-12" src="img/lists/hotel/1/2.png" alt="image">
-                            </div>
-
-                            <div class="swiper-slide">
-                              <img class="col-12" src="img/lists/hotel/1/1.png" alt="image">
-                            </div>
-
-                            <div class="swiper-slide">
-                              <img class="col-12" src="img/lists/hotel/1/3.png" alt="image">
-                            </div>
-
+                <div class="border-top-light pt-30">
+                  <div class="row x-gap-20 y-gap-20">
+                    <div class="col-md-auto">
+                      @if ($package->getMedia())                          
+                        <div class="cardImage ratio ratio-1:1 w-250 md:w-1/1 rounded-4">
+                          <div class="cardImage__content">
+                            <img class="rounded-4 col-12" src="{{ asset($package->getMedia()->first()->getFullUrl()) }}" alt="image">
                           </div>
 
-                          <div class="cardImage-slider__pagination js-pagination"></div>
-
-                          <div class="cardImage-slider__nav -prev">
-                            <button class="button -blue-1 bg-white size-30 rounded-full shadow-2 js-prev">
-                              <i class="icon-chevron-left text-10"></i>
-                            </button>
-                          </div>
-
-                          <div class="cardImage-slider__nav -next">
-                            <button class="button -blue-1 bg-white size-30 rounded-full shadow-2 js-next">
-                              <i class="icon-chevron-right text-10"></i>
+                          <div class="cardImage__wishlist">
+                            <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
+                              <i class="icon-heart text-12"></i>
                             </button>
                           </div>
                         </div>
-
-                      </div>
-
-                      <div class="cardImage__wishlist">
-                        <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
-                          <i class="icon-heart text-12"></i>
-                        </button>
-                      </div>
-
-
+                      @endif
                     </div>
 
-                  </div>
+                    <div class="col-md">
+                      <h3 class="text-18 lh-16 fw-500">
+                        {{ $package->name }}
+                        <br class="lg:d-none"> Hotel, London
 
-                  <div class="col-md">
-                    <h3 class="text-18 lh-16 fw-500">
-                      Great Northern Hotel, a Tribute Portfolio<br class="lg:d-none"> Hotel, London
+                        <div class="d-inline-block ml-10">
+                          <i class="icon-star text-10 text-yellow-2"></i>
+                          <i class="icon-star text-10 text-yellow-2"></i>
+                          <i class="icon-star text-10 text-yellow-2"></i>
+                          <i class="icon-star text-10 text-yellow-2"></i>
+                          <i class="icon-star text-10 text-yellow-2"></i>
+                        </div>
+                      </h3>
 
-                      <div class="d-inline-block ml-10">
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                      </div>
-                    </h3>
-
-                    <div class="row x-gap-10 y-gap-10 items-center pt-10">
-                      <div class="col-auto">
-                        <p class="text-14">Westminster Borough, London</p>
+                      <div class="text-14 lh-15 mt-20">
+                        <div class="fw-500">{{ $package->overview }}</div>
                       </div>
 
-                      <div class="col-auto">
-                        <button data-x-click="mapFilter" class="d-block text-14 text-blue-1 underline">Show on
-                          map</button>
-                      </div>
+                      <div class="row x-gap-10 y-gap-10 pt-20">
+                        <div class="col-auto">
+                          <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Breakfast</div>
+                        </div>
 
-                      <div class="col-auto">
-                        <div class="size-3 rounded-full bg-light-1"></div>
-                      </div>
+                        <div class="col-auto">
+                          <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">WiFi</div>
+                        </div>
 
-                      <div class="col-auto">
-                        <p class="text-14">2 km to city center</p>
+                        <div class="col-auto">
+                          <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Spa</div>
+                        </div>
+
+                        <div class="col-auto">
+                          <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Bar</div>
+                        </div>
                       </div>
                     </div>
 
-                    <div class="text-14 lh-15 mt-20">
-                      <div class="fw-500">King Room</div>
-                      <div class="text-light-1">1 extra-large double bed</div>
-                    </div>
-
-                    <div class="text-14 text-green-2 lh-15 mt-10">
-                      <div class="fw-500">Free cancellation</div>
-                      <div class="">You can cancel later, so lock in this great price today.</div>
-                    </div>
-
-                    <div class="row x-gap-10 y-gap-10 pt-20">
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Breakfast</div>
+                    <div class="col-md-auto text-right md:text-left">
+                      <div class="row x-gap-10 y-gap-10 justify-end items-center md:justify-start">
+                        <div class="col-auto">
+                          <div class="text-14 lh-14 fw-500">Exceptional</div>
+                          <div class="text-14 lh-14 text-light-1">3,014 reviews</div>
+                        </div>
+                        <div class="col-auto">
+                          <div class="flex-center text-white fw-600 text-14 size-40 rounded-4 bg-blue-1">4.8</div>
+                        </div>
                       </div>
 
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">WiFi</div>
+                      <div class="mt-4">
+                        <div class="text-14 text-light-1">Adult</div>
+                        <div class="text-22 lh-12 fw-600 mt-5">US $ {{ $package->price->adult_amount }} </div>
+                        <div class="text-14 text-light-1">Children</div>
+                        <div class="text-22 lh-12 fw-600 mt-5">US $ {{ $package->price->children_amount }}</div>
+
+                        <a href="{{ route('package', ['slug' => $package->slug]) }}" class="button -md -dark-1 bg-blue-1 text-white mt-24">
+                          See Availability <div class="icon-arrow-top-right ml-15"></div>
+                        </a>
+
                       </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Spa</div>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Bar</div>
-                      </div>
-
-                    </div>
-                  </div>
-
-                  <div class="col-md-auto text-right md:text-left">
-                    <div class="row x-gap-10 y-gap-10 justify-end items-center md:justify-start">
-                      <div class="col-auto">
-                        <div class="text-14 lh-14 fw-500">Exceptional</div>
-                        <div class="text-14 lh-14 text-light-1">3,014 reviews</div>
-                      </div>
-                      <div class="col-auto">
-                        <div class="flex-center text-white fw-600 text-14 size-40 rounded-4 bg-blue-1">4.8</div>
-                      </div>
-                    </div>
-
-                    <div class="">
-                      <div class="text-14 text-light-1 mt-50 md:mt-20">8 nights, 2 adult</div>
-                      <div class="text-22 lh-12 fw-600 mt-5">US$72</div>
-                      <div class="text-14 text-light-1 mt-5">+US$828 taxes and charges</div>
-
-
-                      <a href="#" class="button -md -dark-1 bg-blue-1 text-white mt-24">
-                        See Availability <div class="icon-arrow-top-right ml-15"></div>
-                      </a>
-
                     </div>
                   </div>
                 </div>
+
               </div>
-
-            </div>
-
-            <div class="col-12">
-
-              <div class="border-top-light pt-30">
-                <div class="row x-gap-20 y-gap-20">
-                  <div class="col-md-auto">
-
-                    <div class="cardImage ratio ratio-1:1 w-250 md:w-1/1 rounded-4">
-                      <div class="cardImage__content">
-
-                        <img class="rounded-4 col-12" src="img/lists/hotel/1/3.png" alt="image">
-
-
-                      </div>
-
-                      <div class="cardImage__wishlist">
-                        <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
-                          <i class="icon-heart text-12"></i>
-                        </button>
-                      </div>
-
-
-                    </div>
-
-                  </div>
-
-                  <div class="col-md">
-                    <h3 class="text-18 lh-16 fw-500">
-                      Great Northern Hotel, a Tribute Portfolio<br class="lg:d-none"> Hotel, London
-
-                      <div class="d-inline-block ml-10">
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                      </div>
-                    </h3>
-
-                    <div class="row x-gap-10 y-gap-10 items-center pt-10">
-                      <div class="col-auto">
-                        <p class="text-14">Westminster Borough, London</p>
-                      </div>
-
-                      <div class="col-auto">
-                        <button data-x-click="mapFilter" class="d-block text-14 text-blue-1 underline">Show on
-                          map</button>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="size-3 rounded-full bg-light-1"></div>
-                      </div>
-
-                      <div class="col-auto">
-                        <p class="text-14">2 km to city center</p>
-                      </div>
-                    </div>
-
-                    <div class="text-14 lh-15 mt-20">
-                      <div class="fw-500">King Room</div>
-                      <div class="text-light-1">1 extra-large double bed</div>
-                    </div>
-
-                    <div class="text-14 text-green-2 lh-15 mt-10">
-                      <div class="fw-500">Free cancellation</div>
-                      <div class="">You can cancel later, so lock in this great price today.</div>
-                    </div>
-
-                    <div class="row x-gap-10 y-gap-10 pt-20">
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Breakfast</div>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">WiFi</div>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Spa</div>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Bar</div>
-                      </div>
-
-                    </div>
-                  </div>
-
-                  <div class="col-md-auto text-right md:text-left">
-                    <div class="row x-gap-10 y-gap-10 justify-end items-center md:justify-start">
-                      <div class="col-auto">
-                        <div class="text-14 lh-14 fw-500">Exceptional</div>
-                        <div class="text-14 lh-14 text-light-1">3,014 reviews</div>
-                      </div>
-                      <div class="col-auto">
-                        <div class="flex-center text-white fw-600 text-14 size-40 rounded-4 bg-blue-1">4.8</div>
-                      </div>
-                    </div>
-
-                    <div class="">
-                      <div class="text-14 text-light-1 mt-50 md:mt-20">8 nights, 2 adult</div>
-                      <div class="text-22 lh-12 fw-600 mt-5">US$72</div>
-                      <div class="text-14 text-light-1 mt-5">+US$828 taxes and charges</div>
-
-
-                      <a href="#" class="button -md -dark-1 bg-blue-1 text-white mt-24">
-                        See Availability <div class="icon-arrow-top-right ml-15"></div>
-                      </a>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="col-12">
-
-              <div class="border-top-light pt-30">
-                <div class="row x-gap-20 y-gap-20">
-                  <div class="col-md-auto">
-
-                    <div class="cardImage ratio ratio-1:1 w-250 md:w-1/1 rounded-4">
-                      <div class="cardImage__content">
-
-                        <img class="rounded-4 col-12" src="img/lists/hotel/1/4.png" alt="image">
-
-
-                      </div>
-
-                      <div class="cardImage__wishlist">
-                        <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
-                          <i class="icon-heart text-12"></i>
-                        </button>
-                      </div>
-
-
-                    </div>
-
-                  </div>
-
-                  <div class="col-md">
-                    <h3 class="text-18 lh-16 fw-500">
-                      Great Northern Hotel, a Tribute Portfolio<br class="lg:d-none"> Hotel, London
-
-                      <div class="d-inline-block ml-10">
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                      </div>
-                    </h3>
-
-                    <div class="row x-gap-10 y-gap-10 items-center pt-10">
-                      <div class="col-auto">
-                        <p class="text-14">Westminster Borough, London</p>
-                      </div>
-
-                      <div class="col-auto">
-                        <button data-x-click="mapFilter" class="d-block text-14 text-blue-1 underline">Show on
-                          map</button>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="size-3 rounded-full bg-light-1"></div>
-                      </div>
-
-                      <div class="col-auto">
-                        <p class="text-14">2 km to city center</p>
-                      </div>
-                    </div>
-
-                    <div class="text-14 lh-15 mt-20">
-                      <div class="fw-500">King Room</div>
-                      <div class="text-light-1">1 extra-large double bed</div>
-                    </div>
-
-                    <div class="text-14 text-green-2 lh-15 mt-10">
-                      <div class="fw-500">Free cancellation</div>
-                      <div class="">You can cancel later, so lock in this great price today.</div>
-                    </div>
-
-                    <div class="row x-gap-10 y-gap-10 pt-20">
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Breakfast</div>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">WiFi</div>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Spa</div>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Bar</div>
-                      </div>
-
-                    </div>
-                  </div>
-
-                  <div class="col-md-auto text-right md:text-left">
-                    <div class="row x-gap-10 y-gap-10 justify-end items-center md:justify-start">
-                      <div class="col-auto">
-                        <div class="text-14 lh-14 fw-500">Exceptional</div>
-                        <div class="text-14 lh-14 text-light-1">3,014 reviews</div>
-                      </div>
-                      <div class="col-auto">
-                        <div class="flex-center text-white fw-600 text-14 size-40 rounded-4 bg-blue-1">4.8</div>
-                      </div>
-                    </div>
-
-                    <div class="">
-                      <div class="text-14 text-light-1 mt-50 md:mt-20">8 nights, 2 adult</div>
-                      <div class="text-22 lh-12 fw-600 mt-5">US$72</div>
-                      <div class="text-14 text-light-1 mt-5">+US$828 taxes and charges</div>
-
-
-                      <a href="#" class="button -md -dark-1 bg-blue-1 text-white mt-24">
-                        See Availability <div class="icon-arrow-top-right ml-15"></div>
-                      </a>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="col-12">
-
-              <div class="border-top-light pt-30">
-                <div class="row x-gap-20 y-gap-20">
-                  <div class="col-md-auto">
-
-                    <div class="cardImage ratio ratio-1:1 w-250 md:w-1/1 rounded-4">
-                      <div class="cardImage__content">
-
-                        <img class="rounded-4 col-12" src="img/lists/hotel/1/5.png" alt="image">
-
-
-                      </div>
-
-                      <div class="cardImage__wishlist">
-                        <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
-                          <i class="icon-heart text-12"></i>
-                        </button>
-                      </div>
-
-
-                    </div>
-
-                  </div>
-
-                  <div class="col-md">
-                    <h3 class="text-18 lh-16 fw-500">
-                      Great Northern Hotel, a Tribute Portfolio<br class="lg:d-none"> Hotel, London
-
-                      <div class="d-inline-block ml-10">
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                      </div>
-                    </h3>
-
-                    <div class="row x-gap-10 y-gap-10 items-center pt-10">
-                      <div class="col-auto">
-                        <p class="text-14">Westminster Borough, London</p>
-                      </div>
-
-                      <div class="col-auto">
-                        <button data-x-click="mapFilter" class="d-block text-14 text-blue-1 underline">Show on
-                          map</button>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="size-3 rounded-full bg-light-1"></div>
-                      </div>
-
-                      <div class="col-auto">
-                        <p class="text-14">2 km to city center</p>
-                      </div>
-                    </div>
-
-                    <div class="text-14 lh-15 mt-20">
-                      <div class="fw-500">King Room</div>
-                      <div class="text-light-1">1 extra-large double bed</div>
-                    </div>
-
-                    <div class="text-14 text-green-2 lh-15 mt-10">
-                      <div class="fw-500">Free cancellation</div>
-                      <div class="">You can cancel later, so lock in this great price today.</div>
-                    </div>
-
-                    <div class="row x-gap-10 y-gap-10 pt-20">
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Breakfast</div>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">WiFi</div>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Spa</div>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Bar</div>
-                      </div>
-
-                    </div>
-                  </div>
-
-                  <div class="col-md-auto text-right md:text-left">
-                    <div class="row x-gap-10 y-gap-10 justify-end items-center md:justify-start">
-                      <div class="col-auto">
-                        <div class="text-14 lh-14 fw-500">Exceptional</div>
-                        <div class="text-14 lh-14 text-light-1">3,014 reviews</div>
-                      </div>
-                      <div class="col-auto">
-                        <div class="flex-center text-white fw-600 text-14 size-40 rounded-4 bg-blue-1">4.8</div>
-                      </div>
-                    </div>
-
-                    <div class="">
-                      <div class="text-14 text-light-1 mt-50 md:mt-20">8 nights, 2 adult</div>
-                      <div class="text-22 lh-12 fw-600 mt-5">US$72</div>
-                      <div class="text-14 text-light-1 mt-5">+US$828 taxes and charges</div>
-
-
-                      <a href="#" class="button -md -dark-1 bg-blue-1 text-white mt-24">
-                        See Availability <div class="icon-arrow-top-right ml-15"></div>
-                      </a>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="col-12">
-
-              <div class="border-top-light pt-30">
-                <div class="row x-gap-20 y-gap-20">
-                  <div class="col-md-auto">
-
-                    <div class="cardImage ratio ratio-1:1 w-250 md:w-1/1 rounded-4">
-                      <div class="cardImage__content">
-
-                        <img class="rounded-4 col-12" src="img/lists/hotel/1/6.png" alt="image">
-
-
-                      </div>
-
-                      <div class="cardImage__wishlist">
-                        <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
-                          <i class="icon-heart text-12"></i>
-                        </button>
-                      </div>
-
-
-                    </div>
-
-                  </div>
-
-                  <div class="col-md">
-                    <h3 class="text-18 lh-16 fw-500">
-                      Great Northern Hotel, a Tribute Portfolio<br class="lg:d-none"> Hotel, London
-
-                      <div class="d-inline-block ml-10">
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                      </div>
-                    </h3>
-
-                    <div class="row x-gap-10 y-gap-10 items-center pt-10">
-                      <div class="col-auto">
-                        <p class="text-14">Westminster Borough, London</p>
-                      </div>
-
-                      <div class="col-auto">
-                        <button data-x-click="mapFilter" class="d-block text-14 text-blue-1 underline">Show on
-                          map</button>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="size-3 rounded-full bg-light-1"></div>
-                      </div>
-
-                      <div class="col-auto">
-                        <p class="text-14">2 km to city center</p>
-                      </div>
-                    </div>
-
-                    <div class="text-14 lh-15 mt-20">
-                      <div class="fw-500">King Room</div>
-                      <div class="text-light-1">1 extra-large double bed</div>
-                    </div>
-
-                    <div class="text-14 text-green-2 lh-15 mt-10">
-                      <div class="fw-500">Free cancellation</div>
-                      <div class="">You can cancel later, so lock in this great price today.</div>
-                    </div>
-
-                    <div class="row x-gap-10 y-gap-10 pt-20">
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Breakfast</div>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">WiFi</div>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Spa</div>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Bar</div>
-                      </div>
-
-                    </div>
-                  </div>
-
-                  <div class="col-md-auto text-right md:text-left">
-                    <div class="row x-gap-10 y-gap-10 justify-end items-center md:justify-start">
-                      <div class="col-auto">
-                        <div class="text-14 lh-14 fw-500">Exceptional</div>
-                        <div class="text-14 lh-14 text-light-1">3,014 reviews</div>
-                      </div>
-                      <div class="col-auto">
-                        <div class="flex-center text-white fw-600 text-14 size-40 rounded-4 bg-blue-1">4.8</div>
-                      </div>
-                    </div>
-
-                    <div class="">
-                      <div class="text-14 text-light-1 mt-50 md:mt-20">8 nights, 2 adult</div>
-                      <div class="text-22 lh-12 fw-600 mt-5">US$72</div>
-                      <div class="text-14 text-light-1 mt-5">+US$828 taxes and charges</div>
-
-
-                      <a href="#" class="button -md -dark-1 bg-blue-1 text-white mt-24">
-                        See Availability <div class="icon-arrow-top-right ml-15"></div>
-                      </a>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="col-12">
-
-              <div class="border-top-light pt-30">
-                <div class="row x-gap-20 y-gap-20">
-                  <div class="col-md-auto">
-
-                    <div class="cardImage ratio ratio-1:1 w-250 md:w-1/1 rounded-4">
-                      <div class="cardImage__content">
-
-                        <img class="rounded-4 col-12" src="img/lists/hotel/1/7.png" alt="image">
-
-
-                      </div>
-
-                      <div class="cardImage__wishlist">
-                        <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
-                          <i class="icon-heart text-12"></i>
-                        </button>
-                      </div>
-
-
-                    </div>
-
-                  </div>
-
-                  <div class="col-md">
-                    <h3 class="text-18 lh-16 fw-500">
-                      Great Northern Hotel, a Tribute Portfolio<br class="lg:d-none"> Hotel, London
-
-                      <div class="d-inline-block ml-10">
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                        <i class="icon-star text-10 text-yellow-2"></i>
-                      </div>
-                    </h3>
-
-                    <div class="row x-gap-10 y-gap-10 items-center pt-10">
-                      <div class="col-auto">
-                        <p class="text-14">Westminster Borough, London</p>
-                      </div>
-
-                      <div class="col-auto">
-                        <button data-x-click="mapFilter" class="d-block text-14 text-blue-1 underline">Show on
-                          map</button>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="size-3 rounded-full bg-light-1"></div>
-                      </div>
-
-                      <div class="col-auto">
-                        <p class="text-14">2 km to city center</p>
-                      </div>
-                    </div>
-
-                    <div class="text-14 lh-15 mt-20">
-                      <div class="fw-500">King Room</div>
-                      <div class="text-light-1">1 extra-large double bed</div>
-                    </div>
-
-                    <div class="text-14 text-green-2 lh-15 mt-10">
-                      <div class="fw-500">Free cancellation</div>
-                      <div class="">You can cancel later, so lock in this great price today.</div>
-                    </div>
-
-                    <div class="row x-gap-10 y-gap-10 pt-20">
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Breakfast</div>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">WiFi</div>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Spa</div>
-                      </div>
-
-                      <div class="col-auto">
-                        <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Bar</div>
-                      </div>
-
-                    </div>
-                  </div>
-
-                  <div class="col-md-auto text-right md:text-left">
-                    <div class="row x-gap-10 y-gap-10 justify-end items-center md:justify-start">
-                      <div class="col-auto">
-                        <div class="text-14 lh-14 fw-500">Exceptional</div>
-                        <div class="text-14 lh-14 text-light-1">3,014 reviews</div>
-                      </div>
-                      <div class="col-auto">
-                        <div class="flex-center text-white fw-600 text-14 size-40 rounded-4 bg-blue-1">4.8</div>
-                      </div>
-                    </div>
-
-                    <div class="">
-                      <div class="text-14 text-light-1 mt-50 md:mt-20">8 nights, 2 adult</div>
-                      <div class="text-22 lh-12 fw-600 mt-5">US$72</div>
-                      <div class="text-14 text-light-1 mt-5">+US$828 taxes and charges</div>
-
-
-                      <a href="#" class="button -md -dark-1 bg-blue-1 text-white mt-24">
-                        See Availability <div class="icon-arrow-top-right ml-15"></div>
-                      </a>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+            @endforeach
 
           </div>
 

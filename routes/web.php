@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\PackageContoller as AdminPackageController;
 use App\Http\Controllers\web\HomeController;
+use App\Http\Controllers\web\PackageContoller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', function(){ return view('web.about'); })->name('about');
-Route::get('/packages', function(){ return view('web.packages'); })->name('packages');
+Route::get('/packages',[PackageContoller::class, 'packages'])->name('packages');
+Route::get('/packages/{slug}',[PackageContoller::class, 'package'])->name('package');
 Route::get('/contact', function(){ return view('web.contact'); })->name('contact');
-Route::get('/single-package', function(){ return view('web.singlepackage'); })->name('singlepackage');
+// Route::get('/single-package', function(){ return view('web.singlepackage'); })->name('singlepackage');
 
 Route::redirect('/admin', 'admin/dashboard');
 Route::middleware([
