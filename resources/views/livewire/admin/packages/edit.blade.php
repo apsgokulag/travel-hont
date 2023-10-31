@@ -155,6 +155,31 @@
             </div>
             <a href="" wire:click.prevent="addDestination()" class="button h-50 px-24 -dark-1 text-blue-1 border-blue-1">Add New Destination</a>
         </div>
+        <div class="py-30 px-30 rounded-4 bg-white shadow-3 mb-2">
+            <h3 class="text-22 fw-500 mb-2">Highlights</h3>            
+            <div class="my-1"> 
+                @foreach ($form->highlights as $highlight)
+                    <div class="p-2 mt-2 mx-1" wire:key="highlight-{{ $loop->index }}">
+                        <div class="row shadow-4 rounded-4">
+                            <div class="col-md-12 d-flex justify-between align-content-center">
+                                <h6 class="text-22 fw-500 mb-2 my-3">Highlight {{ $loop->index+1 }}</h6>
+                                <a href="" wire:click.prevent="deleteHighlight({{ $loop->index }})" class="button h-20 my-3 text-red-1 bg-red-50"><i class="icon-trash-2"></i> Delete</a>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-input my-2">
+                                    <input type="text" wire:model="form.highlights.{{ $loop->index }}.highlight"  class="form-control-sm">
+                                    <label class="lh-1 text-16 text-light-1">Highlight *</label>    
+                                </div>
+                                @error('form.highlights.'.$loop->index.'.highlight')               
+                                    <span class="text-red-1">{{ $message }}</span>                
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <a href="" wire:click.prevent="addHighlight()" class="button h-50 px-24 -dark-1 text-blue-1 border-blue-1">Add Highlight</a>
+        </div>
         <button class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
             <span wire:loading.remove wire:target="submit">
                 Update Package

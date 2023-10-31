@@ -32,6 +32,9 @@ class PackageForm extends Form
 
     #[Rule(['form.destinations.*.name' => 'required|max:250', 'form.destinations.*.overview' => 'required|max:500'])]
     public $destinations = [];
+
+    #[Rule(['form.highlights.*.highlight' => 'required|max:250'])]
+    public $highlights = [];
     
     public function messages() 
     {
@@ -48,6 +51,7 @@ class PackageForm extends Form
             'price.children_amount.min' => 'Please type valid amount',
             'destinations.*.name.required' => 'Please type destination name',
             'destinations.*.overview.required' => 'Please type destination overview',
+            'highlights.*.highlight.required' => 'Please type highlight point',
         ]; 
     }  
 
@@ -65,6 +69,7 @@ class PackageForm extends Form
                 $destination->image = null;
                 return $destination;
             })->toArray(),
+            'highlights' => $package->highlights->toArray(),
         ]);
     }
 
@@ -132,6 +137,10 @@ class PackageForm extends Form
                 }
             }
             $this->package->destinations()->sync($destinationIds);
+            $this->package->highlights()->delete();
+            if($this->highlights){
+                $this->package->highlights()->createMany($this->highlights);
+            }
             session()->flash('success', 'Package successfully updated.');
         });
     }
@@ -148,5 +157,15 @@ class PackageForm extends Form
     public function deleteDestination($destinationIndex)
     {        
         array_splice($this->destinations, $destinationIndex, 1);
+    }
+
+    public function addHighlight()
+    {
+        $this->highlights[] = ['highlight' => null];
+    }
+
+    public function deleteHighlight($highightIndex)
+    {        
+        array_splice($this->highlights, $highightIndex, 1);
     }
 }

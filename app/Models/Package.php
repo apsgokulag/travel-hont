@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
@@ -44,5 +45,10 @@ class Package extends Model implements HasMedia
     public function destinations(): BelongsToMany
     {
         return $this->belongsToMany(Destination::class, 'destinations_packages')->withTimestamps();
+    }
+
+    public function highlights(): HasMany
+    {
+        return $this->hasMany(PackageHighlight::class);
     }
 }

@@ -32,11 +32,21 @@ class Edit extends Component
     public function addDestination()
     {
         $this->form->addDestination();
-    }
+    }   
 
     public function deleteDestination($destinationIndex)
     {
         $this->form->deleteDestination($destinationIndex);
+    }
+
+    public function addHighlight()
+    {
+        $this->form->addHighlight();
+    }
+
+    public function deleteHighlight($highightIndex)
+    {
+        $this->form->deleteHighlight($highightIndex);
     }
 
     public function submit()
