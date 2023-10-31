@@ -35,6 +35,9 @@ class PackageForm extends Form
 
     #[Rule(['form.highlights.*.highlight' => 'required|max:250'])]
     public $highlights = [];
+
+    #[Rule(['form.faqs.*.question' => 'required|max:250', 'form.faqs.*.answer' => 'required|max:250'])]
+    public $faqs = [];
     
     public function messages() 
     {
@@ -52,6 +55,8 @@ class PackageForm extends Form
             'destinations.*.name.required' => 'Please type destination name',
             'destinations.*.overview.required' => 'Please type destination overview',
             'highlights.*.highlight.required' => 'Please type highlight point',
+            'faqs.*.question.required' => 'Please type question',
+            'faqs.*.answer.required' => 'Please type answer',
         ]; 
     }  
 
@@ -70,6 +75,7 @@ class PackageForm extends Form
                 return $destination;
             })->toArray(),
             'highlights' => $package->highlights->toArray(),
+            'faqs' => $package->faqs->toArray(),
         ]);
     }
 
@@ -92,6 +98,36 @@ class PackageForm extends Form
                 'adult_amount' => $this->price['adult_amount'],
                 'children_amount' => $this->price['children_amount'],
             ]);
+            $destinationIds = [];
+            if($this->destinations){
+                foreach ($this->destinations as $key => $destination) {                    
+                    if($destination['id']){                        
+                        if($destination['image']){
+                            $oldDestination = Destination::find($destination['id']);
+                            $oldDestination->addMedia($destination['image'])->toMediaCollection();
+                        }
+                        $destinationIds[] = $destination['id'];
+                    }
+                    else{
+                        $newDestination = Destination::create([
+                            'name' => $destination['name'],
+                            'overview' => $destination['overview'],
+                        ]);
+                        if($destination['image'])
+                            $newDestination->addMedia($destination['image'])->toMediaCollection();
+                        $destinationIds[] = $newDestination->id;
+                    }
+                }
+            }
+            $package->destinations()->sync($destinationIds);
+            $package->highlights()->delete();
+            if($this->highlights){
+                $package->highlights()->createMany($this->highlights);
+            }
+            $package->faqs()->delete();
+            if($this->faqs){
+                $package->faqs()->createMany($this->faqs);
+            }
             session()->flash('success', 'Package successfully created.');            
         }) ;
     }
@@ -141,6 +177,10 @@ class PackageForm extends Form
             if($this->highlights){
                 $this->package->highlights()->createMany($this->highlights);
             }
+            $this->package->faqs()->delete();
+            if($this->faqs){
+                $this->package->faqs()->createMany($this->faqs);
+            }
             session()->flash('success', 'Package successfully updated.');
         });
     }
@@ -154,18 +194,32 @@ class PackageForm extends Form
             'image' => null,
         ];        
     }
-    public function deleteDestination($destinationIndex)
-    {        
-        array_splice($this->destinations, $destinationIndex, 1);
-    }
 
     public function addHighlight()
     {
         $this->highlights[] = ['highlight' => null];
     }
 
-    public function deleteHighlight($highightIndex)
-    {        
-        array_splice($this->highlights, $highightIndex, 1);
+    public function addFaq()
+    {
+        $this->faqs[] = ['question' => null, 'answer' => null];
+    }
+
+    public function deleteFeature(String $type, Int $index)
+    {
+        switch ($type) {
+            case 'destination':
+                array_splice($this->destinations, $index, 1);
+                break;
+            case 'highlight':
+                array_splice($this->highlights, $index, 1);
+                break;
+            case 'faq':
+                array_splice($this->faqs, $index, 1);
+                break;
+            default:
+                session()->flash('error', 'Invalid Feature.');
+                break;
+        }
     }
 }

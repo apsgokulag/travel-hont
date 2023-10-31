@@ -5390,23 +5390,13 @@
                       <div class="text-14 lh-15 mt-20">
                         <div class="fw-500">{{ $package->overview }}</div>
                       </div>
-
+                      
                       <div class="row x-gap-10 y-gap-10 pt-20">
-                        <div class="col-auto">
-                          <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Breakfast</div>
-                        </div>
-
-                        <div class="col-auto">
-                          <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">WiFi</div>
-                        </div>
-
-                        <div class="col-auto">
-                          <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Spa</div>
-                        </div>
-
-                        <div class="col-auto">
-                          <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">Bar</div>
-                        </div>
+                        @foreach ($package->highlights as $highlight)                            
+                          <div class="col-auto">
+                            <div class="border-light rounded-100 py-5 px-20 text-14 lh-14">{{ $highlight->highlight }}</div>
+                          </div>
+                        @endforeach
                       </div>
                     </div>
 
@@ -5428,7 +5418,7 @@
                         <div class="text-22 lh-12 fw-600 mt-5">US $ {{ $package->price->children_amount }}</div>
 
                         <a href="{{ route('package', ['slug' => $package->slug]) }}" class="button -md -dark-1 bg-blue-1 text-white mt-24">
-                          See Availability <div class="icon-arrow-top-right ml-15"></div>
+                          View Package <div class="icon-arrow-top-right ml-15"></div>
                         </a>
 
                       </div>

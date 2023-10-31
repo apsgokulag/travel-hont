@@ -51,4 +51,9 @@ class Package extends Model implements HasMedia
     {
         return $this->hasMany(PackageHighlight::class);
     }
+
+    public function faqs(): HasMany
+    {
+        return $this->hasMany(PackageFaq::class);
+    }
 }

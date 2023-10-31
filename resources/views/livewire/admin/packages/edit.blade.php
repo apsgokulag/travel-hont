@@ -117,7 +117,7 @@
                         <div class="row shadow-4 rounded-4">
                             <div class="col-md-12 d-flex justify-between align-content-center">
                                 <h6 class="text-22 fw-500 mb-2 my-3">Destination {{ $loop->index+1 }}</h6>
-                                <a href="" wire:click.prevent="deleteDestination({{ $loop->index }})" class="button h-20 my-3 text-red-1 bg-red-50"><i class="icon-trash-2"></i> Delete</a>
+                                <a href="" wire:click.prevent="deleteFeature('destination',{{ $loop->index }})" class="button h-20 my-3 text-red-1 bg-red-50"><i class="icon-trash-2"></i> Delete</a>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-input my-2">
@@ -153,7 +153,7 @@
                     </div>
                 @endforeach
             </div>
-            <a href="" wire:click.prevent="addDestination()" class="button h-50 px-24 -dark-1 text-blue-1 border-blue-1">Add New Destination</a>
+            <a href="" wire:click.prevent="addFeature('destination')" class="button h-50 px-24 -dark-1 text-blue-1 border-blue-1">Add New Destination</a>
         </div>
         <div class="py-30 px-30 rounded-4 bg-white shadow-3 mb-2">
             <h3 class="text-22 fw-500 mb-2">Highlights</h3>            
@@ -163,7 +163,7 @@
                         <div class="row shadow-4 rounded-4">
                             <div class="col-md-12 d-flex justify-between align-content-center">
                                 <h6 class="text-22 fw-500 mb-2 my-3">Highlight {{ $loop->index+1 }}</h6>
-                                <a href="" wire:click.prevent="deleteHighlight({{ $loop->index }})" class="button h-20 my-3 text-red-1 bg-red-50"><i class="icon-trash-2"></i> Delete</a>
+                                <a href="" wire:click.prevent="deleteFeature('highlight',{{ $loop->index }})" class="button h-20 my-3 text-red-1 bg-red-50"><i class="icon-trash-2"></i> Delete</a>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-input my-2">
@@ -178,7 +178,41 @@
                     </div>
                 @endforeach
             </div>
-            <a href="" wire:click.prevent="addHighlight()" class="button h-50 px-24 -dark-1 text-blue-1 border-blue-1">Add Highlight</a>
+            <a href="" wire:click.prevent="addFeature('highlight')" class="button h-50 px-24 -dark-1 text-blue-1 border-blue-1">Add Highlight</a>
+        </div>
+        <div class="py-30 px-30 rounded-4 bg-white shadow-3 mb-2">
+            <h3 class="text-22 fw-500 mb-2">FAQ</h3>            
+            <div class="my-1"> 
+                @foreach ($form->faqs as $faq)
+                    <div class="p-2 mt-2 mx-1" wire:key="faq-{{ $loop->index }}">
+                        <div class="row shadow-4 rounded-4">
+                            <div class="col-md-12 d-flex justify-between align-content-center">
+                                <h6 class="text-22 fw-500 mb-2 my-3">FAQ {{ $loop->index+1 }}</h6>
+                                <a href="" wire:click.prevent="deleteFeature('faq',{{ $loop->index }})" class="button h-20 my-3 text-red-1 bg-red-50"><i class="icon-trash-2"></i> Delete</a>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-input my-2">
+                                    <input type="text" wire:model="form.faqs.{{ $loop->index }}.question"  class="form-control-sm">
+                                    <label class="lh-1 text-16 text-light-1">Question *</label>    
+                                </div>
+                                @error('form.faqs.'.$loop->index.'.question')               
+                                    <span class="text-red-1">{{ $message }}</span>                
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-input my-2">
+                                    <input type="text" wire:model="form.faqs.{{ $loop->index }}.answer"  class="form-control-sm">
+                                    <label class="lh-1 text-16 text-light-1">Answer *</label>    
+                                </div>
+                                @error('form.faqs.'.$loop->index.'.answer')               
+                                    <span class="text-red-1">{{ $message }}</span>                
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <a href="" wire:click.prevent="addFeature('faq')" class="button h-50 px-24 -dark-1 text-blue-1 border-blue-1">Add FAQ</a>
         </div>
         <button class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
             <span wire:loading.remove wire:target="submit">

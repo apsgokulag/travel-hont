@@ -3976,7 +3976,7 @@
   </section>
 
   <div id="reviews"></div>
-  <section class="pt-40">
+  {{-- <section class="pt-40">
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -4285,7 +4285,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
 
   <section class="pt-40">
     <div class="container">
@@ -4338,36 +4338,9 @@
     </div>
   </section>
 
-  <div class="container">
-    <div class="border-top-light mt-30"></div>
-  </div>
+
 
   <div id="facilities"></div>
-  
-
-  <section class="pt-40">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="px-24 py-20 rounded-4 bg-light-2">
-            <div class="row x-gap-20 y-gap-20 items-center">
-              <div class="col-auto">
-                <div class="flex-center size-60 rounded-full bg-white">
-                  <img src="img/icons/health.svg" alt="icon">
-                </div>
-              </div>
-
-              <div class="col-auto">
-                <h4 class="text-18 lh-15 fw-500">Extra health & safety measures</h4>
-                <div class="text-15 lh-15">This property has taken extra health and hygiene measures to ensure that
-                  your safety is their priority</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section id="faq" class="pt-40 layout-pb-md">
     <div class="container">
@@ -4379,112 +4352,26 @@
 
           <div class="col-lg-8">
             <div class="accordion -simple row y-gap-20 js-accordion">
+              @foreach ($package->faqs as $faq)                
+                <div class="col-12">
+                  <div class="accordion__item px-20 py-20 border-light rounded-4">
+                    <div class="accordion__button d-flex items-center">
+                      <div class="accordion__icon size-40 flex-center bg-light-2 rounded-full mr-20">
+                        <i class="icon-plus"></i>
+                        <i class="icon-minus"></i>
+                      </div>
 
-              <div class="col-12">
-                <div class="accordion__item px-20 py-20 border-light rounded-4">
-                  <div class="accordion__button d-flex items-center">
-                    <div class="accordion__icon size-40 flex-center bg-light-2 rounded-full mr-20">
-                      <i class="icon-plus"></i>
-                      <i class="icon-minus"></i>
+                      <div class="button text-dark-1">{{ $faq->question }}?</div>
                     </div>
 
-                    <div class="button text-dark-1">What do I need to hire a car?</div>
-                  </div>
-
-                  <div class="accordion__content">
-                    <div class="pt-20 pl-60">
-                      <p class="text-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12">
-                <div class="accordion__item px-20 py-20 border-light rounded-4">
-                  <div class="accordion__button d-flex items-center">
-                    <div class="accordion__icon size-40 flex-center bg-light-2 rounded-full mr-20">
-                      <i class="icon-plus"></i>
-                      <i class="icon-minus"></i>
-                    </div>
-
-                    <div class="button text-dark-1">How old do I have to be to rent a car?</div>
-                  </div>
-
-                  <div class="accordion__content">
-                    <div class="pt-20 pl-60">
-                      <p class="text-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco.</p>
+                    <div class="accordion__content">
+                      <div class="pt-20 pl-60">
+                        <p class="text-15">{{ $faq->answer }}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div class="col-12">
-                <div class="accordion__item px-20 py-20 border-light rounded-4">
-                  <div class="accordion__button d-flex items-center">
-                    <div class="accordion__icon size-40 flex-center bg-light-2 rounded-full mr-20">
-                      <i class="icon-plus"></i>
-                      <i class="icon-minus"></i>
-                    </div>
-
-                    <div class="button text-dark-1">Can I book a hire car for someone else?</div>
-                  </div>
-
-                  <div class="accordion__content">
-                    <div class="pt-20 pl-60">
-                      <p class="text-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12">
-                <div class="accordion__item px-20 py-20 border-light rounded-4">
-                  <div class="accordion__button d-flex items-center">
-                    <div class="accordion__icon size-40 flex-center bg-light-2 rounded-full mr-20">
-                      <i class="icon-plus"></i>
-                      <i class="icon-minus"></i>
-                    </div>
-
-                    <div class="button text-dark-1">How do I find the cheapest car hire deal?</div>
-                  </div>
-
-                  <div class="accordion__content">
-                    <div class="pt-20 pl-60">
-                      <p class="text-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12">
-                <div class="accordion__item px-20 py-20 border-light rounded-4">
-                  <div class="accordion__button d-flex items-center">
-                    <div class="accordion__icon size-40 flex-center bg-light-2 rounded-full mr-20">
-                      <i class="icon-plus"></i>
-                      <i class="icon-minus"></i>
-                    </div>
-
-                    <div class="button text-dark-1">What should I look for when I&#39;m choosing a car?</div>
-                  </div>
-
-                  <div class="accordion__content">
-                    <div class="pt-20 pl-60">
-                      <p class="text-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+              @endforeach
             </div>
           </div>
         </div>

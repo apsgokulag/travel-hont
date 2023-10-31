@@ -28,25 +28,27 @@ class Edit extends Component
     {
         return view('livewire.admin.packages.edit');
     }
-
-    public function addDestination()
+  
+    public function addFeature(String $type)
     {
-        $this->form->addDestination();
-    }   
-
-    public function deleteDestination($destinationIndex)
-    {
-        $this->form->deleteDestination($destinationIndex);
+        switch ($type) {
+            case 'destination':
+                $this->form->addDestination();
+                break;
+            case 'highlight':
+                    $this->form->addHighlight();
+                    break;
+            case 'faq':
+                $this->form->addFaq();
+                break;
+            default:
+                session()->flash('error', 'Invalid Feature.');
+                break;
+        }
     }
-
-    public function addHighlight()
+    public function deleteFeature(String $type, Int $index)
     {
-        $this->form->addHighlight();
-    }
-
-    public function deleteHighlight($highightIndex)
-    {
-        $this->form->deleteHighlight($highightIndex);
+        $this->form->deleteFeature($type, $index);
     }
 
     public function submit()

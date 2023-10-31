@@ -25,26 +25,28 @@ class Create extends Component
         return view('livewire.admin.packages.create');
     }
     
-    public function addDestination()
+    public function addFeature(String $type)
     {
-        $this->form->addDestination();
+        switch ($type) {
+            case 'destination':
+                $this->form->addDestination();
+                break;
+            case 'highlight':
+                    $this->form->addHighlight();
+                    break;
+            case 'faq':
+                $this->form->addFaq();
+                break;
+            default:
+                session()->flash('error', 'Invalid Feature.');
+                break;
+        }
+    }
+    public function deleteFeature(String $type, Int $index)
+    {
+        $this->form->deleteFeature($type, $index);
     }
 
-    public function deleteDestination($destinationIndex)
-    {
-        $this->form->deleteDestination($destinationIndex);
-    }
-
-    public function addHighlight()
-    {
-        $this->form->addHighlight();
-    }
-
-    public function deleteHighlight($highightIndex)
-    {
-        $this->form->deleteHighlight($highightIndex);
-    }
-        
     public function submit()
     {
         $this->validate();
