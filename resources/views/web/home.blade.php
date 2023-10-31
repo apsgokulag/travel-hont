@@ -27178,120 +27178,31 @@
           data-slider-cols="base-2 xl-4 lg-3 md-2 sm-2 base-1" data-anim="slide-up delay-2">
           <div class="swiper-wrapper">
 
-            <div class="swiper-slide">
+            @foreach ($destinations as $destination)                            
+              @if ($destination->getMedia()->count())                      
+                <div class="swiper-slide">
 
-              <a href="#" class="citiesCard -type-1 d-block rounded-4 ">
-                <div class="citiesCard__image ratio ratio-3:4">
-                  <img src="#" data-src="{{ asset('img/cities/1.png') }}" alt="image" class="js-lazy">
+                  <a href="#" class="citiesCard -type-1 d-block rounded-4 ">
+                      <div class="citiesCard__image ratio ratio-3:4">
+                        <img src="#" data-src="{{ asset($destination->getMedia()->first()->getFullUrl()) }}" alt="image" class="js-lazy">
+                      </div>                 
+                    <div class="citiesCard__content d-flex flex-column justify-between text-center pt-30 pb-20 px-20">
+                      <div class="citiesCard__bg"></div>
+
+                      <div class="citiesCard__top">
+                        <div class="text-14 text-white">14 Hotel - 22 Cars - 18 Tours - 95 Activity</div>
+                      </div>
+
+                      <div class="citiesCard__bottom">
+                        <h4 class="text-26 md:text-20 lh-13 text-white mb-20">{{ $destination->name }}</h4>
+                        <button class="button col-12 h-60 -blue-1 bg-white text-dark-1">Discover</button>
+                      </div>
+                    </div>
+                  </a>
+
                 </div>
-
-                <div class="citiesCard__content d-flex flex-column justify-between text-center pt-30 pb-20 px-20">
-                  <div class="citiesCard__bg"></div>
-
-                  <div class="citiesCard__top">
-                    <div class="text-14 text-white">14 Hotel - 22 Cars - 18 Tours - 95 Activity</div>
-                  </div>
-
-                  <div class="citiesCard__bottom">
-                    <h4 class="text-26 md:text-20 lh-13 text-white mb-20">New York</h4>
-                    <button class="button col-12 h-60 -blue-1 bg-white text-dark-1">Discover</button>
-                  </div>
-                </div>
-              </a>
-
-            </div>
-
-            <div class="swiper-slide">
-
-              <a href="#" class="citiesCard -type-1 d-block rounded-4 ">
-                <div class="citiesCard__image ratio ratio-3:4">
-                  <img src="#" data-src="{{ asset('img/cities/2.png') }}" alt="image" class="js-lazy">
-                </div>
-
-                <div class="citiesCard__content d-flex flex-column justify-between text-center pt-30 pb-20 px-20">
-                  <div class="citiesCard__bg"></div>
-
-                  <div class="citiesCard__top">
-                    <div class="text-14 text-white">14 Hotel - 22 Cars - 18 Tours - 95 Activity</div>
-                  </div>
-
-                  <div class="citiesCard__bottom">
-                    <h4 class="text-26 md:text-20 lh-13 text-white mb-20">London</h4>
-                    <button class="button col-12 h-60 -blue-1 bg-white text-dark-1">Discover</button>
-                  </div>
-                </div>
-              </a>
-
-            </div>
-
-            <div class="swiper-slide">
-
-              <a href="#" class="citiesCard -type-1 d-block rounded-4 ">
-                <div class="citiesCard__image ratio ratio-3:4">
-                  <img src="#" data-src="{{ asset('img/cities/3.png') }}" alt="image" class="js-lazy">
-                </div>
-
-                <div class="citiesCard__content d-flex flex-column justify-between text-center pt-30 pb-20 px-20">
-                  <div class="citiesCard__bg"></div>
-
-                  <div class="citiesCard__top">
-                    <div class="text-14 text-white">14 Hotel - 22 Cars - 18 Tours - 95 Activity</div>
-                  </div>
-
-                  <div class="citiesCard__bottom">
-                    <h4 class="text-26 md:text-20 lh-13 text-white mb-20">Barcelona</h4>
-                    <button class="button col-12 h-60 -blue-1 bg-white text-dark-1">Discover</button>
-                  </div>
-                </div>
-              </a>
-
-            </div>
-
-            <div class="swiper-slide">
-
-              <a href="#" class="citiesCard -type-1 d-block rounded-4 ">
-                <div class="citiesCard__image ratio ratio-3:4">
-                  <img src="#" data-src="{{ asset('img/cities/4.png') }}" alt="image" class="js-lazy">
-                </div>
-
-                <div class="citiesCard__content d-flex flex-column justify-between text-center pt-30 pb-20 px-20">
-                  <div class="citiesCard__bg"></div>
-
-                  <div class="citiesCard__top">
-                    <div class="text-14 text-white">14 Hotel - 22 Cars - 18 Tours - 95 Activity</div>
-                  </div>
-
-                  <div class="citiesCard__bottom">
-                    <h4 class="text-26 md:text-20 lh-13 text-white mb-20">Sydney</h4>
-                    <button class="button col-12 h-60 -blue-1 bg-white text-dark-1">Discover</button>
-                  </div>
-                </div>
-              </a>
-
-            </div>
-
-            <div class="swiper-slide">
-
-              <a href="#" class="citiesCard -type-1 d-block rounded-4 ">
-                <div class="citiesCard__image ratio ratio-3:4">
-                  <img src="#" data-src="{{ asset('img/cities/5.png') }}" alt="image" class="js-lazy">
-                </div>
-
-                <div class="citiesCard__content d-flex flex-column justify-between text-center pt-30 pb-20 px-20">
-                  <div class="citiesCard__bg"></div>
-
-                  <div class="citiesCard__top">
-                    <div class="text-14 text-white">14 Hotel - 22 Cars - 18 Tours - 95 Activity</div>
-                  </div>
-
-                  <div class="citiesCard__bottom">
-                    <h4 class="text-26 md:text-20 lh-13 text-white mb-20">Rome</h4>
-                    <button class="button col-12 h-60 -blue-1 bg-white text-dark-1">Discover</button>
-                  </div>
-                </div>
-              </a>
-
-            </div>
+              @endif
+            @endforeach
 
           </div>
 
@@ -27390,477 +27301,92 @@
           data-nav-next="js-hotels-next">
           <div class="swiper-wrapper">
 
-            <div class="swiper-slide">
+            @foreach ($packages as $package)                
+              <div class="swiper-slide">
+                <a href="{{ route('package', ['slug' => $package->slug]) }}" class="hotelsCard -type-1 ">
+                  <div class="hotelsCard__image">
 
-              <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                <div class="hotelsCard__image">
+                    <div class="cardImage ratio ratio-1:1">
+                      @if ($package->getMedia()->count())                         
+                        <div class="cardImage__content">
+                          @if ($package->getMedia()->count() > 1) 
+                          
+                          <div class="cardImage-slider rounded-4 overflow-hidden js-cardImage-slider">
+                            <div class="swiper-wrapper">
+                              
+                              @foreach ($package->getMedia() as $media)
+                                  
+                                <div class="swiper-slide">
+                                  <img class="col-12" src="{{ asset($media->getFullUrl()) }}" alt="image">
+                                </div>
 
-                  <div class="cardImage ratio ratio-1:1">
-                    <div class="cardImage__content">
+                              @endforeach                                  
+    
+                            </div>
+    
+                            <div class="cardImage-slider__pagination js-pagination"></div>
+    
+                            <div class="cardImage-slider__nav -prev">
+                              <button class="button -blue-1 bg-white size-30 rounded-full shadow-2 js-prev">
+                                <i class="icon-chevron-left text-10"></i>
+                              </button>
+                            </div>
+    
+                            <div class="cardImage-slider__nav -next">
+                              <button class="button -blue-1 bg-white size-30 rounded-full shadow-2 js-next">
+                                <i class="icon-chevron-right text-10"></i>
+                              </button>
+                            </div>
+                          </div>
+                          @else
 
-                      <img class="rounded-4 col-12" src="{{ asset('img/cities/5.png') }}" alt="image">
+                          <img class="rounded-4 col-12" src="{{ asset($package->getMedia()->first()->getFullUrl()) }}" alt="image">
 
+                          @endif
 
-                    </div>
+                        </div>
+                      @endif
 
-                    <div class="cardImage__wishlist">
-                      <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
-                        <i class="icon-heart text-12"></i>
-                      </button>
-                    </div>
-
-
-                    <div class="cardImage__leftBadge">
-                      <div class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
-                        Breakfast included
+                      <div class="cardImage__wishlist">
+                        <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
+                          <i class="icon-heart text-12"></i>
+                        </button>
                       </div>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="hotelsCard__content mt-10">
-                  <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                    <span>The Montcalm At Brewery London City</span>
-                  </h4>
-
-                  <p class="text-light-1 lh-14 text-14 mt-5">Westminster Borough, London</p>
-
-                  <div class="d-flex items-center mt-20">
-                    <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                    <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                    <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                  </div>
-
-                  <div class="mt-5">
-                    <div class="fw-500">
-                      Starting from <span class="text-blue-1">US$72</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-
-            </div>
-
-            <div class="swiper-slide">
-
-              <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                <div class="hotelsCard__image">
-
-                  <div class="cardImage ratio ratio-1:1">
-                    <div class="cardImage__content">
 
 
-                      <div class="cardImage-slider rounded-4 overflow-hidden js-cardImage-slider">
-                        <div class="swiper-wrapper">
-
-                          <div class="swiper-slide">
-                            <img class="col-12" src="{{ asset('img/cities/1.png') }}" alt="image">
-                          </div>
-
-                          <div class="swiper-slide">
-                            <img class="col-12" src="{{ asset('img/cities/2.png') }}" alt="image">
-                          </div>
-
-                          <div class="swiper-slide">
-                            <img class="col-12" src="{{ asset('img/cities/3.png') }}" alt="image">
-                          </div>
-
-                        </div>
-
-                        <div class="cardImage-slider__pagination js-pagination"></div>
-
-                        <div class="cardImage-slider__nav -prev">
-                          <button class="button -blue-1 bg-white size-30 rounded-full shadow-2 js-prev">
-                            <i class="icon-chevron-left text-10"></i>
-                          </button>
-                        </div>
-
-                        <div class="cardImage-slider__nav -next">
-                          <button class="button -blue-1 bg-white size-30 rounded-full shadow-2 js-next">
-                            <i class="icon-chevron-right text-10"></i>
-                          </button>
+                      <div class="cardImage__leftBadge">
+                        <div class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
+                          Breakfast included
                         </div>
                       </div>
 
                     </div>
 
-                    <div class="cardImage__wishlist">
-                      <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
-                        <i class="icon-heart text-12"></i>
-                      </button>
-                    </div>
-
-
                   </div>
 
-                </div>
+                  <div class="hotelsCard__content mt-10">
+                    <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
+                      <span>{{ $package->name }}</span>
+                    </h4>
 
-                <div class="hotelsCard__content mt-10">
-                  <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                    <span>Staycity Aparthotels Deptford Bridge Station</span>
-                  </h4>
+                    <p class="text-light-1 lh-14 text-14 mt-5">Westminster Borough, London</p>
 
-                  <p class="text-light-1 lh-14 text-14 mt-5">Ciutat Vella, Barcelona</p>
-
-                  <div class="d-flex items-center mt-20">
-                    <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                    <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                    <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                  </div>
-
-                  <div class="mt-5">
-                    <div class="fw-500">
-                      Starting from <span class="text-blue-1">US$72</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-
-            </div>
-
-            <div class="swiper-slide">
-
-              <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                <div class="hotelsCard__image">
-
-                  <div class="cardImage ratio ratio-1:1">
-                    <div class="cardImage__content">
-
-                      <img class="rounded-4 col-12" src="{{ asset('img/cities/4.png') }}" alt="image">
-
-
+                    <div class="d-flex items-center mt-20">
+                      <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
+                      <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
+                      <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
                     </div>
 
-                    <div class="cardImage__wishlist">
-                      <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
-                        <i class="icon-heart text-12"></i>
-                      </button>
-                    </div>
-
-
-                    <div class="cardImage__leftBadge">
-                      <div class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-blue-1 text-white">
-                        Best Seller
+                    <div class="mt-5">
+                      <div class="fw-500">
+                        Adult <span class="text-blue-1">US$ {{ $package->price->adult_amount }}</span>
+                        Children <span class="text-blue-1">US$ {{ $package->price->children_amount }}</span>
                       </div>
                     </div>
-
                   </div>
-
-                </div>
-
-                <div class="hotelsCard__content mt-10">
-                  <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                    <span>The Westin New York at Times Square</span>
-                  </h4>
-
-                  <p class="text-light-1 lh-14 text-14 mt-5">Manhattan, New York</p>
-
-                  <div class="d-flex items-center mt-20">
-                    <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                    <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                    <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                  </div>
-
-                  <div class="mt-5">
-                    <div class="fw-500">
-                      Starting from <span class="text-blue-1">US$72</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-
-            </div>
-
-            <div class="swiper-slide">
-
-              <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                <div class="hotelsCard__image">
-
-                  <div class="cardImage ratio ratio-1:1">
-                    <div class="cardImage__content">
-
-                      <img class="rounded-4 col-12" src="{{ asset('img/cities/5.png') }}" alt="image">
-
-
-                    </div>
-
-                    <div class="cardImage__wishlist">
-                      <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
-                        <i class="icon-heart text-12"></i>
-                      </button>
-                    </div>
-
-
-                    <div class="cardImage__leftBadge">
-                      <div class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-yellow-1 text-dark-1">
-                        Top Rated
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="hotelsCard__content mt-10">
-                  <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                    <span>DoubleTree by Hilton Hotel New York Times Square West</span>
-                  </h4>
-
-                  <p class="text-light-1 lh-14 text-14 mt-5">Vaticano Prati, Rome</p>
-
-                  <div class="d-flex items-center mt-20">
-                    <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                    <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                    <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                  </div>
-
-                  <div class="mt-5">
-                    <div class="fw-500">
-                      Starting from <span class="text-blue-1">US$72</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-
-            </div>
-
-            <div class="swiper-slide">
-
-              <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                <div class="hotelsCard__image">
-
-                  <div class="cardImage ratio ratio-1:1">
-                    <div class="cardImage__content">
-
-                      <img class="rounded-4 col-12" src="{{ asset('img/cities/1.png') }}" alt="image">
-
-
-                    </div>
-
-                    <div class="cardImage__wishlist">
-                      <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
-                        <i class="icon-heart text-12"></i>
-                      </button>
-                    </div>
-
-
-                    <div class="cardImage__leftBadge">
-                      <div class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
-                        Breakfast included
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="hotelsCard__content mt-10">
-                  <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                    <span>The Montcalm At Brewery London City</span>
-                  </h4>
-
-                  <p class="text-light-1 lh-14 text-14 mt-5">Westminster Borough, London</p>
-
-                  <div class="d-flex items-center mt-20">
-                    <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                    <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                    <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                  </div>
-
-                  <div class="mt-5">
-                    <div class="fw-500">
-                      Starting from <span class="text-blue-1">US$72</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-
-            </div>
-
-            <div class="swiper-slide">
-
-              <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                <div class="hotelsCard__image">
-
-                  <div class="cardImage ratio ratio-1:1">
-                    <div class="cardImage__content">
-
-
-                      <div class="cardImage-slider rounded-4 overflow-hidden js-cardImage-slider">
-                        <div class="swiper-wrapper">
-
-                          <div class="swiper-slide">
-                            <img class="col-12" src="{{ asset('img/cities/3.png') }}" alt="image">
-                          </div>
-
-                          <div class="swiper-slide">
-                            <img class="col-12" src="{{ asset('img/cities/1.png') }}" alt="image">
-                          </div>
-
-                          <div class="swiper-slide">
-                            <img class="col-12" src="{{ asset('img/cities/2.png') }}" alt="image">
-                          </div>
-
-                        </div>
-
-                        <div class="cardImage-slider__pagination js-pagination"></div>
-
-                        <div class="cardImage-slider__nav -prev">
-                          <button class="button -blue-1 bg-white size-30 rounded-full shadow-2 js-prev">
-                            <i class="icon-chevron-left text-10"></i>
-                          </button>
-                        </div>
-
-                        <div class="cardImage-slider__nav -next">
-                          <button class="button -blue-1 bg-white size-30 rounded-full shadow-2 js-next">
-                            <i class="icon-chevron-right text-10"></i>
-                          </button>
-                        </div>
-                      </div>
-
-                    </div>
-
-                    <div class="cardImage__wishlist">
-                      <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
-                        <i class="icon-heart text-12"></i>
-                      </button>
-                    </div>
-
-
-                  </div>
-
-                </div>
-
-                <div class="hotelsCard__content mt-10">
-                  <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                    <span>Staycity Aparthotels Deptford Bridge Station</span>
-                  </h4>
-
-                  <p class="text-light-1 lh-14 text-14 mt-5">Ciutat Vella, Barcelona</p>
-
-                  <div class="d-flex items-center mt-20">
-                    <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                    <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                    <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                  </div>
-
-                  <div class="mt-5">
-                    <div class="fw-500">
-                      Starting from <span class="text-blue-1">US$72</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-
-            </div>
-
-            <div class="swiper-slide">
-
-              <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                <div class="hotelsCard__image">
-
-                  <div class="cardImage ratio ratio-1:1">
-                    <div class="cardImage__content">
-
-                      <img class="rounded-4 col-12" src="{{ asset('img/cities/5.png') }}" alt="image">
-
-
-                    </div>
-
-                    <div class="cardImage__wishlist">
-                      <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
-                        <i class="icon-heart text-12"></i>
-                      </button>
-                    </div>
-
-
-                    <div class="cardImage__leftBadge">
-                      <div class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-blue-1 text-white">
-                        Best Seller
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="hotelsCard__content mt-10">
-                  <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                    <span>The Westin New York at Times Square</span>
-                  </h4>
-
-                  <p class="text-light-1 lh-14 text-14 mt-5">Manhattan, New York</p>
-
-                  <div class="d-flex items-center mt-20">
-                    <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                    <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                    <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                  </div>
-
-                  <div class="mt-5">
-                    <div class="fw-500">
-                      Starting from <span class="text-blue-1">US$72</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-
-            </div>
-
-            <div class="swiper-slide">
-
-              <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                <div class="hotelsCard__image">
-
-                  <div class="cardImage ratio ratio-1:1">
-                    <div class="cardImage__content">
-
-                      <img class="rounded-4 col-12" src="{{ asset('img/cities/1.png') }}" alt="image">
-
-
-                    </div>
-
-                    <div class="cardImage__wishlist">
-                      <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
-                        <i class="icon-heart text-12"></i>
-                      </button>
-                    </div>
-
-
-                    <div class="cardImage__leftBadge">
-                      <div class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-yellow-1 text-dark-1">
-                        Top Rated
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="hotelsCard__content mt-10">
-                  <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                    <span>DoubleTree by Hilton Hotel New York Times Square West</span>
-                  </h4>
-
-                  <p class="text-light-1 lh-14 text-14 mt-5">Vaticano Prati, Rome</p>
-
-                  <div class="d-flex items-center mt-20">
-                    <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                    <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                    <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                  </div>
-
-                  <div class="mt-5">
-                    <div class="fw-500">
-                      Starting from <span class="text-blue-1">US$72</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-
-            </div>
+                </a>
+              </div>
+          @endforeach
 
           </div>
 
