@@ -16,6 +16,14 @@
   <link rel="stylesheet" href="{{ asset('css/vendors.css') }}">
   <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
+  <style>    
+    @media (min-width: 991px){
+        .mainSearch .button-grid {  
+            grid-template-columns: 1fr 250px auto;
+        }
+    }
+  </style>
+
   <title>{{ ucfirst(Route::currentRouteName()); }}</title>
 
 </head>

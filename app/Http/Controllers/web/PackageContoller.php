@@ -20,6 +20,7 @@ class PackageContoller extends Controller
         if(!$package){
             return redirect(route('packages'));
         }
-        return view('web.singlepackage', compact('package'));
+        $relatedPackages = Package::where('id','<>',$package->id)->limit(4)->get();
+        return view('web.singlepackage', compact('package', 'relatedPackages'));
     }
 }
