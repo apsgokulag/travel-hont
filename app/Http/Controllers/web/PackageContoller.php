@@ -23,4 +23,13 @@ class PackageContoller extends Controller
         $relatedPackages = Package::where('id','<>',$package->id)->limit(4)->get();
         return view('web.singlepackage', compact('package', 'relatedPackages'));
     }
+
+    public function packageBooking(String $slug)
+    {
+        $package = Package::findBySlug($slug);
+        if(!$package){
+            return redirect(route('packages'));
+        }
+        return view('web.bookPackage', compact('package'));
+    }
 }

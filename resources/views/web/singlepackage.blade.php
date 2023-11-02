@@ -51,8 +51,8 @@
 
             <div class="col-auto">
 
-              <a href="#" class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
-                Select Room <div class="icon-arrow-top-right ml-15"></div>
+              <a href="{{ route('package.booking',['slug' => $package->slug]) }}" class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
+                Book Package <div class="icon-arrow-top-right ml-15"></div>
               </a>
 
             </div>

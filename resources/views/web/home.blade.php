@@ -31,7 +31,7 @@
                       <div class="searchMenu-loc px-30 lg:py-20 lg:px-0 js-form-dd js-liverSearch">
 
                         <div data-x-dd-click="searchMenu-loc">
-                          <h4 class="text-15 fw-500 ls-2 lh-16">Location</h4>
+                          <h4 class="text-15 fw-500 ls-2 lh-16">Destination</h4>
 
                           <div class="text-15 text-light-1 ls-2 lh-16">
                             <input autocomplete="off" type="search" placeholder="Where are you going?"
@@ -326,12 +326,13 @@
                         </button>
                       </div>
 
-
-                      <div class="cardImage__leftBadge">
-                        <div class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
-                          Breakfast included
+                      @if ($package->highlights->count())                          
+                        <div class="cardImage__leftBadge">
+                          <div class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
+                            {{ $package->highlights->first()->highlight }}
+                          </div>
                         </div>
-                      </div>
+                      @endif
 
                     </div>
 
