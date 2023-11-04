@@ -15,7 +15,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="{{ asset('css/vendors.css') }}">
   <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-
+    @stack('styles')
   <style>    
     @media (min-width: 991px){
         .mainSearch .button-grid {  
@@ -222,6 +222,7 @@
     
     <script src="{{ asset('js/vendors.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    @stack('scripts')
   </body>
   
   

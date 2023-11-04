@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Price extends Model
 {
@@ -18,8 +17,8 @@ class Price extends Model
         return $this->belongsTo(Package::class);
     }
 
-    public function currency(): HasOne
+    public function currency(): BelongsTo
     {
-        return $this->hasOne(Currency::class);
+        return $this->BelongsTo(Currency::class);
     }
 }
