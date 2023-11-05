@@ -14,7 +14,7 @@
                         childrenAmount : @entangle('childrenAmount'),
                         adultCount : @entangle('adultCount'),
                         childrenCount : @entangle('childrenCount'),  
-                        days : 0,
+                        days : @entangle('days'),
                         downCount(type){
                             switch(type){
                                 case 'adult' :
@@ -40,7 +40,7 @@
                         updateDays(days){
                             this.days = days;
                         },
-                        totalAmount(){                       
+                        totalAmount(){                   
                             return (((parseFloat(this.adultAmount)*this.adultCount) + (parseFloat(this.childrenAmount)*this.childrenCount)) * this.days);
                         },
                         init(){
@@ -146,14 +146,13 @@
         <div class="d-flex justify-between">  
             <h6><span class="bg-dark-1 d-inline-flex me-2 justify-center align-items-center text-white" style="width: 28px; height: 28px; border-radius: 50%;">2</span>Contact Information</h6>
             @if ($step > 2)
-            <a href="" wire:click.prevent="editStepActivate(2)"><i class="icon-edit"></i> Edit</a>                
-        @endif
-    </div>  
-        @if ($step >= 2)            
-            <div>
-                <p class="py-1">We'll use this information to send you confirmation and updates about your booking</p>
-                <div class="bg-light-2 rounded-4 p-1 px-3">
-                    <i class="icon-user-2"></i> <a href="">Log in or Sign-up</a> for a faster checkout 
+                <a href="" wire:click.prevent="editStepActivate(2)"><i class="icon-edit"></i> Edit</a>                
+            @endif
+        </div>  
+        @if ($step == 2)            
+            <div>                
+                <div class="bg-light-2 rounded-4 p-1 px-3 my-3">
+                    <i class="icon-user-2"></i> <a href="#">Log in or Sign-up</a> for a faster checkout 
                 </div>
                 <div class="mt-10">
                     <div class="row">
@@ -180,6 +179,9 @@
                                 <input type="email" wire:model="email" maxlength="100">
                                 <label class="lh-1 text-16 text-light-1">Email</label>
                             </div>
+                            <small class="d-block text-light-1">
+                                We'll use this email id to send you confirmation and updates about your booking.
+                            </small>
                             @error('email')
                                 <span class="text-red-1">{{ $message }}</span> 
                             @enderror
@@ -202,7 +204,7 @@
                             </div>
                             <div class="col-8">
                                 <div class="form-input ">
-                                    <input type="tel" wire:model="phone" maxlength="100">
+                                    <input type="tel" wire:model="phone" maxlength="15" onkeypress="return /^[\d./-]+$/.test(event.key)">
                                     <label class="lh-1 text-16 text-light-1">Phone Number</label>
                                 </div>
                                 @error('phone')
@@ -213,6 +215,26 @@
                         </div>
                     </div>   
                     <a href="" wire:click.prevent="submit" class="d-inline-flex button px-24 py-2 -dark-1 bg-blue-1 text-white my-2">Next</a>
+                </div>
+            </div>
+        @elseif($step == 3)
+            <div class="border-dark-1 rounded-4 p-4 my-2">
+                <p>Hi, {{ ucwords($this->firstName.' '.$this->lastName) }}</p>
+                <p>We'll send you the confirmation and updates about your booking to {{ $this->email }}.</p>
+            </div>
+        @endif
+    </div>
+    <div class="border-dark-1 rounded-4 p-4 mb-15">          
+        <h6><span class="bg-dark-1 d-inline-flex me-2 justify-center align-items-center text-white" style="width: 28px; height: 28px; border-radius: 50%;">3</span>Payment details</h6>                   
+        @if ($step == 3)
+            <div>
+                <div class="mt-10">
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="text-light-1">You will be charged the total amount once your order is confirmed.</p>
+                            <a href="" wire:click.prevent="submit" class="d-inline-flex button px-24 py-2 -dark-1 bg-blue-1 text-white my-2">Pay {{ $amount.' '.$package->price->currency->code }}</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         @endif
