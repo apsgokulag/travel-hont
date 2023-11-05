@@ -151,9 +151,9 @@
         </div>  
         @if ($step == 2)            
             <div>                
-                <div class="bg-light-2 rounded-4 p-1 px-3 my-3">
+                {{-- <div class="bg-light-2 rounded-4 p-1 px-3 my-3">
                     <i class="icon-user-2"></i> <a href="#">Log in or Sign-up</a> for a faster checkout 
-                </div>
+                </div> --}}
                 <div class="mt-10">
                     <div class="row">
                         <div class="col-lg-6 mb-10">
@@ -191,14 +191,14 @@
                             <div class="col-4">
                                 <div class="form-input">
                                     <label class="lh-1 text-16 text-light-1" style="top: 15px;">Country</label>
-                                    <select wire:model="phoneCountryId" class="">
+                                    <select wire:model="phoneCountryCode" class="">
                                         <option value=""> -- Select Country -- </option>
                                     @foreach ($countries as $country)
-                                        <option value="{{ $country->id }}">{{ $country->name.' ('.$country->phonecode.') ' }}</option>
+                                        <option value="{{ $country->code }}">{{ $country->name.' ('.$country->phonecode.') ' }}</option>
                                     @endforeach
                                     </select>
                                 </div>
-                                @error('phoneCountryId')
+                                @error('phoneCountryCode')
                                     <span class="text-red-1">{{ $message }}</span> 
                                 @enderror
                             </div>
@@ -227,12 +227,13 @@
     <div class="border-dark-1 rounded-4 p-4 mb-15">          
         <h6><span class="bg-dark-1 d-inline-flex me-2 justify-center align-items-center text-white" style="width: 28px; height: 28px; border-radius: 50%;">3</span>Payment details</h6>                   
         @if ($step == 3)
-            <div>
+            <div 
+                x-data="payHandle()">
                 <div class="mt-10">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12">                           
                             <p class="text-light-1">You will be charged the total amount once your order is confirmed.</p>
-                            <a href="" wire:click.prevent="submit" class="d-inline-flex button px-24 py-2 -dark-1 bg-blue-1 text-white my-2">Pay {{ $amount.' '.$package->price->currency->code }}</a>
+                            <a href="" @click.prevent="payCheckOut()" class="d-inline-flex button px-24 py-2 -dark-1 bg-blue-1 text-white my-2">Pay {{ $amount.' '.$package->price->currency->code }}</a>
                         </div>
                     </div>
                 </div>
@@ -261,4 +262,51 @@
 
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        function payHandle(){
+            return{
+                payCheckOut(){
+                    var options = {
+                        "key": "{{ env('RAZORPAY_API_KEY') }}",
+                        "orderId" : "12213",
+                        "amount": "{{ $amount*100 }}",
+                        "currency": "{{ $package->price->currency->code }}",
+                        "description": "{{ env('APP_NAME') }}",
+                        "image": "{{ asset('img/general/logo-dark.svg') }}",
+                        "prefill":
+                        {
+                            "email": "{{ $email }}",
+                            "contact": "{{ '+'.$phoneCountryCode.' '.$phone }}",
+                        },
+                        config: {
+                        display: {
+                            blocks: {                         
+                            },
+                            hide: [],
+                            sequence: [],
+                            preferences: {
+                            show_default_blocks: true // Should Checkout show its default blocks?
+                            }
+                        }
+                        },
+                        "handler": function (response) {
+                            this.$wire.call('paymentSuccess', response.razorpay_payment_id);
+                        },
+                        "modal": {
+                            "ondismiss": function () {
+                                Swal.fire(
+                                    'Aborted',
+                                    'Your transaction aborted as per requested.',
+                                    'warning'
+                                )
+                            }
+                        }
+                    };
+                    var rzp1 = new Razorpay(options);
+                    rzp1.open();
+                },               
+            }
+        }
+    </script>
 @endpush

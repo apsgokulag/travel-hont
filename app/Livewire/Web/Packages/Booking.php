@@ -13,10 +13,10 @@ class Booking extends Component
     public Package $package;
 
     #[Locked]
-    public $step, $adultAmount, $childrenAmount, $amount, $startDate, $endDate, $countries = [], $country;
+    public $step, $adultAmount, $childrenAmount, $amount, $startDate, $endDate, $countries = [];
 
     public $dates, $adultCount, $childrenCount, $days = 0;
-    public $firstName, $lastName, $email, $password, $phoneCountryId, $phone;
+    public $firstName, $lastName, $email, $password, $phoneCountryCode, $phone;
 
     public function mount()
     {
@@ -40,7 +40,7 @@ class Booking extends Component
         'lastName.required' => 'Please type :attribute',
         'email.required' => 'Please type :attribute',
         'email.email' => 'Please type valid :attribute',
-        'phoneCountryId.required' => 'Please select country code',
+        'phoneCountryCode.required' => 'Please select country code',
         'phone.required' => 'Please type :attribute',
         'phone.phone' => 'Please valid :attribute number',
     ];
@@ -64,16 +64,13 @@ class Booking extends Component
                 $this->amount = (($this->adultAmount * $this->adultCount)+($this->childrenAmount * $this->childrenCount)) * $this->days;
                 ++$this->step;
                 break;            
-            case 2:
-                $this->country = collect($this->countries)->first(function($value){
-                    return $value->id == $this->phoneCountryId;
-                });
+            case 2:                
                 $this->validate([
                     'firstName' => 'required|max:250',
                     'lastName' => 'required|max:250',
                     'email' => 'required|email',
-                    'phoneCountryId' => 'required',
-                    'phone' => 'required|phone:'.$this->country?->code,
+                    'phoneCountryCode' => 'required',
+                    'phone' => 'required|phone:'.$this->phoneCountryCode,
                 ]);
                 ++$this->step;
                 break;
@@ -81,5 +78,9 @@ class Booking extends Component
                 # code...
                 break;
         }
+    }
+    public function paymentSuccess(String $paymentId)
+    {
+    
     }
 }

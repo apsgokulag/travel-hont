@@ -78,7 +78,7 @@
 
 
                 <div class="d-flex items-center ml-20 is-menu-opened-hide md:d-none">
-                    <a href="" class="button px-30 fw-400 text-14 h-50 ml-20 @if (Route::is('home')) {{ 'border-white -outline-white text-white' }} @else {{ '-outline-blue-1 text-blue-1' }} @endif">Sign In / Register</a>
+                    {{-- <a href="" class="button px-30 fw-400 text-14 h-50 ml-20 @if (Route::is('home')) {{ 'border-white -outline-white text-white' }} @else {{ '-outline-blue-1 text-blue-1' }} @endif">Sign In / Register</a> --}}
                 </div>
 
                 <div class="d-none xl:d-flex x-gap-20 items-center pl-30 text-white" data-x="header-mobile-icons"
@@ -221,6 +221,7 @@
     </main>
     
     <script src="{{ asset('js/vendors.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     @stack('scripts')
   </body>
