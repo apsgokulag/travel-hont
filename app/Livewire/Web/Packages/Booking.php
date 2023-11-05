@@ -35,8 +35,16 @@ class Booking extends Component
 
     protected $messages = [
         'dates.required' => 'Please select dates',
+        'firstName.required' => 'Please type :attribute',
+        'lastName.required' => 'Please type :attribute',
+        'email.required' => 'Please type :attribute',
+        'phoneCountryId.required' => 'Please select country code',
+        'phone.required' => 'Please type :attribute',
     ];
-
+    public function editStepActivate(Int $step)
+    {
+        $this->step = $step;
+    }
     public function submit()
     {
         switch ($this->step) {
@@ -50,6 +58,15 @@ class Booking extends Component
                 $this->endDate = count($datesArray)==2?$datesArray[1]:$datesArray[0];
                 ++$this->step;
                 break;            
+            case 2:
+                $this->validate([
+                    'firstName' => 'required|max:250',
+                    'lastName' => 'required|max:250',
+                    'email' => 'required|email',
+                    'phoneCountryId' => 'required',
+                    'phone' => 'required',
+                ]);
+                break;
             default:
                 # code...
                 break;
