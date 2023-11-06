@@ -2,10 +2,14 @@
 
 namespace App\Livewire\Web\Packages;
 
+use App\Models\Booking as ModelsBooking;
+use App\Models\Client;
 use App\Models\Country;
 use App\Models\Package;
 use DateTime;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Locked;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Booking extends Component
@@ -13,7 +17,7 @@ class Booking extends Component
     public Package $package;
 
     #[Locked]
-    public $step, $adultAmount, $childrenAmount, $amount, $startDate, $endDate, $countries = [];
+    public $step, $adultAmount, $childrenAmount, $amount, $startDate, $endDate, $countries = [], $transactionSuccess, $orderId;
 
     public $dates, $adultCount, $childrenCount, $days = 0;
     public $firstName, $lastName, $email, $password, $phoneCountryCode, $phone;
@@ -22,6 +26,7 @@ class Booking extends Component
     {
         $this->countries = Country::all();
         $this->step = 1;
+        $this->transactionSuccess = false;
         $this->adultCount = 1;
         $this->childrenCount = 0;
         $this->adultAmount = $this->package->price->adult_amount;
@@ -79,8 +84,43 @@ class Booking extends Component
                 break;
         }
     }
+    
+    #[On('payment-success')] 
     public function paymentSuccess(String $paymentId)
     {
-    
+        $this->orderId = rand(100000, 999999);
+        DB::transaction(function() use($paymentId){
+            $client = Client::updateOrCreate(
+                ['email' => $this->email],
+                [
+                    'first_name' => $this->firstName, 
+                    'last_name' => $this->lastName,
+                    'phone_code' => $this->phoneCountryCode,
+                    'phone' => $this->phone
+                ]
+            );
+            $booking = $client->bookings()->create([
+                'package_id' => $this->package->id,
+                'currency_id' => $this->package->price->currency->id,
+                'start_date' => date('Y-m-d', strtotime($this->startDate->format('Y-m-d'))),
+                'end_date' => date('Y-m-d', strtotime($this->endDate->format('Y-m-d'))),
+                'days' => $this->days,
+                'adult_amount' => $this->adultAmount,
+                'adult_count' => $this->adultCount,
+                'children_amount' => $this->childrenAmount,
+                'children_count' => $this->childrenCount,
+                'sub_total' => $this->amount,
+                'total' => $this->amount,
+            ]);  
+            $transaction = $booking->transactions()->create([
+                'order_id' => $this->orderId,
+                'currency_id' => $this->package->price->currency->id,
+                'ref_payment_id' => $paymentId,
+                'total' => $this->amount,
+                'type' => 'capture',
+                'success' => true
+            ]);
+            $this->transactionSuccess = true;
+        });
     }
 }

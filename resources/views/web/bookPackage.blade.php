@@ -11,6 +11,13 @@
           <div class="py-30 px-30 rounded-4 bg-white shadow-3 mb-2">
             <div class="d-lg-none">          
               <h5>Package Information</h5>
+              <div class="d-flex mb-3">
+                <img class="rounded-4 col-12 me-3" src="{{ asset($package->getMedia()->first()->getFullUrl()) }}" style="max-width: 60px;" alt="image">   
+                <div>                  
+                  <h6>{{ $package->name }}</h6>       
+                  <p><i class="icon-location-pin"></i> destination locations</p>          
+                </div>            
+              </div>
             </div>
             
             @livewire('web.packages.booking', ['package' => $package], key($package->id))
