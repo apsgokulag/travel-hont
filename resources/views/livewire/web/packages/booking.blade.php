@@ -282,10 +282,11 @@
     <script>
         function payHandle(){
             return{
+                amount : @entangle('amount'),
                 payCheckOut(){
                     var options = {
                         "key": "{{ env('RAZORPAY_API_KEY') }}",
-                        "amount": "{{ $amount*100 }}",
+                        "amount": this.amount*100,
                         "currency": "{{ $package->price->currency->code }}",
                         "description": "{{ env('APP_NAME') }}",
                         "image": "{{ asset('img/general/logo-dark.svg') }}",
