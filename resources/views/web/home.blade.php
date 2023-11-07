@@ -140,9 +140,9 @@
 
           <div class="col-auto md:d-none">
 
-            <a href="#" class="button -md -blue-1 bg-blue-1-05 text-blue-1">
+            {{-- <a href="#" class="button -md -blue-1 bg-blue-1-05 text-blue-1">
               View All Destinations <div class="icon-arrow-top-right ml-15"></div>
-            </a>
+            </a> --}}
 
           </div>
         </div>
@@ -155,7 +155,7 @@
               @if ($destination->getMedia()->count())                      
                 <div class="swiper-slide">
 
-                  <a href="#" class="citiesCard -type-1 d-block rounded-4 ">
+                  <div class="citiesCard -type-1 d-block rounded-4 " style="cursor: default !important">
                       <div class="citiesCard__image ratio ratio-3:4">
                         <img src="#" data-src="{{ asset($destination->getMedia()->first()->getFullUrl()) }}" alt="image" class="js-lazy">
                       </div>                 
@@ -163,15 +163,15 @@
                       <div class="citiesCard__bg"></div>
 
                       <div class="citiesCard__top">
-                        <div class="text-14 text-white">14 Hotel - 22 Cars - 18 Tours - 95 Activity</div>
+                        {{-- <div class="text-14 text-white">14 Hotel - 22 Cars - 18 Tours - 95 Activity</div> --}}
                       </div>
 
                       <div class="citiesCard__bottom">
                         <h4 class="text-26 md:text-20 lh-13 text-white mb-20">{{ $destination->name }}</h4>
-                        <button class="button col-12 h-60 -blue-1 bg-white text-dark-1">Discover</button>
+                        {{-- <button class="button col-12 h-60 -blue-1 bg-white text-dark-1">Discover</button> --}}
                       </div>
                     </div>
-                  </a>
+                  </div>
 
                 </div>
               @endif
@@ -321,9 +321,9 @@
                       @endif
 
                       <div class="cardImage__wishlist">
-                        <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
+                        {{-- <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
                           <i class="icon-heart text-12"></i>
-                        </button>
+                        </button> --}}
                       </div>
 
                       @if ($package->highlights->count())                          

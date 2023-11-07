@@ -283,6 +283,9 @@
         function payHandle(){
             return{
                 amount : @entangle('amount'),
+                email : @entangle('email'),
+                phoneCountryCode : @entangle('phoneCountryCode'),
+                phone : @entangle('phone'),
                 payCheckOut(){
                     var options = {
                         "key": "{{ env('RAZORPAY_API_KEY') }}",
@@ -292,8 +295,8 @@
                         "image": "{{ asset('img/general/logo-dark.svg') }}",
                         "prefill":
                         {
-                            "email": "{{ $email }}",
-                            "contact": "{{ '+'.$phoneCountryCode.' '.$phone }}",
+                            "email": this.email,
+                            "contact":  this.phone,
                         },
                         config: {
                         display: {
