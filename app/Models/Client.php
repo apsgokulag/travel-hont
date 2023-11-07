@@ -38,7 +38,7 @@ class Client extends Authenticatable
     protected function name(): Attribute
     {
         return Attribute::make(
-            get: fn (string $value) => $this->first_name.' '.$this->last_name,
+            get: fn () => $this->first_name.' '.$this->last_name,
         );
     }
 

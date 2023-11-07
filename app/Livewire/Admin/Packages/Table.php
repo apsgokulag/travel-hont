@@ -19,15 +19,23 @@ class Table extends Component
     }
     public function getPackages()
     {
-        switch ($this->category) {
+        $package = Package::withCount(['bookings' => function($query){
+            $query->whereHas('latestTransaction', function($query){
+                $query->where([
+                    ['type', 'capture'],
+                    ['success', true]
+                ]);
+            });
+        }]);
+        switch ($this->category) {            
             case 'active':                
-                $this->packages = Package::where('status', 'published')->get();
+                $this->packages = $package->where('status', 'published')->get();
                 break; 
             case 'draft':                
-                $this->packages = Package::where('status', 'draft')->get();
+                $this->packages = $package->where('status', 'draft')->get();
                 break;   
             case 'deleted':                
-                $this->packages = Package::onlyTrashed()->get();
+                $this->packages = $package->onlyTrashed()->get();
                 break;   
             default:
             $this->packages = collect();

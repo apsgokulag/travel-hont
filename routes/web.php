@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController; 
 use App\Http\Controllers\admin\PackageContoller as AdminPackageController;
 use App\Http\Controllers\web\HomeController;
 use App\Http\Controllers\web\PackageContoller;
@@ -31,9 +32,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::prefix('/admin/')->group(function(){        
-        Route::get('dashboard', function () {
-            return view('admin.dashboard');
-        })->name('admin.dashboard'); 
+        Route::get('dashboard', [AdminDashboardController::class,'dashboard'])->name('admin.dashboard'); 
         Route::controller(AdminPackageController::class)->group(function (){
             Route::get('packages/create', 'create')->name('admin.packages.create');
             Route::get('packages/{category?}', 'list')->name('admin.packages.list');

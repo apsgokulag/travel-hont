@@ -104,14 +104,14 @@
                 </a>
               </div>
             </div>
-            <div class="sidebar__item">
+            {{-- <div class="sidebar__item">
               <div class="sidebar__button {{ request()->routeIs('admin.settings')?'-is-active':'' }}>
                 <a href="{{ route('admin.settings') }}" class="d-flex items-center text-15 lh-1 fw-500">
                   <img src="{{ asset('img/dashboard/sidebar/compass.svg') }}" alt="image" class="mr-15">
                   Settings
                 </a>
               </div>
-            </div>
+            </div> --}}
             <div class="sidebar__item">
               <div class="sidebar__button ">
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="d-flex items-center text-15 lh-1 fw-500">

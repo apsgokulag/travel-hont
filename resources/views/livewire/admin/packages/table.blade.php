@@ -3,7 +3,7 @@
         <thead class="bg-light-2">
           <tr>                 
             <th>Name</th>
-            <th>Reviews</th>
+            {{-- <th>Reviews</th> --}}
             <th>Bookings</th>                
             <th>Status</th>
             <th>Action</th>
@@ -18,11 +18,11 @@
                     </a>
                     <span class="d-block text-12 mt-2 text-muted">Created on {{ date('d - F, Y', strtotime($package->created_at)) }}</span>
                 </td>                  
-                <td>
+                {{-- <td>
                     <div class="rounded-4 size-35 bg-blue-1 text-white flex-center text-12 fw-600">4.8</div>
-                </td>
+                </td> --}}
                 <td>
-                    <a href="">12 Bookings</a>
+                    {{ $package->bookings_count }} Bookings
                 </td>
                 <td><span class="rounded-100 py-4 px-10 text-center text-14 fw-500 {{ $package->status && !$package->deleted_at == 'published'?'bg-green-1 text-green-2':'bg-red-3 text-red-2' }} text-capitalize">{{ !$package->deleted_at?$package->status:'Deleted' }}</span></td>
                 <td>
