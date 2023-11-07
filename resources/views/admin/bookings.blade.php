@@ -74,176 +74,42 @@
               </thead>
               <tbody>
 
-                <tr>
-                  <td>Hotel</td>
-                  <td>The May Fair Hotel</td>
-                  <td>04/04/2022</td>
-                  <td class="lh-16">Check in : 05/14/2022<br>Check out : 05/29/2022</td>
-                  <td class="fw-500">$130</td>
-                  <td>$0</td>
-                  <td>$35</td>
-                  <td><span class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-yellow-4 text-yellow-3">Pending</span></td>
+                @foreach ($packages as $package)
+                  <tr>
+                    <td>Hotel</td>
+                    <td>The May Fair Hotel</td>
+                    <td>04/04/2022</td>
+                    <td class="lh-16">Check in : 05/14/2022<br>Check out : 05/29/2022</td>
+                    <td class="fw-500">$130</td>
+                    <td>$0</td>
+                    <td>$35</td>
+                    <td><span class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-yellow-4 text-yellow-3">Pending</span></td>
 
-                  <td>
-                    <div class="dropdown js-dropdown js-actions-1-active">
-                      <div class="dropdown__button d-flex items-center rounded-4 text-blue-1 bg-blue-1-05 text-14 px-15 py-5" data-el-toggle=".js-actions-1-toggle" data-el-toggle-active=".js-actions-1-active">
-                        <span class="js-dropdown-title">Actions</span>
-                        <i class="icon icon-chevron-sm-down text-7 ml-10"></i>
-                      </div>
+                    <td>
+                      <div class="dropdown js-dropdown js-actions-1-active">
+                        <div class="dropdown__button d-flex items-center rounded-4 text-blue-1 bg-blue-1-05 text-14 px-15 py-5" data-el-toggle=".js-actions-1-toggle" data-el-toggle-active=".js-actions-1-active">
+                          <span class="js-dropdown-title">Actions</span>
+                          <i class="icon icon-chevron-sm-down text-7 ml-10"></i>
+                        </div>
 
-                      <div class="toggle-element -dropdown-2 js-click-dropdown js-actions-1-toggle">
-                        <div class="text-14 fw-500 js-dropdown-list">
+                        <div class="toggle-element -dropdown-2 js-click-dropdown js-actions-1-toggle">
+                          <div class="text-14 fw-500 js-dropdown-list">
 
-                          <div><a href="#" class="d-block js-dropdown-link">Details</a></div>
+                            <div><a href="#" class="d-block js-dropdown-link">Details</a></div>
 
-                          <div><a href="#" class="d-block js-dropdown-link">Invoice</a></div>
+                            <div><a href="#" class="d-block js-dropdown-link">Invoice</a></div>
 
-                          <div><a href="#" class="d-block js-dropdown-link">Confirm</a></div>
+                            <div><a href="#" class="d-block js-dropdown-link">Confirm</a></div>
 
-                          <div><a href="#" class="d-block js-dropdown-link">Cancel</a></div>
+                            <div><a href="#" class="d-block js-dropdown-link">Cancel</a></div>
 
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>Hotel</td>
-                  <td>The May Fair Hotel</td>
-                  <td>04/04/2022</td>
-                  <td class="lh-16">Check in : 05/14/2022<br>Check out : 05/29/2022</td>
-                  <td class="fw-500">$130</td>
-                  <td>$0</td>
-                  <td>$35</td>
-                  <td><span class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-blue-1-05 text-blue-1">Confirmed</span></td>
-
-                  <td>
-                    <div class="dropdown js-dropdown js-actions-2-active">
-                      <div class="dropdown__button d-flex items-center rounded-4 text-blue-1 bg-blue-1-05 text-14 px-15 py-5" data-el-toggle=".js-actions-2-toggle" data-el-toggle-active=".js-actions-2-active">
-                        <span class="js-dropdown-title">Actions</span>
-                        <i class="icon icon-chevron-sm-down text-7 ml-10"></i>
-                      </div>
-
-                      <div class="toggle-element -dropdown-2 js-click-dropdown js-actions-2-toggle">
-                        <div class="text-14 fw-500 js-dropdown-list">
-
-                          <div><a href="#" class="d-block js-dropdown-link">Details</a></div>
-
-                          <div><a href="#" class="d-block js-dropdown-link">Invoice</a></div>
-
-                          <div><a href="#" class="d-block js-dropdown-link">Confirm</a></div>
-
-                          <div><a href="#" class="d-block js-dropdown-link">Cancel</a></div>
-
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>Hotel</td>
-                  <td>The May Fair Hotel</td>
-                  <td>04/04/2022</td>
-                  <td class="lh-16">Check in : 05/14/2022<br>Check out : 05/29/2022</td>
-                  <td class="fw-500">$130</td>
-                  <td>$0</td>
-                  <td>$35</td>
-                  <td><span class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-red-3 text-red-2">Rejected</span></td>
-
-                  <td>
-                    <div class="dropdown js-dropdown js-actions-3-active">
-                      <div class="dropdown__button d-flex items-center rounded-4 text-blue-1 bg-blue-1-05 text-14 px-15 py-5" data-el-toggle=".js-actions-3-toggle" data-el-toggle-active=".js-actions-3-active">
-                        <span class="js-dropdown-title">Actions</span>
-                        <i class="icon icon-chevron-sm-down text-7 ml-10"></i>
-                      </div>
-
-                      <div class="toggle-element -dropdown-2 js-click-dropdown js-actions-3-toggle">
-                        <div class="text-14 fw-500 js-dropdown-list">
-
-                          <div><a href="#" class="d-block js-dropdown-link">Details</a></div>
-
-                          <div><a href="#" class="d-block js-dropdown-link">Invoice</a></div>
-
-                          <div><a href="#" class="d-block js-dropdown-link">Confirm</a></div>
-
-                          <div><a href="#" class="d-block js-dropdown-link">Cancel</a></div>
-
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>Hotel</td>
-                  <td>The May Fair Hotel</td>
-                  <td>04/04/2022</td>
-                  <td class="lh-16">Check in : 05/14/2022<br>Check out : 05/29/2022</td>
-                  <td class="fw-500">$130</td>
-                  <td>$0</td>
-                  <td>$35</td>
-                  <td><span class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-blue-1-05 text-blue-1">Confirmed</span></td>
-
-                  <td>
-                    <div class="dropdown js-dropdown js-actions-4-active">
-                      <div class="dropdown__button d-flex items-center rounded-4 text-blue-1 bg-blue-1-05 text-14 px-15 py-5" data-el-toggle=".js-actions-4-toggle" data-el-toggle-active=".js-actions-4-active">
-                        <span class="js-dropdown-title">Actions</span>
-                        <i class="icon icon-chevron-sm-down text-7 ml-10"></i>
-                      </div>
-
-                      <div class="toggle-element -dropdown-2 js-click-dropdown js-actions-4-toggle">
-                        <div class="text-14 fw-500 js-dropdown-list">
-
-                          <div><a href="#" class="d-block js-dropdown-link">Details</a></div>
-
-                          <div><a href="#" class="d-block js-dropdown-link">Invoice</a></div>
-
-                          <div><a href="#" class="d-block js-dropdown-link">Confirm</a></div>
-
-                          <div><a href="#" class="d-block js-dropdown-link">Cancel</a></div>
-
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>Hotel</td>
-                  <td>The May Fair Hotel</td>
-                  <td>04/04/2022</td>
-                  <td class="lh-16">Check in : 05/14/2022<br>Check out : 05/29/2022</td>
-                  <td class="fw-500">$130</td>
-                  <td>$0</td>
-                  <td>$35</td>
-                  <td><span class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-blue-1-05 text-blue-1">Confirmed</span></td>
-
-                  <td>
-                    <div class="dropdown js-dropdown js-actions-5-active">
-                      <div class="dropdown__button d-flex items-center rounded-4 text-blue-1 bg-blue-1-05 text-14 px-15 py-5" data-el-toggle=".js-actions-5-toggle" data-el-toggle-active=".js-actions-5-active">
-                        <span class="js-dropdown-title">Actions</span>
-                        <i class="icon icon-chevron-sm-down text-7 ml-10"></i>
-                      </div>
-
-                      <div class="toggle-element -dropdown-2 js-click-dropdown js-actions-5-toggle">
-                        <div class="text-14 fw-500 js-dropdown-list">
-
-                          <div><a href="#" class="d-block js-dropdown-link">Details</a></div>
-
-                          <div><a href="#" class="d-block js-dropdown-link">Invoice</a></div>
-
-                          <div><a href="#" class="d-block js-dropdown-link">Confirm</a></div>
-
-                          <div><a href="#" class="d-block js-dropdown-link">Cancel</a></div>
-
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-
+                    </td>
+                  </tr>
+                @endforeach
+                
               </tbody>
             </table>
           </div>
