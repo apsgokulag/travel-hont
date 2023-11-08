@@ -61,7 +61,7 @@ class PackageContoller extends Controller
         // if ($input['category']) {
         //     $query->where('category', $input['category']);
         // }
-        $packages = $query->simplePaginate(1);
+        $packages = $query->simplePaginate(1)->withQueryString();
         return view('web.packages', compact('packages', 'destText'));
     }
 }
