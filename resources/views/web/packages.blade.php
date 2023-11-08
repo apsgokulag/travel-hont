@@ -10,10 +10,10 @@
         <div class="col-xl-3 col-lg-4 lg:d-none">
           <aside class="sidebar y-gap-40">        
             <div class="sidebar__item -no-border">
-              <h5 class="text-18 fw-500 mb-10">Search by property name</h5>
+              <h5 class="text-18 fw-500 mb-10">Search by package name</h5>
               <div class="single-field relative d-flex items-center py-10">
                 <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="email"
-                  placeholder="e.g. Best Western">
+                  placeholder="e.g. Paris">
                 <button class="absolute d-flex items-center h-full">
                   <i class="icon-search text-20 px-15 text-dark-1"></i>
                 </button>
@@ -157,13 +157,17 @@
               </div>
             </div>
 
+            <a href="" class="button -md -dark-1 bg-blue-1 text-white mt-24">
+                          Apply filter <div class="icon-arrow-top-right ml-15"></div>
+                        </a>
+
           </aside>
         </div>
 
         <div class="col-xl-9 col-lg-8">
           <div class="row y-gap-10 items-center justify-between">
             <div class="col-auto">
-              <div class="text-18"><span class="fw-500">3,269 properties</span> in Europe</div>
+              <div class="text-18"><span class="fw-500">{{ count($packages) }} packages</span> </div>
             </div>
 
             <div class="col-auto">

@@ -22,6 +22,7 @@ Route::get('/packages',[PackageContoller::class, 'packages'])->name('packages');
 Route::get('/packages/{slug}',[PackageContoller::class, 'package'])->name('package');
 Route::get('/packages/{slug}/booking',[PackageContoller::class, 'packageBooking'])->name('package.booking');
 Route::get('/contact', function(){ return view('web.contact'); })->name('contact');
+Route::get('/destination-search',[PackageContoller::class, 'destinationSearch'])->name('web.search.home');
 // Route::get('/single-package', function(){ return view('web.singlepackage'); })->name('singlepackage');
 
 Route::redirect('/admin', 'admin/dashboard');

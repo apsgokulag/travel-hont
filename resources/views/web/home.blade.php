@@ -26,98 +26,100 @@
                 <div class="tabs__pane -tab-item-1 is-tab-el-active">
 
                   <div class="mainSearch -w-900 bg-white px-10 py-10 lg:px-20 lg:pt-5 lg:pb-20 rounded-100">
-                    <div class="button-grid items-center">
+                    <form action="{{ route('web.search.home') }}">
+                      <div class="button-grid items-center">
 
-                      <div class="searchMenu-loc px-30 lg:py-20 lg:px-0 js-form-dd js-liverSearch">
+                        <div class="searchMenu-loc px-30 lg:py-20 lg:px-0 js-form-dd js-liverSearch">
 
-                        <div data-x-dd-click="searchMenu-loc">
-                          <h4 class="text-15 fw-500 ls-2 lh-16">Destination</h4>
+                          <div data-x-dd-click="searchMenu-loc">
+                            <h4 class="text-15 fw-500 ls-2 lh-16">Destination</h4>
 
-                          <div class="text-15 text-light-1 ls-2 lh-16">
-                            <input autocomplete="off" type="search" placeholder="Where are you going?"
-                              class="js-search js-dd-focus" />
+                            <div class="text-15 text-light-1 ls-2 lh-16">
+                              <input autocomplete="off" type="search" name="destination" placeholder="Where are you going?"
+                                class="js-search js-dd-focus" />
+                            </div>
                           </div>
-                        </div>
 
 
-                        <div class="searchMenu-loc__field shadow-2 js-popup-window" data-x-dd="searchMenu-loc"
-                          data-x-dd-toggle="-is-active">
-                          <div class="bg-white px-30 py-30 sm:px-0 sm:py-15 rounded-4">
-                            <div class="y-gap-5 js-results">
+                          <div class="searchMenu-loc__field shadow-2 js-popup-window d-none" data-x-dd="searchMenu-loc"
+                            data-x-dd-toggle="-is-active">
+                            <div class="bg-white px-30 py-30 sm:px-0 sm:py-15 rounded-4">
+                              <div class="y-gap-5 js-results">
 
-                              <div>
-                                <button class="-link d-block col-12 text-left rounded-4 px-20 py-15 js-search-option">
-                                  <div class="d-flex">
-                                    <div class="icon-location-2 text-light-1 text-20 pt-4"></div>
-                                    <div class="ml-10">
-                                      <div class="text-15 lh-12 fw-500 js-search-option-target">London</div>
-                                      <div class="text-14 lh-12 text-light-1 mt-5">Greater London, United Kingdom</div>
+                                <div>
+                                  <button class="-link d-block col-12 text-left rounded-4 px-20 py-15 js-search-option">
+                                    <div class="d-flex">
+                                      <div class="icon-location-2 text-light-1 text-20 pt-4"></div>
+                                      <div class="ml-10">
+                                        <div class="text-15 lh-12 fw-500 js-search-option-target">London</div>
+                                        <div class="text-14 lh-12 text-light-1 mt-5">Greater London, United Kingdom</div>
+                                      </div>
                                     </div>
-                                  </div>
-                                </button>
-                              </div>
+                                  </button>
+                                </div>
 
-                              <div>
-                                <button class="-link d-block col-12 text-left rounded-4 px-20 py-15 js-search-option">
-                                  <div class="d-flex">
-                                    <div class="icon-location-2 text-light-1 text-20 pt-4"></div>
-                                    <div class="ml-10">
-                                      <div class="text-15 lh-12 fw-500 js-search-option-target">New York</div>
-                                      <div class="text-14 lh-12 text-light-1 mt-5">New York State, United States</div>
+                                <div>
+                                  <button class="-link d-block col-12 text-left rounded-4 px-20 py-15 js-search-option">
+                                    <div class="d-flex">
+                                      <div class="icon-location-2 text-light-1 text-20 pt-4"></div>
+                                      <div class="ml-10">
+                                        <div class="text-15 lh-12 fw-500 js-search-option-target">New York</div>
+                                        <div class="text-14 lh-12 text-light-1 mt-5">New York State, United States</div>
+                                      </div>
                                     </div>
-                                  </div>
-                                </button>
-                              </div>
+                                  </button>
+                                </div>
 
-                              <div>
-                                <button class="-link d-block col-12 text-left rounded-4 px-20 py-15 js-search-option">
-                                  <div class="d-flex">
-                                    <div class="icon-location-2 text-light-1 text-20 pt-4"></div>
-                                    <div class="ml-10">
-                                      <div class="text-15 lh-12 fw-500 js-search-option-target">Paris</div>
-                                      <div class="text-14 lh-12 text-light-1 mt-5">France</div>
+                                <div>
+                                  <button class="-link d-block col-12 text-left rounded-4 px-20 py-15 js-search-option">
+                                    <div class="d-flex">
+                                      <div class="icon-location-2 text-light-1 text-20 pt-4"></div>
+                                      <div class="ml-10">
+                                        <div class="text-15 lh-12 fw-500 js-search-option-target">Paris</div>
+                                        <div class="text-14 lh-12 text-light-1 mt-5">France</div>
+                                      </div>
                                     </div>
-                                  </div>
-                                </button>
-                              </div>
+                                  </button>
+                                </div>
 
-                              <div>
-                                <button class="-link d-block col-12 text-left rounded-4 px-20 py-15 js-search-option">
-                                  <div class="d-flex">
-                                    <div class="icon-location-2 text-light-1 text-20 pt-4"></div>
-                                    <div class="ml-10">
-                                      <div class="text-15 lh-12 fw-500 js-search-option-target">Madrid</div>
-                                      <div class="text-14 lh-12 text-light-1 mt-5">Spain</div>
+                                <div>
+                                  <button class="-link d-block col-12 text-left rounded-4 px-20 py-15 js-search-option">
+                                    <div class="d-flex">
+                                      <div class="icon-location-2 text-light-1 text-20 pt-4"></div>
+                                      <div class="ml-10">
+                                        <div class="text-15 lh-12 fw-500 js-search-option-target">Madrid</div>
+                                        <div class="text-14 lh-12 text-light-1 mt-5">Spain</div>
+                                      </div>
                                     </div>
-                                  </div>
-                                </button>
-                              </div>
+                                  </button>
+                                </div>
 
-                              <div>
-                                <button class="-link d-block col-12 text-left rounded-4 px-20 py-15 js-search-option">
-                                  <div class="d-flex">
-                                    <div class="icon-location-2 text-light-1 text-20 pt-4"></div>
-                                    <div class="ml-10">
-                                      <div class="text-15 lh-12 fw-500 js-search-option-target">Santorini</div>
-                                      <div class="text-14 lh-12 text-light-1 mt-5">Greece</div>
+                                <div>
+                                  <button class="-link d-block col-12 text-left rounded-4 px-20 py-15 js-search-option">
+                                    <div class="d-flex">
+                                      <div class="icon-location-2 text-light-1 text-20 pt-4"></div>
+                                      <div class="ml-10">
+                                        <div class="text-15 lh-12 fw-500 js-search-option-target">Santorini</div>
+                                        <div class="text-14 lh-12 text-light-1 mt-5">Greece</div>
+                                      </div>
                                     </div>
-                                  </div>
-                                </button>
-                              </div>
+                                  </button>
+                                </div>
 
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div class="button-item">
-                        <button
-                          class="mainSearch__submit button -dark-1 h-60 px-35 col-12 rounded-100 bg-blue-1 text-white">
-                          <i class="icon-search text-20 mr-10"></i>
-                          Search
-                        </button>
+                        <div class="button-item">
+                          <button
+                            class="mainSearch__submit button -dark-1 h-60 px-35 col-12 rounded-100 bg-blue-1 text-white">
+                            <i class="icon-search text-20 mr-10"></i>
+                            Search
+                          </button>
+                        </div>
                       </div>
-                    </div>
+                    </form>
                   </div>
                 </div>             
 
