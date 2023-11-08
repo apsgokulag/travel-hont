@@ -3,10 +3,6 @@
 
 @section('content')
 
-@php
-  echo json_encode($packages);
-@endphp
-
   <div class="header-margin"></div>
   <section class="layout-pt-md layout-pb-lg">
     <div class="container">
