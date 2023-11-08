@@ -9,7 +9,7 @@
       <div class="row y-gap-30">
         <div class="col-xl-3 col-lg-4 lg:d-none">
           <aside class="sidebar y-gap-40">     
-            <form action="{{ route('web.filter.package') }}" method="POST"> 
+            <form action="{{ route('web.filter.package') }}" method="GET"> 
               @csrf  
               <div class="sidebar__item -no-border">
                 <h5 class="text-18 fw-500 mb-10">Search by package name</h5>
@@ -202,7 +202,7 @@
                 <i class="icon-close"></i>
               </div>             
 
-              <form action="{{ route('web.filter.package') }}" method="POST"> 
+              <form action="{{ route('web.filter.package') }}" method="get"> 
                 @csrf  
                 <div class="sidebar__item -no-border">
                   <h5 class="text-18 fw-500 mb-10">Search by package name</h5>
@@ -234,9 +234,9 @@
                           <div class="js-slider"></div>
                         </div>
                       </div>
-                      <div id="price-range-div">
-                        <input type="hidden" name="minval" id="minval" value="0"/>
-                        <input type="hidden" name="maxval" id="maxval" value="2000" />
+                      <div id="price-range-div-mobile">
+                        <input type="hidden" name="minval" id="minvalmobile" value="0"/>
+                        <input type="hidden" name="maxval" id="maxvalmobile" value="2000" />
                       </div>
                     </div>
                   </div>
@@ -377,7 +377,7 @@
             @foreach ($packages as $package)
               <div class="col-12">
 
-                <div class="border-top-light pt-30">
+                <div class="border-top-light pt-30 pb-30">
                   <div class="row x-gap-20 y-gap-20">
                     <div class="col-md-auto">
                       @if ($package->getMedia()->count())                          
