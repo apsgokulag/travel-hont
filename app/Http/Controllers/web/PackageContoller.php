@@ -11,7 +11,8 @@ class PackageContoller extends Controller
 {
     public function packages()
     {
-        $packages = Package::where('status', 'published')->get();
+        // $packages = Package::where('status', 'published')->get();
+        $packages = Package::where('status', 'published')->simplePaginate(1);
         return view('web.packages', compact('packages'));
     }
 
@@ -37,12 +38,33 @@ class PackageContoller extends Controller
     public function destinationSearch(Request $request)
     {
         $destText = $request['destination'];
-        $packages = Package::where('status', 'published')->where('name', 'like', '%' . $destText . '%')->get();
+        // $packages = Package::where('status', 'published')->where('name', 'like', '%' . $destText . '%')->get();
+        $packages = Package::where('status', 'published')->where('name', 'like', '%' . $destText . '%')->simplePaginate(1);
         return view('web.packages', compact('packages'));
-        $package = Package::findBySlug($slug);
-        if(!$package){
-            return redirect(route('packages'));
+    }
+
+    public function packagesFilter(Request $request)
+    {
+        // return response()->json(['data' => $request->toArray()], 200);
+        $destText = $request['package'];
+        $query = Package::where('status', 'published');
+
+        if ($request['package'] != NULL) {
+            $query->where('name', 'like', '%' . $request['package'] . '%');
         }
-        return view('web.bookPackage', compact('package'));
+
+        if (preg_replace('/([^0-9])/i', '', $request['minval']) != NULL && preg_replace('/([^0-9])/i', '', $request['maxval']) != NULL) {
+            $minval = preg_replace('/([^0-9])/i', '', $request['minval']);
+            $maxval = preg_replace('/([^0-9])/i', '', $request['maxval']);
+            $query->whereBetween(Package::price()->adult_amount, [$minval, $maxval]);
+        }
+
+        // if ($input['category']) {
+        //     $query->where('category', $input['category']);
+        // }
+        $packages = $query->get();
+        // $packages = $query->simplePaginate(1);
+        return response()->json(['response' => $packages, 'request' => $request->toArray()], 200);
+        return view('web.packages', compact('packages', 'destText'));
     }
 }

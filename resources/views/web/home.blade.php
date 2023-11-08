@@ -130,7 +130,7 @@
       </div>
     </section>
 
-    <section class="layout-pt-lg layout-pb-md">
+    <section class="layout-pt-lg layout-pb-md dNone">
       <div class="container">
         <div data-anim="slide-up delay-1" class="row y-gap-20 justify-between items-end">
           <div class="col-auto">
@@ -210,7 +210,7 @@
       </div>
     </section>
 
-    <section class="layout-pt-md layout-pb-md">
+    <section class="layout-pt-md layout-pb-md dNone">
       <div class="container">
         <div class="row y-gap-20">
           <div data-anim="slide-up" class="col-md-6">

@@ -3,164 +3,180 @@
 
 @section('content')
 
+@php
+  echo json_encode($packages);
+@endphp
+
   <div class="header-margin"></div>
   <section class="layout-pt-md layout-pb-lg">
     <div class="container">
       <div class="row y-gap-30">
         <div class="col-xl-3 col-lg-4 lg:d-none">
-          <aside class="sidebar y-gap-40">        
-            <div class="sidebar__item -no-border">
-              <h5 class="text-18 fw-500 mb-10">Search by package name</h5>
-              <div class="single-field relative d-flex items-center py-10">
-                <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="email"
-                  placeholder="e.g. Paris">
-                <button class="absolute d-flex items-center h-full">
-                  <i class="icon-search text-20 px-15 text-dark-1"></i>
-                </button>
-              </div>
-            </div>
-
-            <div class="sidebar__item pb-30">
-              <h5 class="text-18 fw-500 mb-10">Nightly Price</h5>
-              <div class="row x-gap-10 y-gap-30">
-                <div class="col-12">
-                  <div class="js-price-rangeSlider">
-                    <div class="text-14 fw-500"></div>
-
-                    <div class="d-flex justify-between mb-20">
-                      <div class="text-15 text-dark-1">
-                        <span class="js-lower"></span>
-                        -
-                        <span class="js-upper"></span>
-                      </div>
-                    </div>
-
-                    <div class="px-5">
-                      <div class="js-slider"></div>
-                    </div>
-                  </div>
+          <aside class="sidebar y-gap-40">     
+            <form action="{{ route('web.filter.package') }}" method="POST"> 
+              @csrf  
+              <div class="sidebar__item -no-border">
+                <h5 class="text-18 fw-500 mb-10">Search by package name</h5>
+                <div class="single-field relative d-flex items-center py-10">
+                  <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="text"
+                    placeholder="e.g. Paris" name="package" @if(isset($destText)) value="{{ $destText }}" @endif>
+                  <button class="absolute d-flex items-center h-full">
+                    <i class="icon-search text-20 px-15 text-dark-1"></i>
+                  </button>
                 </div>
               </div>
-            </div>
 
-            <div class="sidebar__item">
-              <h5 class="text-18 fw-500 mb-10">Star Rating</h5>
-              <div class="row x-gap-10 y-gap-10 pt-10">
+              <div class="sidebar__item pb-30">
+                <h5 class="text-18 fw-500 mb-10">Price</h5>
+                <div class="row x-gap-10 y-gap-30">
+                  <div class="col-12">
+                    <div class="js-price-rangeSlider">
+                      <div class="text-14 fw-500"></div>
 
-                <div class="col-auto">
-                  <a href="#" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100">1</a>
+                      <div class="d-flex justify-between mb-20">
+                        <div class="text-15 text-dark-1">
+                          <span class="js-lower"></span>
+                          -
+                          <span class="js-upper"></span>
+                        </div>
+                      </div>
+
+                      <div class="px-5">
+                        <div class="js-slider"></div>
+                      </div>
+                    </div>
+                    <div id="price-range-div">
+                      <input type="hidden" name="minval" id="minval" value="0"/>
+                      <input type="hidden" name="maxval" id="maxval" value="2000" />
+                    </div>
+                  </div>
                 </div>
-
-                <div class="col-auto">
-                  <a href="#" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100">2</a>
-                </div>
-
-                <div class="col-auto">
-                  <a href="#" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100">3</a>
-                </div>
-
-                <div class="col-auto">
-                  <a href="#" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100">4</a>
-                </div>
-
-                <div class="col-auto">
-                  <a href="#" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100">5</a>
-                </div>
-
               </div>
-            </div>
 
-            <div class="sidebar__item">
-              <h5 class="text-18 fw-500 mb-10">Guest Rating</h5>
-              <div class="sidebar-checkbox">
+              <div class="sidebar__item">
+                <h5 class="text-18 fw-500 mb-10">Star Rating</h5>
+                <div class="row x-gap-10 y-gap-10 pt-10 pb-10">
 
-                <div class="row y-gap-10 items-center justify-between">
-                  <div class="col-auto">
-
-                    <div class="form-radio d-flex items-center ">
-                      <div class="radio">
-                        <input type="radio" name="name">
-                        <div class="radio__mark">
-                          <div class="radio__icon"></div>
-                        </div>
-                      </div>
-                      <div class="ml-10">Any</div>
-                    </div>
-
+                  <div class="col-auto" style="position: relative;">
+                    <a href="javascript:void(0);" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100 rating-filter-each-button">1</a>
+                    <input type="checkbox" style="position: absolute; top: 0; opacity: 0;" name="check[]" value="1">
                   </div>
 
-                  <div class="col-auto">
-                    <div class="text-15 text-light-1">92</div>
+                  <div class="col-auto" style="position: relative;">
+                    <a href="javascript:void(0);" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100 rating-filter-each-button">2</a>
+                    <input type="checkbox" style="position: absolute; top: 0; opacity: 0;" name="check[]" value="2">
                   </div>
+
+                  <div class="col-auto" style="position: relative;">
+                    <a href="javascript:void(0);" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100 rating-filter-each-button">3</a>
+                    <input type="checkbox" style="position: absolute; top: 0; opacity: 0;" name="check[]" value="3">
+                  </div>
+
+                  <div class="col-auto" style="position: relative;">
+                    <a href="javascript:void(0);" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100 rating-filter-each-button">4</a>
+                    <input type="checkbox" style="position: absolute; top: 0; opacity: 0;" name="check[]" value="4">
+                  </div>
+
+                  <div class="col-auto" style="position: relative;">
+                    <a href="javascript:void(0);" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100 rating-filter-each-button">5</a>
+                    <input type="checkbox" style="position: absolute; top: 0; opacity: 0;" name="check[]" value="5">
+                  </div>
+
                 </div>
-
-                <div class="row y-gap-10 items-center justify-between">
-                  <div class="col-auto">
-
-                    <div class="form-radio d-flex items-center ">
-                      <div class="radio">
-                        <input type="radio" name="name">
-                        <div class="radio__mark">
-                          <div class="radio__icon"></div>
-                        </div>
-                      </div>
-                      <div class="ml-10">Wonderful 4.5+</div>
-                    </div>
-
-                  </div>
-
-                  <div class="col-auto">
-                    <div class="text-15 text-light-1">45</div>
-                  </div>
-                </div>
-
-                <div class="row y-gap-10 items-center justify-between">
-                  <div class="col-auto">
-
-                    <div class="form-radio d-flex items-center ">
-                      <div class="radio">
-                        <input type="radio" name="name">
-                        <div class="radio__mark">
-                          <div class="radio__icon"></div>
-                        </div>
-                      </div>
-                      <div class="ml-10">Very good 4+</div>
-                    </div>
-
-                  </div>
-
-                  <div class="col-auto">
-                    <div class="text-15 text-light-1">21</div>
-                  </div>
-                </div>
-
-                <div class="row y-gap-10 items-center justify-between">
-                  <div class="col-auto">
-
-                    <div class="form-radio d-flex items-center ">
-                      <div class="radio">
-                        <input type="radio" name="name">
-                        <div class="radio__mark">
-                          <div class="radio__icon"></div>
-                        </div>
-                      </div>
-                      <div class="ml-10">Good 3.5+ </div>
-                    </div>
-
-                  </div>
-
-                  <div class="col-auto">
-                    <div class="text-15 text-light-1">78</div>
-                  </div>
-                </div>
-
               </div>
-            </div>
 
-            <a href="" class="button -md -dark-1 bg-blue-1 text-white mt-24">
+              <div class="sidebar__item">
+                <h5 class="text-18 fw-500 mb-10">Guest Rating</h5>
+                <div class="sidebar-checkbox">
+
+                  <div class="row y-gap-10 items-center justify-between">
+                    <div class="col-auto">
+
+                      <div class="form-radio d-flex items-center ">
+                        <div class="radio">
+                          <input type="radio" name="name">
+                          <div class="radio__mark">
+                            <div class="radio__icon"></div>
+                          </div>
+                        </div>
+                        <div class="ml-10">Any</div>
+                      </div>
+
+                    </div>
+
+                    <div class="col-auto">
+                      <div class="text-15 text-light-1">92</div>
+                    </div>
+                  </div>
+
+                  <div class="row y-gap-10 items-center justify-between">
+                    <div class="col-auto">
+
+                      <div class="form-radio d-flex items-center ">
+                        <div class="radio">
+                          <input type="radio" name="name">
+                          <div class="radio__mark">
+                            <div class="radio__icon"></div>
+                          </div>
+                        </div>
+                        <div class="ml-10">Wonderful 4.5+</div>
+                      </div>
+
+                    </div>
+
+                    <div class="col-auto">
+                      <div class="text-15 text-light-1">45</div>
+                    </div>
+                  </div>
+
+                  <div class="row y-gap-10 items-center justify-between">
+                    <div class="col-auto">
+
+                      <div class="form-radio d-flex items-center ">
+                        <div class="radio">
+                          <input type="radio" name="name">
+                          <div class="radio__mark">
+                            <div class="radio__icon"></div>
+                          </div>
+                        </div>
+                        <div class="ml-10">Very good 4+</div>
+                      </div>
+
+                    </div>
+
+                    <div class="col-auto">
+                      <div class="text-15 text-light-1">21</div>
+                    </div>
+                  </div>
+
+                  <div class="row y-gap-10 items-center justify-between">
+                    <div class="col-auto">
+
+                      <div class="form-radio d-flex items-center ">
+                        <div class="radio">
+                          <input type="radio" name="name">
+                          <div class="radio__mark">
+                            <div class="radio__icon"></div>
+                          </div>
+                        </div>
+                        <div class="ml-10">Good 3.5+ </div>
+                      </div>
+
+                    </div>
+
+                    <div class="col-auto">
+                      <div class="text-15 text-light-1">78</div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <button type="submit" class="button -md -dark-1 bg-blue-1 text-white mt-24">
                           Apply filter <div class="icon-arrow-top-right ml-15"></div>
-                        </a>
+                        </button>
 
+            </form>
           </aside>
         </div>
 
@@ -984,7 +1000,7 @@
                             <img class="rounded-4 col-12" src="{{ asset($package->getMedia()->first()->getFullUrl()) }}" alt="image">
                           </div>
 
-                          <div class="cardImage__wishlist">
+                          <div class="cardImage__wishlist dNone">
                             <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
                               <i class="icon-heart text-12"></i>
                             </button>
@@ -996,7 +1012,7 @@
                     <div class="col-md">
                       <h3 class="text-18 lh-16 fw-500">
                         {{ $package->name }}
-                        <br class="lg:d-none"> Hotel, London
+                        <!-- <br class="lg:d-none"> Hotel, London -->
 
                         <div class="d-inline-block ml-10">
                           <i class="icon-star text-10 text-yellow-2"></i>
@@ -1051,95 +1067,8 @@
 
           </div>
 
-          <div class="border-top-light mt-30 pt-30">
-            <div class="row x-gap-10 y-gap-20 justify-between md:justify-center">
-              <div class="col-auto md:order-1">
-                <button class="button -blue-1 size-40 rounded-full border-light">
-                  <i class="icon-chevron-left text-12"></i>
-                </button>
-              </div>
+          {{ $packages->links() }}
 
-              <div class="col-md-auto md:order-3">
-                <div class="row x-gap-20 y-gap-20 items-center md:d-none">
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full">1</div>
-
-                  </div>
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full bg-dark-1 text-white">2</div>
-
-                  </div>
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full">3</div>
-
-                  </div>
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full bg-light-2">4</div>
-
-                  </div>
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full">5</div>
-
-                  </div>
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full">...</div>
-
-                  </div>
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full">20</div>
-
-                  </div>
-
-                </div>
-
-                <div class="row x-gap-10 y-gap-20 justify-center items-center d-none md:d-flex">
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full">1</div>
-
-                  </div>
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full bg-dark-1 text-white">2</div>
-
-                  </div>
-
-                  <div class="col-auto">
-
-                    <div class="size-40 flex-center rounded-full">3</div>
-
-                  </div>
-
-                </div>
-
-                <div class="text-center mt-30 md:mt-10">
-                  <div class="text-14 text-light-1">1 – 20 of 300+ properties found</div>
-                </div>
-              </div>
-
-              <div class="col-auto md:order-2">
-                <button class="button -blue-1 size-40 rounded-full border-light">
-                  <i class="icon-chevron-right text-12"></i>
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

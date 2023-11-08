@@ -12006,3 +12006,12 @@ table.table-5 td {
   height: 100%;
   max-height: 700px;
 }
+
+.ratingChecked {
+  background: var(--color-blue-1);
+  color: white;
+}
+
+.dNone {
+  display: none !important;
+}
