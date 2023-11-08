@@ -233,30 +233,14 @@
               </div>
             </div>
           </section>
-
-          <div class="col-12">
-            <div class="px-24 py-20 rounded-4 bg-green-1 mt-20">
-              <div class="row x-gap-20 y-gap-20 items-center">
-                <div class="col-auto">
-                  <div class="flex-center size-60 rounded-full bg-white">
-                    <i class="icon-star text-yellow-1 text-30"></i>
-                  </div>
-                </div>
-
-                <div class="col-auto">
-                  <h4 class="text-18 lh-15 fw-500">This package is in high demand!</h4>
-                  <div class="text-15 lh-15">7 travelers have booked today.</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>
   </section>
 
   <div id="reviews"></div>
-  {{-- <section class="pt-40">
+  <section class="pt-40">
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -265,117 +249,30 @@
       </div>
 
       <div class="row y-gap-30 items-center pt-20">
-        <div class="col-lg-3">
-          <div class="flex-center rounded-4 min-h-250 bg-blue-1-05">
-            <div class="text-center">
-              <div class="text-60 md:text-50 fw-600 text-blue-1">4.8</div>
+        <div class="col-lg-2">
+          <div class="flex-center rounded-4 bg-blue-1-05">
+            <div class="text-center py-2">
+              <div class="text-30 md:text-50 fw-600 text-blue-1">4.8</div>
               <div class="fw-500 lh-1">Exceptional</div>
               <div class="text-14 text-light-1 lh-1 mt-5">3,014 reviews</div>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-9">
-          <div class="row y-gap-30">
-
-            <div class="col-md-4 col-sm-6">
-              <div class="">
-                <div class="d-flex items-center justify-between">
-                  <div class="text-15 fw-500">Location</div>
-                  <div class="text-15 text-light-1">9.4</div>
-                </div>
-
-                <div class="progressBar mt-10">
-                  <div class="progressBar__bg bg-blue-2"></div>
-                  <div class="progressBar__bar bg-dark-1" style="width: 90%"></div>
+        <div class="col-lg-10">
+          <div class="px-24 py-20 rounded-4 bg-green-1">
+            <div class="row x-gap-20 y-gap-20 items-center">
+              <div class="col-auto">
+                <div class="flex-center size-60 rounded-full bg-white">
+                  <i class="icon-star text-yellow-1 text-30"></i>
                 </div>
               </div>
-            </div>
 
-            <div class="col-md-4 col-sm-6">
-              <div class="">
-                <div class="d-flex items-center justify-between">
-                  <div class="text-15 fw-500">Staff</div>
-                  <div class="text-15 text-light-1">9.4</div>
-                </div>
-
-                <div class="progressBar mt-10">
-                  <div class="progressBar__bg bg-blue-2"></div>
-                  <div class="progressBar__bar bg-dark-1" style="width: 90%"></div>
-                </div>
+              <div class="col-auto">
+                <h4 class="text-18 lh-15 fw-500">This package is in high demand!</h4>
+                <div class="text-15 lh-15">7 travelers have booked today.</div>
               </div>
             </div>
-
-            <div class="col-md-4 col-sm-6">
-              <div class="">
-                <div class="d-flex items-center justify-between">
-                  <div class="text-15 fw-500">Cleanliness</div>
-                  <div class="text-15 text-light-1">9.4</div>
-                </div>
-
-                <div class="progressBar mt-10">
-                  <div class="progressBar__bg bg-blue-2"></div>
-                  <div class="progressBar__bar bg-dark-1" style="width: 90%"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6">
-              <div class="">
-                <div class="d-flex items-center justify-between">
-                  <div class="text-15 fw-500">Value for money</div>
-                  <div class="text-15 text-light-1">9.4</div>
-                </div>
-
-                <div class="progressBar mt-10">
-                  <div class="progressBar__bg bg-blue-2"></div>
-                  <div class="progressBar__bar bg-dark-1" style="width: 90%"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6">
-              <div class="">
-                <div class="d-flex items-center justify-between">
-                  <div class="text-15 fw-500">Comfort</div>
-                  <div class="text-15 text-light-1">9.4</div>
-                </div>
-
-                <div class="progressBar mt-10">
-                  <div class="progressBar__bg bg-blue-2"></div>
-                  <div class="progressBar__bar bg-dark-1" style="width: 90%"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6">
-              <div class="">
-                <div class="d-flex items-center justify-between">
-                  <div class="text-15 fw-500">Facilities</div>
-                  <div class="text-15 text-light-1">9.4</div>
-                </div>
-
-                <div class="progressBar mt-10">
-                  <div class="progressBar__bg bg-blue-2"></div>
-                  <div class="progressBar__bar bg-dark-1" style="width: 90%"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6">
-              <div class="">
-                <div class="d-flex items-center justify-between">
-                  <div class="text-15 fw-500">Free WiFi</div>
-                  <div class="text-15 text-light-1">9.4</div>
-                </div>
-
-                <div class="progressBar mt-10">
-                  <div class="progressBar__bg bg-blue-2"></div>
-                  <div class="progressBar__bar bg-dark-1" style="width: 90%"></div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
@@ -389,8 +286,8 @@
 
         <div class="col-lg-6">
           <div class="row x-gap-20 y-gap-20 items-center">
-            <div class="col-auto">
-              <img src="img/avatars/2.png" alt="image">
+            <div class="col-auto">             
+              <div class="uppercase text-18 border-dark-1 p-2 text-green-2 me-1 bg-blue-1-05 -round-logo">tk</div>
             </div>
             <div class="col-auto">
               <div class="fw-500 lh-15">Tonko</div>
@@ -398,223 +295,19 @@
             </div>
           </div>
 
-          <h5 class="fw-500 text-blue-1 mt-20">9.2 Superb</h5>
+          <h5 class="fw-500 text-blue-1 mt-20">5 Superb</h5>
           <p class="text-15 text-dark-1 mt-10">Nice two level apartment in great London location. Located in quiet
             small street, but just 50 meters from main street and bus stop. Tube station is short walk, just like two
             grocery stores. </p>
-
-
-          <div class="row x-gap-30 y-gap-30 pt-20">
-
-            <div class="col-auto">
-              <img src="img/testimonials/1/1.png" alt="image" class="rounded-4">
-            </div>
-
-            <div class="col-auto">
-              <img src="img/testimonials/1/2.png" alt="image" class="rounded-4">
-            </div>
-
-            <div class="col-auto">
-              <img src="img/testimonials/1/3.png" alt="image" class="rounded-4">
-            </div>
-
-            <div class="col-auto">
-              <img src="img/testimonials/1/4.png" alt="image" class="rounded-4">
-            </div>
-
-          </div>
-
-
-          <div class="d-flex x-gap-30 items-center pt-20">
-            <button class="d-flex items-center text-blue-1">
-              <i class="icon-like text-16 mr-10"></i>
-              Helpful
-            </button>
-
-            <button class="d-flex items-center text-light-1">
-              <i class="icon-dislike text-16 mr-10"></i>
-              Not helpful
-            </button>
-          </div>
         </div>
 
-
-        <div class="col-lg-6">
-          <div class="row x-gap-20 y-gap-20 items-center">
-            <div class="col-auto">
-              <img src="img/avatars/2.png" alt="image">
-            </div>
-            <div class="col-auto">
-              <div class="fw-500 lh-15">Tonko</div>
-              <div class="text-14 text-light-1 lh-15">March 2022</div>
-            </div>
-          </div>
-
-          <h5 class="fw-500 text-blue-1 mt-20">9.2 Superb</h5>
-          <p class="text-15 text-dark-1 mt-10">Nice two level apartment in great London location. Located in quiet
-            small street, but just 50 meters from main street and bus stop. Tube station is short walk, just like two
-            grocery stores. </p>
-
-
-          <div class="row x-gap-30 y-gap-30 pt-20">
-
-            <div class="col-auto">
-              <img src="img/testimonials/1/1.png" alt="image" class="rounded-4">
-            </div>
-
-            <div class="col-auto">
-              <img src="img/testimonials/1/2.png" alt="image" class="rounded-4">
-            </div>
-
-            <div class="col-auto">
-              <img src="img/testimonials/1/3.png" alt="image" class="rounded-4">
-            </div>
-
-            <div class="col-auto">
-              <img src="img/testimonials/1/4.png" alt="image" class="rounded-4">
-            </div>
-
-          </div>
-
-
-          <div class="d-flex x-gap-30 items-center pt-20">
-            <button class="d-flex items-center text-blue-1">
-              <i class="icon-like text-16 mr-10"></i>
-              Helpful
-            </button>
-
-            <button class="d-flex items-center text-light-1">
-              <i class="icon-dislike text-16 mr-10"></i>
-              Not helpful
-            </button>
-          </div>
-        </div>
-
-
-        <div class="col-lg-6">
-          <div class="row x-gap-20 y-gap-20 items-center">
-            <div class="col-auto">
-              <img src="img/avatars/2.png" alt="image">
-            </div>
-            <div class="col-auto">
-              <div class="fw-500 lh-15">Tonko</div>
-              <div class="text-14 text-light-1 lh-15">March 2022</div>
-            </div>
-          </div>
-
-          <h5 class="fw-500 text-blue-1 mt-20">9.2 Superb</h5>
-          <p class="text-15 text-dark-1 mt-10">Nice two level apartment in great London location. Located in quiet
-            small street, but just 50 meters from main street and bus stop. Tube station is short walk, just like two
-            grocery stores. </p>
-
-
-          <div class="d-flex x-gap-30 items-center pt-20">
-            <button class="d-flex items-center text-blue-1">
-              <i class="icon-like text-16 mr-10"></i>
-              Helpful
-            </button>
-
-            <button class="d-flex items-center text-light-1">
-              <i class="icon-dislike text-16 mr-10"></i>
-              Not helpful
-            </button>
-          </div>
-        </div>
-
-
-        <div class="col-lg-6">
-          <div class="row x-gap-20 y-gap-20 items-center">
-            <div class="col-auto">
-              <img src="img/avatars/2.png" alt="image">
-            </div>
-            <div class="col-auto">
-              <div class="fw-500 lh-15">Tonko</div>
-              <div class="text-14 text-light-1 lh-15">March 2022</div>
-            </div>
-          </div>
-
-          <h5 class="fw-500 text-blue-1 mt-20">9.2 Superb</h5>
-          <p class="text-15 text-dark-1 mt-10">Nice two level apartment in great London location. Located in quiet
-            small street, but just 50 meters from main street and bus stop. Tube station is short walk, just like two
-            grocery stores. </p>
-
-
-          <div class="d-flex x-gap-30 items-center pt-20">
-            <button class="d-flex items-center text-blue-1">
-              <i class="icon-like text-16 mr-10"></i>
-              Helpful
-            </button>
-
-            <button class="d-flex items-center text-light-1">
-              <i class="icon-dislike text-16 mr-10"></i>
-              Not helpful
-            </button>
-          </div>
-        </div>
-
-
-      </div>
-
-      <div class="row pt-30">
-        <div class="col-auto">
-
-          <a href="#" class="button -md -outline-blue-1 text-blue-1">
-            Show all 116 reviews <div class="icon-arrow-top-right ml-15"></div>
-          </a>
-
-        </div>
       </div>
     </div>
-  </section> --}}
+  </section>
 
   <section class="pt-40">
     <div class="container">
-      <div class="row">
-        <div class="col-xl-8 col-lg-10">
-          <div class="row">
-            <div class="col-auto">
-              <h3 class="text-22 fw-500">Leave a Reply</h3>
-              <p class="text-15 text-dark-1 mt-5">Your email address will not be published.</p>
-            </div>
-          </div>
-
-          
-
-          <div class="row y-gap-30 pt-20">
-            <div class="col-xl-6">
-
-              <div class="form-input ">
-                <input type="text" required>
-                <label class="lh-1 text-16 text-light-1">Text</label>
-              </div>
-
-            </div>
-            <div class="col-xl-6">
-
-              <div class="form-input ">
-                <input type="text" required>
-                <label class="lh-1 text-16 text-light-1">Email</label>
-              </div>
-
-            </div>
-            <div class="col-12">
-
-              <div class="form-input ">
-                <textarea required rows="4"></textarea>
-                <label class="lh-1 text-16 text-light-1">Write Your Comment</label>
-              </div>
-
-            </div>
-            <div class="col-auto">
-
-              <a href="#" class="button -md -dark-1 bg-blue-1 text-white">
-                Post Comment <div class="icon-arrow-top-right ml-15"></div>
-              </a>
-
-            </div>
-          </div>
-        </div>
-      </div>
+      @livewire('web.packages.review')
     </div>
   </section>
 
@@ -627,7 +320,7 @@
       <div class="pt-40 border-top-light">
         <div class="row y-gap-20">
           <div class="col-lg-4">
-            <h2 class="text-22 fw-500">FAQs about<br> The Crown Hotel</h2>
+            <h2 class="text-22 fw-500">FAQs about<br> {{ $package->name }}</h2>
           </div>
 
           <div class="col-lg-8">
@@ -664,8 +357,8 @@
       <div class="row justify-center text-center">
         <div class="col-auto">
           <div class="sectionTitle -md">
-            <h2 class="sectionTitle__title">Popular properties similar to The Crown Hotel</h2>
-            <p class=" sectionTitle__text mt-5 sm:mt-0">Interdum et malesuada fames ac ante ipsum</p>
+            <h2 class="sectionTitle__title">Popular properties similar to {{ $package->name }}</h2>
+            <p class=" sectionTitle__text mt-5 sm:mt-0">Enjoy every moments.. </p>
           </div>
         </div>
       </div>
@@ -766,3 +459,11 @@
   </section>
 
 @endsection
+
+@push('styles')
+    <style>
+      .-round-logo{
+        display: inline-flex; border-radius: 50%; width: 30px; height: 30px; align-items: center;justify-content: center;
+      }
+    </style>
+@endpush
