@@ -49,6 +49,16 @@ class Client extends Authenticatable
 
     public function bookings(): HasMany
     {
-        return$this->hasMany(Booking::class);
+        return $this->hasMany(Booking::class);
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function ratings(): HasMany
+    {
+        return $this->hasMany(Rating::class);
     }
 }

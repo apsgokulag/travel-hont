@@ -2,6 +2,9 @@
 
 namespace App\Livewire\Web\Packages;
 
+use App\Models\Client;
+use App\Models\Package;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
 
@@ -12,6 +15,8 @@ class Review extends Component
     public $formSubmitSuccess;
 
     public $firstName, $lastName, $email, $rating, $title, $comment;
+
+    public Package $package;
 
     public function mount()
     {
@@ -42,5 +47,28 @@ class Review extends Component
             'title' => 'required|max:500',
             'comment' => 'required|max:2500',
         ]);   
+        DB::transaction(function(){
+            $client = Client::updateOrCreate(
+                ['email' => $this->email],
+                [
+                    'first_name' => $this->firstName, 
+                    'last_name' => $this->lastName,                    
+                ]
+            );
+            $client->reviews()->updateOrCreate(
+                ['package_id' => $this->package->id],
+                [
+                    'title' => $this->title, 
+                    'comment' => $this->comment
+                ]
+            );
+            $client->ratings()->updateOrCreate(
+                ['package_id' => $this->package->id],
+                [
+                    'rating' => $this->rating, 
+                ]
+            );
+        });
+        $this->formSubmitSuccess = true;
     }
 }

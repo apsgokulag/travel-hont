@@ -307,7 +307,7 @@
 
   <section class="pt-40">
     <div class="container">
-      @livewire('web.packages.review')
+      @livewire('web.packages.review', ['package' => $package])
     </div>
   </section>
 
