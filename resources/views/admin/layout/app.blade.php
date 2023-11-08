@@ -83,7 +83,7 @@
             <div class="sidebar__item">
               <div class="sidebar__button {{ request()->routeIs('admin.dashboard')?'-is-active':'' }}">
                 <a href="{{ route('admin.dashboard') }}" class="d-flex items-center text-15 lh-1 fw-500">
-                  <img src="{{ asset('img/dashboard/sidebar/compass.svg') }}" alt="image" class="mr-15">
+                  <img src="{{ asset('img/dashboard/sidebar/house.svg') }}" alt="image" class="mr-15">
                   Dashboard
                 </a>
               </div>
@@ -91,7 +91,7 @@
             <div class="sidebar__item">
               <div class="sidebar__button {{ request()->routeIs('admin.packages.list') || request()->routeIs('admin.packages.create')?'-is-active':'' }}">
                 <a href="{{ route('admin.packages.list') }}" class="d-flex items-center text-15 lh-1 fw-500">
-                  <img src="{{ asset('img/dashboard/sidebar/compass.svg') }}" alt="image" class="mr-15">
+                  <img src="{{ asset('img/dashboard/sidebar/airplane.svg') }}" alt="image" class="mr-15">
                   Packages
                 </a>
               </div>
@@ -99,19 +99,19 @@
             <div class="sidebar__item">
               <div class="sidebar__button {{ request()->routeIs('admin.bookings')?'-is-active':'' }}">
                 <a href="{{ route('admin.bookings') }}" class="d-flex items-center text-15 lh-1 fw-500">
-                  <img src="{{ asset('img/dashboard/sidebar/compass.svg') }}" alt="image" class="mr-15">
+                  <img src="{{ asset('img/dashboard/sidebar/booking.svg') }}" alt="image" class="mr-15">
                   Booking History
                 </a>
               </div>
             </div>
-            {{-- <div class="sidebar__item">
-              <div class="sidebar__button {{ request()->routeIs('admin.settings')?'-is-active':'' }}>
-                <a href="{{ route('admin.settings') }}" class="d-flex items-center text-15 lh-1 fw-500">
+            <div class="sidebar__item">
+              <div class="sidebar__button {{ request()->routeIs('admin.clients')?'-is-active':'' }}">
+                <a href="{{ route('admin.clients') }}" class="d-flex items-center text-15 lh-1 fw-500">
                   <img src="{{ asset('img/dashboard/sidebar/compass.svg') }}" alt="image" class="mr-15">
-                  Settings
+                  Clients
                 </a>
               </div>
-            </div> --}}
+            </div>
             <div class="sidebar__item">
               <div class="sidebar__button ">
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="d-flex items-center text-15 lh-1 fw-500">

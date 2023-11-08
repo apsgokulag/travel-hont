@@ -10,13 +10,13 @@
     </div>
     <div class="row y-gap-30 mb-10">
 
-        {{-- <div class="col-xl-3 col-md-6">
+        <div class="col-xl-3 col-md-6">
           <div class="py-30 px-30 rounded-4 bg-white shadow-3">
             <div class="row y-gap-20 justify-between items-center">
               <div class="col-auto">
-                <div class="fw-500 lh-14">Pending</div>
-                <div class="text-26 lh-16 fw-600 mt-5">$12,800</div>
-                <div class="text-15 lh-14 text-light-1 mt-5">Total pending</div>
+                <div class="fw-500 lh-14">Clients</div>
+                <div class="text-26 lh-16 fw-600 mt-5">{{ $toatlClients }}</div>
+                <div class="text-15 lh-14 text-light-1 mt-5">Registrations</div>
               </div>
 
               <div class="col-auto">
@@ -24,7 +24,7 @@
               </div>
             </div>
           </div>
-        </div> --}}
+        </div>
 
         <div class="col-xl-3 col-md-6">
           <div class="py-30 px-30 rounded-4 bg-white shadow-3">

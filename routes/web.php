@@ -25,7 +25,6 @@ Route::get('/packages/{slug}/booking',[PackageContoller::class, 'packageBooking'
 Route::get('/contact', function(){ return view('web.contact'); })->name('contact');
 Route::get('/destination-search',[PackageContoller::class, 'destinationSearch'])->name('web.search.home');
 Route::post('/filter-package',[PackageContoller::class, 'packagesFilter'])->name('web.filter.package');
-// Route::get('/single-package', function(){ return view('web.singlepackage'); })->name('singlepackage');
 
 Route::redirect('/admin', 'admin/dashboard');
 Route::middleware([
@@ -35,6 +34,7 @@ Route::middleware([
 ])->group(function () {
     Route::prefix('/admin/')->group(function(){        
         Route::get('dashboard', [AdminDashboardController::class,'dashboard'])->name('admin.dashboard'); 
+        Route::get('clients', [AdminDashboardController::class,'clients'])->name('admin.clients'); 
         Route::controller(AdminPackageController::class)->group(function (){
             Route::get('packages/create', 'create')->name('admin.packages.create');
             Route::get('packages/{category?}', 'list')->name('admin.packages.list');

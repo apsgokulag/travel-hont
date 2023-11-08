@@ -8,7 +8,7 @@
             <p>Dear, {{ ucwords($this->firstName.' '.$this->lastName) }}</p>
             <p>
                 We have successfully received a payment of {{ $amount.' '.$package->price->currency->code }} on booking the package ( {{  $package->name }} ) 
-                {{ $days>1?(' from '.date('d-F, Y',strtotime($startDate->format('Y-m-d'))).' to '.date('d-F, Y',strtotime($endDate->format('Y-m-d')))): ' on '.date('d-F, Y',strtotime($startDate))}}.                
+                {{ $days>1?(' from '.date('d-F, Y',strtotime($startDate->format('Y-m-d'))).' to '.date('d-F, Y',strtotime($endDate->format('Y-m-d')))): ' on '.date('d-F, Y',strtotime($startDate->format('Y-m-d')))}}.                
             </p>
             <p>Please note the reference order id {{ '#'.$orderId }} for future use.</p>
             <p>Travelers : {{ $adultCount.' adult'.($adultCount>1?'s':'') }} {{ $childrenCount > 1?(' & '.$childrenCount.' children'.($childrenCount>1?'s':'')):'' }}</p>
