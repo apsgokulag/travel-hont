@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Client;
+use App\Models\Package;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -24,7 +25,8 @@ class DashboardController extends Controller
             ]);
         })->sum('sub_total');
         $toatlClients = Client::count();
-        return view('admin.dashboard', compact('successFulBookingCount', 'totalEarnings', 'toatlClients'));
+        $packages = Package::where('status', 'published')->count();
+        return view('admin.dashboard', compact('successFulBookingCount', 'totalEarnings', 'toatlClients', 'packages'));
     }
 
     public function clients()

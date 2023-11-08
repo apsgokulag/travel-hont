@@ -12015,3 +12015,7 @@ table.table-5 td {
 .dNone {
   display: none !important;
 }
+
+.dashboard-analytics-icons {
+  width: 60px;
+}

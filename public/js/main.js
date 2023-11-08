@@ -307,6 +307,7 @@
       slider.noUiSlider.on('update', function (values, handle) {
         snapValues[handle].innerHTML = values[handle];
         document.getElementById('price-range-div').innerHTML = '<input type="hidden" name="minval" id="minval" value="' + values[0] + '"/> <input type="hidden" name="maxval" id="maxval" value="' + values[1] + '" />';
+        document.getElementById('price-range-div-mobile').innerHTML = '<input type="hidden" name="minval" id="minvalmobile" value="' + values[0] + '"/> <input type="hidden" name="maxval" id="maxvalmobile" value="' + values[1] + '" />';
       })
     })
   }
