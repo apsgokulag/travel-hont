@@ -41,4 +41,10 @@ class DashboardController extends Controller
         }])->get();
         return view('admin.clients', compact('clients'));
     }
+
+    public function reviews()
+    {
+        $bookings = Booking::with('latestTransaction', 'package', 'client', 'currency')->orderBy('id', 'DESC')->get();
+        return view('admin.reviews', compact('bookings'));
+    }
 }

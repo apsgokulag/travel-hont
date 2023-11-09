@@ -45,7 +45,7 @@
               <img src="{{ asset($package->getMedia()->first()->getFullUrl()) }}" alt="image" class="rounded-4">
               @if ($loop->first)
                 <div class="absolute px-20 py-20 col-12 d-flex justify-end">
-                  <button class="button -blue-1 size-40 rounded-full flex-center bg-white text-dark-1">
+                  <button class="button -blue-1 size-40 rounded-full flex-center bg-white text-dark-1 dNone">
                     <i class="icon-heart text-16"></i>
                   </button>
                 </div>
@@ -129,7 +129,7 @@
                     </div>
   
                     <div class="size-40 flex-center bg-blue-1 rounded-4">
-                      <div class="text-14 fw-600 text-white">number_format($package->ratings->avg('rating'), 1, '.', ',')</div>
+                      <div class="text-14 fw-600 text-white">{{ number_format($package->ratings->avg('rating'), 1, '.', ',') }}</div>
                     </div>
                   </div>
                 </div>

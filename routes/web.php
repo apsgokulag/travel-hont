@@ -36,6 +36,7 @@ Route::middleware([
     Route::prefix('/admin/')->group(function(){        
         Route::get('dashboard', [AdminDashboardController::class,'dashboard'])->name('admin.dashboard'); 
         Route::get('clients', [AdminDashboardController::class,'clients'])->name('admin.clients'); 
+        Route::get('reviews', [AdminDashboardController::class,'reviews'])->name('admin.reviews'); 
         Route::controller(AdminPackageController::class)->group(function (){
             Route::get('packages/create', 'create')->name('admin.packages.create');
             Route::get('packages/{category?}', 'list')->name('admin.packages.list');
