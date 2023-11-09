@@ -289,11 +289,11 @@
           <div class="col-lg-6">
             <div class="row x-gap-20 y-gap-20 items-center">
               <div class="col-auto">             
-                <div class="uppercase text-18 border-dark-1 p-2 text-green-2 me-1 bg-blue-1-05 -round-logo">tk</div>
+                <div class="uppercase text-18 border-dark-1 p-2 text-green-2 me-1 bg-blue-1-05 -round-logo">{{ $review->client->first_name[0] . $review->client->last_name[0] }}</div>
               </div>
               <div class="col-auto">
-                <div class="fw-500 lh-15">{{ $review->name }}</div>
-                <div class="text-14 text-light-1 lh-15">March 2022</div>
+                <div class="fw-500 lh-15">{{ $review->client->first_name . ' ' . $review->client->last_name }}</div>
+                <div class="text-14 text-light-1 lh-15">{{ date('F Y', strtotime($review->updated_at)) }}</div>
               </div>
             </div>
 

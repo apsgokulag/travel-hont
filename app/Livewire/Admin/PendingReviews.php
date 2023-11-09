@@ -21,7 +21,7 @@ class PendingReviews extends Component
 
     public function reviews()
     {
-        $this->reviews = Review::whereHas('package')->where('approved',false)->get();
+        $this->reviews = Review::whereHas('package')->get();
     }
 
     public function delete(Int $reviewId)

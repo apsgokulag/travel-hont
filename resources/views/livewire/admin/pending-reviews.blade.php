@@ -27,28 +27,30 @@
               <td>{{ $review->title }}</td>
               <td>{{ $review->comment }}</td>              
               <td>
-                <a 
-                    x-data="{                                                                                                                                                
-                        approveConfirm(){                                                                              
-                            Swal.fire({
-                                icon: 'warning',
-                                title: 'Do you want to Approve ?',
-                                text:'You won\'t be able to revert this!',
-                                showCancelButton: true,
-                                confirmButtonColor: '#3085d6',
-                                cancelButtonColor: '#d33',
-                                confirmButtonText: 'Approve',
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    $wire.approve({{ $review->id }});
-                                }
-                            });
-                        }
-                    }"
-                    @click.prevent="approveConfirm()"
-                    href="#" class="flex-center bg-light-2 rounded-4 size-35 mb-1">
-                    <i class="icon-check text-16 text-light-1"></i>
-                </a>
+                @if($review->approved == 0)
+                    <a 
+                        x-data="{                                                                                                                                                
+                            approveConfirm(){                                                                              
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'Do you want to Approve ?',
+                                    text:'You won\'t be able to revert this!',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Approve',
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        $wire.approve({{ $review->id }});
+                                    }
+                                });
+                            }
+                        }"
+                        @click.prevent="approveConfirm()"
+                        href="#" class="flex-center bg-light-2 rounded-4 size-35 mb-1">
+                        <i class="icon-check text-16 text-light-1"></i>
+                    </a>
+                @endif
                 <a 
                     x-data="{                                                                                                                                                
                         deleteConfirm(){                                                                              
