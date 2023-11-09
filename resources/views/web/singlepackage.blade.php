@@ -2,10 +2,6 @@
 @extends('web.layout.app')
 
 @section('content')
-@php
-  $json = array("name" => "Package name", "starRating" => 5, "highlights" => array("In London City Centre", "Airport transfer", "Front desk [24-hour]", "Premium TV channels"), "overview" => '<p>Description of this package</p>', "facilities" => array("Non-smoking rooms", "Free WiFi", "Parking", "Kitchen", "Living Area", "Safety & security"), "landmarks" => array(array('place' => 'Royal Pump Room Museum', 'distance' => '0.1 km'), array('place' => 'Royal Pump Room Museum', 'distance' => '0.1 km'), array('place' => 'Royal Pump Room Museum', 'distance' => '0.1 km'), array('place' => 'Royal Pump Room Museum', 'distance' => '0.1 km'), 'faqs' => array(array('que' => 'What do I need to hire a car?', 'ans' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.'), array('que' => 'What do I need to hire a car?', 'ans' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.'), array('que' => 'What do I need to hire a car?', 'ans' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.'))));
-  
-@endphp
   <div class="header-margin"></div>
 
   <section class="pt-40">
@@ -19,21 +15,21 @@
 
             <div class="col-auto">
 
-              @for ($i=0; $i <$json['starRating']; $i++)
+              @for ($i=0; $i < round($package->ratings->avg('rating')); $i++)
                 <i class="icon-star text-10 text-yellow-1"></i>
               @endfor
 
             </div>
           </div>
 
-          <div class="row x-gap-20 y-gap-20 items-center">
+          {{-- <div class="row x-gap-20 y-gap-20 items-center">
             <div class="col-auto">
               <div class="d-flex items-center text-15 text-light-1">
                 <i class="icon-location-2 text-16 mr-5"></i>
                 Moscow Road, Kensington and Chelsea, London, W2 4EL, United Kingdom
               </div>
             </div>           
-          </div>
+          </div> --}}
         </div>
       </div>
 
@@ -297,7 +293,10 @@
               </div>
             </div>
 
-            <h5 class="fw-500 text-blue-1 mt-20">5 {{ $review->title }}</h5>
+            <h5 class="fw-500 text-blue-1 mt-20">
+                {{ $review->client->ratings()->where('package_id', $review->package_id)->first()->rating }} <i class="icon-star text-yellow-1 text-15"></i> | 
+                {{ $review->title }}
+              </h5>
             <p class="text-15 text-dark-1 mt-10">{{ $review->comment }}</p>
           </div>
         @endforeach

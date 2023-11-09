@@ -197,8 +197,8 @@
                     <div class="col-auto">
                         <div class="d-flex items-center">                           
                             <button class="d-flex items-center text-14 fw-500 text-dark-1">
-                                <span class="icon-inr text-16 mr-10">₹</span>
-                                <span class="underline">INR</span>
+                                <span class="icon-inr text-16 mr-10">$</span>
+                                <span class="underline">USD</span>
                             </button>
                         </div>
                     </div>
