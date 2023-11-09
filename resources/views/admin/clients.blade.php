@@ -37,7 +37,7 @@
                             @endif
                         </td>
                         <td>{{ $client->bookings_count }}</td>                        
-                        <td></td>                       
+                        <td>{{ count($client->reviews) }}</td>                       
                     </tr>          
                 @endforeach
             </tbody>
