@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Client;
 use App\Models\Package;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -42,9 +43,8 @@ class DashboardController extends Controller
         return view('admin.clients', compact('clients'));
     }
 
-    public function reviews()
+    public function pendingReviews()
     {
-        $bookings = Booking::with('latestTransaction', 'package', 'client', 'currency')->orderBy('id', 'DESC')->get();
-        return view('admin.reviews', compact('bookings'));
+        return view('admin.pending-reviews');
     }
 }

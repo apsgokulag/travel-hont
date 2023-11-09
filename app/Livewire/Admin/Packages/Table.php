@@ -26,7 +26,7 @@ class Table extends Component
                     ['success', true]
                 ]);
             });
-        }]);
+        },'reviews', 'ratings']);
         switch ($this->category) {            
             case 'active':                
                 $this->packages = $package->where('status', 'published')->get();

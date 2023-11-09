@@ -113,6 +113,14 @@
               </div>
             </div>
             <div class="sidebar__item">
+              <div class="sidebar__button {{ request()->routeIs('admin.pendingReviews')?'-is-active':'' }}">
+                <a href="{{ route('admin.pendingReviews') }}" class="d-flex items-center text-15 lh-1 fw-500">
+                  <img src="{{ asset('img/dashboard/icons/3.svg') }}" alt="image" width="25px" style="margin-right: 10px;">
+                  Pending Reviews
+                </a>
+              </div>
+            </div>
+            <div class="sidebar__item">
               <div class="sidebar__button ">
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="d-flex items-center text-15 lh-1 fw-500">
                   <img src="{{ asset('img/dashboard/sidebar/log-out.svg') }}" alt="image" class="mr-15">

@@ -3,7 +3,8 @@
         <thead class="bg-light-2">
           <tr>                 
             <th>Name</th>
-            {{-- <th>Reviews</th> --}}
+            <th>Reviews</th>
+            <th>Ratings</th>
             <th>Bookings</th>                
             <th>Status</th>
             <th>Action</th>
@@ -18,9 +19,10 @@
                     </a>
                     <span class="d-block text-12 mt-2 text-muted">Created on {{ date('d - F, Y', strtotime($package->created_at)) }}</span>
                 </td>                  
-                {{-- <td>
-                    <div class="rounded-4 size-35 bg-blue-1 text-white flex-center text-12 fw-600">4.8</div>
-                </td> --}}
+                <td>{{ $package->reviews_count.' reviews' }}</td>
+                <td>
+                    <div class="rounded-4 size-35 bg-blue-1 text-white flex-center text-12 fw-600">{{ $package->ratings->avg('rating') }}</div>
+                </td>
                 <td>
                     {{ $package->bookings_count }} Bookings
                 </td>
