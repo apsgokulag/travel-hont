@@ -125,11 +125,11 @@
                   <div class="d-flex justify-between">
                     <div class="text-14">
                       <div class="lh-15 fw-500">Exceptional</div>
-                      <div class="lh-15 text-light-1">3,014 reviews</div>
+                      <div class="lh-15 text-light-1">{{ count($package->reviews) }} reviews</div>
                     </div>
   
                     <div class="size-40 flex-center bg-blue-1 rounded-4">
-                      <div class="text-14 fw-600 text-white">4.8</div>
+                      <div class="text-14 fw-600 text-white">number_format($package->ratings->avg('rating'), 1, '.', ',')</div>
                     </div>
                   </div>
                 </div>
@@ -252,9 +252,9 @@
         <div class="col-lg-2">
           <div class="flex-center rounded-4 bg-blue-1-05">
             <div class="text-center py-2">
-              <div class="text-30 md:text-50 fw-600 text-blue-1">4.8</div>
+              <div class="text-30 md:text-50 fw-600 text-blue-1">{{ number_format($package->ratings->avg('rating'), 1, '.', ',') }}</div>
               <div class="fw-500 lh-1">Exceptional</div>
-              <div class="text-14 text-light-1 lh-1 mt-5">3,014 reviews</div>
+              <div class="text-14 text-light-1 lh-1 mt-5">{{ count($package->reviews) }} reviews</div>
             </div>
           </div>
         </div>
@@ -283,23 +283,22 @@
     <div class="container">
       <div class="row y-gap-60">
 
+        @foreach($package->reviews as $review)
+          <div class="col-lg-6">
+            <div class="row x-gap-20 y-gap-20 items-center">
+              <div class="col-auto">             
+                <div class="uppercase text-18 border-dark-1 p-2 text-green-2 me-1 bg-blue-1-05 -round-logo">tk</div>
+              </div>
+              <div class="col-auto">
+                <div class="fw-500 lh-15">{{ $review->name }}</div>
+                <div class="text-14 text-light-1 lh-15">March 2022</div>
+              </div>
+            </div>
 
-        <div class="col-lg-6">
-          <div class="row x-gap-20 y-gap-20 items-center">
-            <div class="col-auto">             
-              <div class="uppercase text-18 border-dark-1 p-2 text-green-2 me-1 bg-blue-1-05 -round-logo">tk</div>
-            </div>
-            <div class="col-auto">
-              <div class="fw-500 lh-15">Tonko</div>
-              <div class="text-14 text-light-1 lh-15">March 2022</div>
-            </div>
+            <h5 class="fw-500 text-blue-1 mt-20">5 {{ $review->title }}</h5>
+            <p class="text-15 text-dark-1 mt-10">{{ $review->comment }}</p>
           </div>
-
-          <h5 class="fw-500 text-blue-1 mt-20">5 Superb</h5>
-          <p class="text-15 text-dark-1 mt-10">Nice two level apartment in great London location. Located in quiet
-            small street, but just 50 meters from main street and bus stop. Tube station is short walk, just like two
-            grocery stores. </p>
-        </div>
+        @endforeach
 
       </div>
     </div>

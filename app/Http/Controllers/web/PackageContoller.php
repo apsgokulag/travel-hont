@@ -22,6 +22,7 @@ class PackageContoller extends Controller
             return redirect(route('packages'));
         }
         $relatedPackages = Package::where('id','<>',$package->id)->limit(4)->get();
+        // return response()->json(['user' => $package->client], 200);
         return view('web.singlepackage', compact('package', 'relatedPackages'));
     }
 
