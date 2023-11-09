@@ -59,9 +59,12 @@ class PackageContoller extends Controller
             });
         }
 
-        // if ($input['category']) {
-        //     $query->where('category', $input['category']);
-        // }
+        if ($request['check'] != NULL) {
+            $ratings = $request['check'];
+            $query->whereHas('ratings', function($query) use($ratings){
+                $query->whereIn('rating', $ratings);
+            });
+        }
         $packages = $query->simplePaginate(1)->withQueryString();
         return view('web.packages', compact('packages', 'destText'));
     }

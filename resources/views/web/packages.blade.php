@@ -81,7 +81,7 @@
                 </div>
               </div>
 
-              <div class="sidebar__item">
+              <div class="sidebar__item dNone">
                 <h5 class="text-18 fw-500 mb-10">Guest Rating</h5>
                 <div class="sidebar-checkbox">
 
@@ -274,7 +274,7 @@
                   </div>
                 </div>
   
-                <div class="sidebar__item">
+                <div class="sidebar__item dNone">
                   <h5 class="text-18 fw-500 mb-10">Guest Rating</h5>
                   <div class="sidebar-checkbox">
   
