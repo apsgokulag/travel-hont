@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Web\Packages;
 
+use App\Mail\BookingSuccess;
 use App\Models\Booking as ModelsBooking;
 use App\Models\Client;
 use App\Models\Country;
 use App\Models\Package;
 use DateTime;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -120,6 +122,7 @@ class Booking extends Component
                 'type' => 'capture',
                 'success' => true
             ]);
+            Mail::to($booking->client->email)->send(new BookingSuccess($booking));
             $this->transactionSuccess = true;
         });
     }
