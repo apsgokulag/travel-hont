@@ -254,7 +254,9 @@
             <div class="text-center py-2">
               <div class="text-30 md:text-50 fw-600 text-blue-1">{{ number_format($package->ratings->avg('rating'), 1, '.', ',') }}</div>
               <div class="fw-500 lh-1">Exceptional</div>
-              <div class="text-14 text-light-1 lh-1 mt-5">{{ count($package->reviews) }} reviews</div>
+              <div class="text-14 text-light-1 lh-1 mt-5">{{ count($package->reviews->reject(function($review){
+                return !$review->approved;
+              })) }} reviews</div>
             </div>
           </div>
         </div>
@@ -283,7 +285,7 @@
     <div class="container">
       <div class="row y-gap-60">
 
-        @foreach($package->reviews as $review)
+        @foreach($package->reviews->reject(function ($review){ return !$review->approved; }) as $review)
           <div class="col-lg-6">
             <div class="row x-gap-20 y-gap-20 items-center">
               <div class="col-auto">             

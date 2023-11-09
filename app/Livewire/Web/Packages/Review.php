@@ -4,6 +4,7 @@ namespace App\Livewire\Web\Packages;
 
 use App\Models\Client;
 use App\Models\Package;
+use App\Models\Review as ModelsReview;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
@@ -54,14 +55,20 @@ class Review extends Component
                     'first_name' => $this->firstName, 
                     'last_name' => $this->lastName,                    
                 ]
-            );
-            $client->reviews()->updateOrCreate(
+            );            
+            tap($client->reviews()->updateOrCreate(
                 ['package_id' => $this->package->id],
                 [
                     'title' => $this->title, 
                     'comment' => $this->comment
                 ]
-            );
+            ), function(ModelsReview $review){
+                if(!$review->wasRecentlyCreated){
+                    // Already Created
+                    $review->approved = false;
+                    $review->save();
+                }
+            });
             $client->ratings()->updateOrCreate(
                 ['package_id' => $this->package->id],
                 [
