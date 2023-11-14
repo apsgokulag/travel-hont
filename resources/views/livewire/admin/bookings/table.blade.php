@@ -6,8 +6,9 @@
             <th>Package</th>
             <th>Booking Details</th>
             <th>Traveller Details</th>
-            <th>Paid Amount</th>           
+            <th>Paid Amount</th>
             <th>Status</th>
+            <th>Action</th>        
           </tr>
         </thead>
         <tbody>
@@ -39,6 +40,11 @@
                             <span class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-green-2 text-green-1">Credited</span>                        
                         @elseif($booking->latestTransaction->type == 'refund')
                             <span class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-yellow-4 text-yellow-3">Refunded</span>                        
+                        @endif
+                    </td>
+                    <td>
+                        @if ($booking->latestTransaction->type == 'capture' && $booking->latestTransaction->success)
+                            <a href="{{ route('admin.booking.invoice', ['bookingId' => $booking->id]) }}"><i class="icon-newsletter"></i> Invoice</a>
                         @endif
                     </td>
                 </tr>          
