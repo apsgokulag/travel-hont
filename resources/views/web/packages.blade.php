@@ -425,11 +425,13 @@
                     <div class="col-md-auto text-right md:text-left">
                       <div class="row x-gap-10 y-gap-10 justify-end items-center md:justify-start">
                         <div class="col-auto">
-                          <div class="text-14 lh-14 fw-500">Exceptional</div>
-                          <div class="text-14 lh-14 text-light-1">3,014 reviews</div>
+                          <div class="text-14 lh-14 fw-500 dNone">Exceptional</div>
+                          <div class="text-14 lh-14 text-light-1">{{ count($package->reviews->reject(function($review){
+                      return !$review->approved;
+                    })) }} reviews</div>
                         </div>
                         <div class="col-auto">
-                          <div class="flex-center text-white fw-600 text-14 size-40 rounded-4 bg-blue-1">4.8</div>
+                          <div class="flex-center text-white fw-600 text-14 size-40 rounded-4 bg-blue-1">{{ number_format($package->ratings->avg('rating'), 1, '.', ',') }}</div>
                         </div>
                       </div>
 
