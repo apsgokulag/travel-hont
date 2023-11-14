@@ -1879,4 +1879,24 @@
     })
   })
 
+  const searchParams = new URLSearchParams(window.location.search);
+  var bigValDiv = '';
+  var mobileValDiv = '';
+  if(searchParams.get("minval")){
+    bigValDiv += '<input type="hidden" name="minval" id="minval" value="' + searchParams.get("minval") + '"/>';
+    mobileValDiv += '<input type="hidden" name="minval" id="minvalmobile" value="' + searchParams.get("minval") + '"/>';
+  }
+  if(searchParams.get("maxval")){
+    bigValDiv += '<input type="hidden" name="maxval" id="maxval" value="' + searchParams.get("maxval") + '" />';
+    mobileValDiv += '<input type="hidden" name="maxval" id="maxvalmobile" value="' + searchParams.get("maxval") + '" />';
+  }
+  if(bigValDiv != ''){
+    console.log(bigValDiv)
+    document.getElementById('price-range-div').innerHTML = bigValDiv;
+    console.log(document.getElementById('price-range-div').innerHTML)
+  }
+  if(mobileValDiv != ''){
+    document.getElementById('price-range-div-mobile').innerHTML = mobileValDiv;
+  }
+
 })();

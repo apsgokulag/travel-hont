@@ -120,8 +120,10 @@
                 <div class="col">
                   <div class="d-flex justify-between">
                     <div class="text-14">
-                      <div class="lh-15 fw-500">Exceptional</div>
-                      <div class="lh-15 text-light-1">{{ count($package->reviews) }} reviews</div>
+                      <div class="lh-15 fw-500 dNone">Exceptional</div>
+                      <div class="lh-15 text-light-1">{{ count($package->reviews->reject(function($review){
+                      return !$review->approved;
+                    })) }} reviews</div>
                     </div>
   
                     <div class="size-40 flex-center bg-blue-1 rounded-4">
@@ -249,7 +251,7 @@
           <div class="flex-center rounded-4 bg-blue-1-05">
             <div class="text-center py-2">
               <div class="text-30 md:text-50 fw-600 text-blue-1">{{ number_format($package->ratings->avg('rating'), 1, '.', ',') }}</div>
-              <div class="fw-500 lh-1">Exceptional</div>
+              <div class="fw-500 lh-1 dNone">Exceptional</div>
               <div class="text-14 text-light-1 lh-1 mt-5">{{ count($package->reviews->reject(function($review){
                 return !$review->approved;
               })) }} reviews</div>
@@ -381,7 +383,7 @@
 
                     </div>
 
-                    <div class="cardImage__wishlist">
+                    <div class="cardImage__wishlist dNone">
                       <button class="button -blue-1 bg-white size-30 rounded-full shadow-2">
                         <i class="icon-heart text-12"></i>
                       </button>
@@ -408,9 +410,11 @@
                 <p class="text-light-1 lh-14 text-14 mt-5">{{ Str::limit($package->overview, 150) }}</p>
 
                 <div class="d-flex items-center mt-20">
-                  <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                  <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                  <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
+                  <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">{{ number_format($package->ratings->avg('rating'), 1, '.', ',') }}</div>
+                  <div class="text-14 text-dark-1 fw-500 ml-10 dNone">Exceptional</div>
+                  <div class="text-14 text-light-1 ml-10">{{ count($package->reviews->reject(function($review){
+                return !$review->approved;
+              })) }} reviews</div>
                 </div>
 
                 <div class="mt-20">
