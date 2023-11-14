@@ -44,7 +44,20 @@
                     </td>
                     <td>
                         @if ($booking->latestTransaction->type == 'capture' && $booking->latestTransaction->success)
-                            <a href="{{ route('admin.booking.invoice', ['bookingId' => $booking->id]) }}"><i class="icon-newsletter"></i> Invoice</a>
+                            <div
+                                x-data="{
+                                    show : false,
+                                    bookingId : {{ $booking->id }},
+                                    downloadInvoice(){
+                                        this.show = true;
+                                        $wire.downloadInvoice(this.bookingId).then(result => { this.show = false });
+                                    }
+                                }">                             
+                                <a href="" @click.prevent="downloadInvoice()" ><i class="icon-newsletter"></i> Invoice</a>                            
+                                <span x-show="show" x-cloak>
+                                    <span class="loader"></span>
+                                </span>
+                            </div>
                         @endif
                     </td>
                 </tr>          
@@ -52,3 +65,27 @@
         </tbody>
       </table>
 </div>
+
+@push('styles')
+    <style>
+        .loader {
+            width: 10px;
+            height: 10px;
+            border: 2px solid #000000;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+            }
+
+            @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        } 
+    </style>
+@endpush

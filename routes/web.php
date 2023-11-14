@@ -41,7 +41,6 @@ Route::middleware([
             Route::get('packages/create', 'create')->name('admin.packages.create');
             Route::get('packages/{category?}', 'list')->name('admin.packages.list');
             Route::get('packages/{slug}/edit', 'edit')->name('admin.packages.edit');
-            Route::get('booking/{bookingId}/invoice', 'invoice')->name('admin.booking.invoice');
         });
         Route::get('bookings', function () {
             return view('admin.bookings');

@@ -18,7 +18,7 @@
                 </div>
             </div>
             <hr>
-            <div class="row">
+            <div class="row mb-10">
                 <div class="col">
                     <p>Invoice To : </p>
                     <h5>{{ ucfirst($booking->client->name) }}</h5>
@@ -29,21 +29,21 @@
                 <thead class="bg-light-2">
                     <tr>
                         <th>Package</th>
-                        <th>Adults</th>
+                        <th class="text-right">Adults</th>
                         @if ($booking->children_count)                            
-                            <th>Children</th>
+                            <th class="text-right">Children</th>
                         @endif
-                        <th>Amount</th>
+                        <th class="text-right">Amount</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>{{ $booking->package->name }}</td>
-                        <td>{{ $booking->adult_count.' X '.$booking->adult_amount.' '.$booking->currency->code }}</td>   
+                        <td class="text-right">{{ $booking->adult_count.' X '.$booking->adult_amount.' '.$booking->currency->code }}</td>   
                         @if ($booking->children_count)                            
-                            <td>{{ $booking->children_count.' X '.$booking->children_amount.' '.$booking->currency->code }}</td>                               
+                            <td class="text-right">{{ $booking->children_count.' X '.$booking->children_amount.' '.$booking->currency->code }}</td>                               
                         @endif          
-                        <td>{{ $booking->total.' '.$booking->currency->code }}</td>
+                        <td class="text-right">{{ $booking->total.' '.$booking->currency->code }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -51,3 +51,17 @@
         <div class="card-footer text-dark-3 mt-15">Thanks for your booking.</div>
     </div>
 @endsection
+
+@push('styles')
+    <style>
+        .row {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+        }
+        .row > div {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+        }
+    </style>
+@endpush
