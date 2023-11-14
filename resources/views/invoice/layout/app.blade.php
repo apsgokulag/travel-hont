@@ -4,7 +4,7 @@
 
     <head>
 
-    <title>{{ ucfirst(Route::currentRouteName()); }}</title>
+    <title>{{ config('app.name') }}</title>
     <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
