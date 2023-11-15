@@ -248,7 +248,10 @@
                         <div class="row">
                             <div class="col-12">                           
                                 <p class="text-light-1">You will be charged the total amount once your order is confirmed.</p>
-                                <a href="" @click.prevent="payCheckOut()" class="d-inline-flex button px-24 py-2 -dark-1 bg-blue-1 text-white my-2">Pay {{ $amount.' '.$package->price->currency->code }}</a>
+                                <a href="" @click.prevent="payCheckOut()" class="d-inline-flex button px-24 py-2 -dark-1 bg-blue-1 text-white my-2">
+                                    Pay {{ $amount.' '.$package->price->currency->code }}
+                                    <span x-show="showLoader" class="ms-1 loader"></span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -272,6 +275,25 @@
             border: 1px solid var(--color-border);
             border-radius: 4px;
         }
+        .loader {
+            width: 10px;
+            height: 10px;
+            border: 2px solid #ffffff;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+            }
+
+            @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        } 
     </style>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 @endpush
@@ -282,6 +304,7 @@
     <script>
         function payHandle(){
             return{
+                showLoader : false,
                 amount : @entangle('amount'),
                 email : @entangle('email'),
                 phoneCountryCode : @entangle('phoneCountryCode'),
@@ -310,6 +333,7 @@
                         }
                         },
                         "handler": function (response) {
+                            this.showLoader = true;
                             @this.dispatch('payment-success', { paymentId : response.razorpay_payment_id });
                         },
                         "modal": {
