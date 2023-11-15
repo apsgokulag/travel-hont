@@ -1891,9 +1891,9 @@
     mobileValDiv += '<input type="hidden" name="maxval" id="maxvalmobile" value="' + searchParams.get("maxval") + '" />';
   }
   if(bigValDiv != ''){
-    console.log(bigValDiv)
+    // console.log(bigValDiv)
     document.getElementById('price-range-div').innerHTML = bigValDiv;
-    console.log(document.getElementById('price-range-div').innerHTML)
+    // console.log(document.getElementById('price-range-div').innerHTML)
   }
   if(mobileValDiv != ''){
     document.getElementById('price-range-div-mobile').innerHTML = mobileValDiv;

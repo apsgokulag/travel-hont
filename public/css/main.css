@@ -849,6 +849,12 @@ button:focus {
 }
 
 .button.-blue-1:hover {
+  border-color: #3554d19e;
+  background-color: #3554d19e !important;
+  color: white !important;
+}
+
+.button.-blue-1.ratingChecked:hover {
   border-color: var(--color-blue-1);
   background-color: var(--color-blue-1) !important;
   color: white !important;

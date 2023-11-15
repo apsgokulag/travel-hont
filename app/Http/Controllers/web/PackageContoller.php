@@ -65,7 +65,11 @@ class PackageContoller extends Controller
                 $query->whereIn('rating', $ratings);
             });
         }
+        else{
+            $ratings = array();
+        }
+        $packagesCount = $query->count();
         $packages = $query->simplePaginate(1)->withQueryString();
-        return view('web.packages', compact('packages', 'destText'));
+        return view('web.packages', compact('packages', 'packagesCount', 'destText', 'minval', 'maxval', 'ratings'));
     }
 }

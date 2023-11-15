@@ -55,27 +55,27 @@
 
                   <div class="col-auto" style="position: relative;">
                     <a href="javascript:void(0);" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100 rating-filter-each-button">1</a>
-                    <input type="checkbox" style="position: absolute; top: 0; opacity: 0;" name="check[]" value="1">
+                    <input type="checkbox" style="position: absolute; top: 0; opacity: 0; z-index: -1;" name="check[]" value="1">
                   </div>
 
                   <div class="col-auto" style="position: relative;">
                     <a href="javascript:void(0);" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100 rating-filter-each-button">2</a>
-                    <input type="checkbox" style="position: absolute; top: 0; opacity: 0;" name="check[]" value="2">
+                    <input type="checkbox" style="position: absolute; top: 0; opacity: 0; z-index: -1;" name="check[]" value="2">
                   </div>
 
                   <div class="col-auto" style="position: relative;">
                     <a href="javascript:void(0);" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100 rating-filter-each-button">3</a>
-                    <input type="checkbox" style="position: absolute; top: 0; opacity: 0;" name="check[]" value="3">
+                    <input type="checkbox" style="position: absolute; top: 0; opacity: 0; z-index: -1;" name="check[]" value="3">
                   </div>
 
                   <div class="col-auto" style="position: relative;">
                     <a href="javascript:void(0);" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100 rating-filter-each-button">4</a>
-                    <input type="checkbox" style="position: absolute; top: 0; opacity: 0;" name="check[]" value="4">
+                    <input type="checkbox" style="position: absolute; top: 0; opacity: 0; z-index: -1;" name="check[]" value="4">
                   </div>
 
                   <div class="col-auto" style="position: relative;">
                     <a href="javascript:void(0);" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100 rating-filter-each-button">5</a>
-                    <input type="checkbox" style="position: absolute; top: 0; opacity: 0;" name="check[]" value="5">
+                    <input type="checkbox" style="position: absolute; top: 0; opacity: 0; z-index: -1;" name="check[]" value="5">
                   </div>
 
                 </div>
@@ -179,7 +179,7 @@
         <div class="col-xl-9 col-lg-8">
           <div class="row y-gap-10 items-center justify-between">
             <div class="col-auto">
-              <div class="text-18"><span class="fw-500">{{ count($packages) }} packages</span> </div>
+              <div class="text-18"><span class="fw-500">{{ $packagesCount }} packages</span> </div>
             </div>
 
             <div class="col-auto">
@@ -248,27 +248,27 @@
   
                     <div class="col-auto" style="position: relative;">
                       <a href="javascript:void(0);" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100 rating-filter-each-button">1</a>
-                      <input type="checkbox" style="position: absolute; top: 0; opacity: 0;" name="check[]" value="1">
+                      <input type="checkbox" style="position: absolute; top: 0; opacity: 0; z-index: -1;" name="check[]" value="1">
                     </div>
   
                     <div class="col-auto" style="position: relative;">
                       <a href="javascript:void(0);" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100 rating-filter-each-button">2</a>
-                      <input type="checkbox" style="position: absolute; top: 0; opacity: 0;" name="check[]" value="2">
+                      <input type="checkbox" style="position: absolute; top: 0; opacity: 0; z-index: -1;" name="check[]" value="2">
                     </div>
   
                     <div class="col-auto" style="position: relative;">
                       <a href="javascript:void(0);" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100 rating-filter-each-button">3</a>
-                      <input type="checkbox" style="position: absolute; top: 0; opacity: 0;" name="check[]" value="3">
+                      <input type="checkbox" style="position: absolute; top: 0; opacity: 0; z-index: -1;" name="check[]" value="3">
                     </div>
   
                     <div class="col-auto" style="position: relative;">
                       <a href="javascript:void(0);" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100 rating-filter-each-button">4</a>
-                      <input type="checkbox" style="position: absolute; top: 0; opacity: 0;" name="check[]" value="4">
+                      <input type="checkbox" style="position: absolute; top: 0; opacity: 0; z-index: -1;" name="check[]" value="4">
                     </div>
   
                     <div class="col-auto" style="position: relative;">
                       <a href="javascript:void(0);" class="button -blue-1 bg-blue-1-05 text-blue-1 py-5 px-20 rounded-100 rating-filter-each-button">5</a>
-                      <input type="checkbox" style="position: absolute; top: 0; opacity: 0;" name="check[]" value="5">
+                      <input type="checkbox" style="position: absolute; top: 0; opacity: 0; z-index: -1;" name="check[]" value="5">
                     </div>
   
                   </div>
@@ -492,5 +492,18 @@
       </div>
     </div>
   </section>
+
+  <script>
+    @php
+      foreach($ratings as $eachRating){ @endphp
+        document.querySelectorAll('.rating-filter-each-button').forEach(option => {
+          if(option.innerText == "@php echo $eachRating; @endphp"){
+            option.nextElementSibling.click();
+            option.classList.toggle("ratingChecked");
+          }
+        })
+    @php }
+    @endphp
+  </script>
 
 @endsection
