@@ -27,7 +27,9 @@ class DashboardController extends Controller
         })->sum('sub_total');
         $toatlClients = Client::count();
         $packages = Package::where('status', 'published')->count();
-        return view('admin.dashboard', compact('successFulBookingCount', 'totalEarnings', 'toatlClients', 'packages'));
+        $last30daysPackages = Package::where('status', 'published')->where('created_at', '>', now()->subDays(30)->endOfDay())->get();
+        $last30daysBookings = Booking::where('created_at', '>', now()->subDays(30)->endOfDay())->get();
+        return view('admin.dashboard', compact('successFulBookingCount', 'totalEarnings', 'toatlClients', 'packages', 'last30daysPackages', 'last30daysBookings'));
     }
 
     public function clients()

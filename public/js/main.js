@@ -13,6 +13,8 @@
   App.body = document.querySelector('body');
   App.SMcontroller = new ScrollMagic.Controller();
 
+  var pageLoaded = 1;
+
   window.onload = function () {
     document.fonts.ready.then(function () {
       initialReveal()
@@ -1879,24 +1881,63 @@
     })
   })
 
-  const searchParams = new URLSearchParams(window.location.search);
-  var bigValDiv = '';
-  var mobileValDiv = '';
-  if(searchParams.get("minval")){
-    bigValDiv += '<input type="hidden" name="minval" id="minval" value="' + searchParams.get("minval") + '"/>';
-    mobileValDiv += '<input type="hidden" name="minval" id="minvalmobile" value="' + searchParams.get("minval") + '"/>';
-  }
-  if(searchParams.get("maxval")){
-    bigValDiv += '<input type="hidden" name="maxval" id="maxval" value="' + searchParams.get("maxval") + '" />';
-    mobileValDiv += '<input type="hidden" name="maxval" id="maxvalmobile" value="' + searchParams.get("maxval") + '" />';
-  }
-  if(bigValDiv != ''){
-    console.log(bigValDiv)
-    document.getElementById('price-range-div').innerHTML = bigValDiv;
-    console.log(document.getElementById('price-range-div').innerHTML)
-  }
-  if(mobileValDiv != ''){
-    document.getElementById('price-range-div-mobile').innerHTML = mobileValDiv;
-  }
+  setTimeout(() => {
+    if(pageLoaded == 1){
+      const searchParams = new URLSearchParams(window.location.search);
+      var bigValDiv = '';
+      var mobileValDiv = '';
+      if(searchParams.get("minval")){
+        bigValDiv += '<input type="hidden" name="minval" id="minval" value="' + searchParams.get("minval") + '"/>';
+        mobileValDiv += '<input type="hidden" name="minval" id="minvalmobile" value="' + searchParams.get("minval") + '"/>';
+      }
+      if(searchParams.get("maxval")){
+        bigValDiv += '<input type="hidden" name="maxval" id="maxval" value="' + searchParams.get("maxval") + '" />';
+        mobileValDiv += '<input type="hidden" name="maxval" id="maxvalmobile" value="' + searchParams.get("maxval") + '" />';
+      }
+      if(bigValDiv != ''){
+        document.getElementById('price-range-div').innerHTML = bigValDiv;
+      }
+      if(mobileValDiv != ''){
+        document.getElementById('price-range-div-mobile').innerHTML = mobileValDiv;
+      }
+      var targets = document.querySelectorAll('.js-price-rangeSlider')
+
+      targets.forEach(el => {
+        var slider = el.querySelector('.js-slider')
+        slider.noUiSlider.destroy();
+
+        noUiSlider.create(slider, {
+          start: [searchParams.get("minval").replace(/\D/g, ""), searchParams.get("maxval").replace(/\D/g, "")],
+          step: 100,
+          connect: true,
+          range: {
+            'min': 0,
+            'max': 2000
+          },
+          format: {
+            to: function (value) {
+              return "$" + value
+            },
+
+            from: function (value) {
+              return value;
+            }
+          }
+        })
+
+        var snapValues = [
+          el.querySelector('.js-lower'),
+          el.querySelector('.js-upper')
+        ]
+
+        slider.noUiSlider.on('update', function (values, handle) {
+          snapValues[handle].innerHTML = values[handle];
+          document.getElementById('price-range-div').innerHTML = '<input type="hidden" name="minval" id="minval" value="' + values[0] + '"/> <input type="hidden" name="maxval" id="maxval" value="' + values[1] + '" />';
+          document.getElementById('price-range-div-mobile').innerHTML = '<input type="hidden" name="minval" id="minvalmobile" value="' + values[0] + '"/> <input type="hidden" name="maxval" id="maxvalmobile" value="' + values[1] + '" />';
+        })
+      })
+    }
+    pageLoaded = 0;
+  }, 1000);
 
 })();
