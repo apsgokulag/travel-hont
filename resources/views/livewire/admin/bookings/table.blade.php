@@ -37,7 +37,7 @@
                     <td>{{ $booking->total.' '.$booking->currency->code }}</td>
                     <td>
                         @if ($booking->latestTransaction->type == 'capture' && $booking->latestTransaction->success)
-                            <span class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-green-2 text-green-1">Credited</span>                        
+                            <span class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-green-2 text-green-1">Credited</span>                                                     
                         @elseif($booking->latestTransaction->type == 'refund')
                             <span class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-yellow-4 text-yellow-3">Refunded</span>                        
                         @endif
@@ -58,12 +58,37 @@
                                     <span class="loader"></span>
                                 </span>
                             </div>
+                            <a 
+                                    x-data="{                                                                                                                                                
+                                        refundConfirm(){                                                                              
+                                            Swal.fire({
+                                                icon: 'warning',
+                                                title: 'Do you want to Refund ?',
+                                                text:'You won\'t be able to revert this!',
+                                                showCancelButton: true,
+                                                confirmButtonColor: '#3085d6',
+                                                cancelButtonColor: '#d33',
+                                                confirmButtonText: 'Refund',
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    $wire.refund({{ $booking->id }});
+                                                }
+                                            });
+                                        }
+                                    }"
+                                    @click.prevent="refundConfirm()"
+                                    href="" class="button px-24 -dark-1 bg-blue-1 text-white mt-10 py-2" style="text-wrap : nowrap;">
+                                    Initiate Refund
+                                </a>   
                         @endif
                     </td>
                 </tr>          
             @endforeach
         </tbody>
-      </table>
+    </table>
+    <div>
+        {{ $bookings->links() }}
+    </div>
 </div>
 
 @push('styles')
@@ -87,5 +112,22 @@
                 transform: rotate(360deg);
             }
         } 
+        .pagination {
+            margin-top: 5px;
+            display: flex
+        }
+        .pagination .page-item{
+            margin-right: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .pagination .page-item.active{           
+            background-color: var(--color-dark-1) !important;          
+        }
     </style>
 @endpush

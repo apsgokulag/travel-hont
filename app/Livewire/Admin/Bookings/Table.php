@@ -5,18 +5,16 @@ namespace App\Livewire\Admin\Bookings;
 use App\Models\Booking;
 use Illuminate\Support\Facades\App;
 use Livewire\Component;
+use Livewire\WithPagination;
+use Razorpay\Api\Api;
 
 class Table extends Component
 {
-    public $bookings;
+    use WithPagination;
 
-    public function mount()
-    {
-        $this->bookings = Booking::with('latestTransaction', 'package', 'client', 'currency')->orderBy('id', 'DESC')->get();
-    }
     public function render()
     {
-        return view('livewire.admin.bookings.table');
+        return view('livewire.admin.bookings.table', ['bookings' => Booking::with('latestTransaction', 'package', 'client', 'currency')->orderBy('id', 'DESC')->paginate(10)]);
     }
     public function downloadInvoice($bookingId)
     {
@@ -38,5 +36,46 @@ class Table extends Component
         return response()->streamDownload(function () use($pdf) {
             echo  $pdf->output();
         }, $fileName);
+    }
+
+    public function refund(Int $bookingId)
+    {
+        $booking = Booking::findOrFail($bookingId);
+        try {
+
+            $api = new Api( env('RAZORPAY_API_KEY'), env('RAZORPAY_API_SECRET'));
+            $response = $api->payment->fetch($booking->latestTransaction->ref_payment_id)->refund(
+                [
+                    "amount"=> $booking->latestTransaction->total * 100, 
+                    "speed"=>"normal", 
+                    "notes"=> ["booking_id"=> $booking->id], 
+                    "receipt"=>""
+                ]
+            );
+            if($response['status'] == 'processed'){
+                $booking->latestTransaction->type = 'refund';
+                $booking->latestTransaction->save();
+                $this->resetPage();
+                $this->dispatch('swal:block-notification', [
+                    'icon' => 'success',
+                    'title' => 'Refunded Successfully',
+                ]);
+            }
+          } catch (\Exception $e) {          
+            //   return $e->getMessage();
+            if( $e->getMessage() == 'The payment has been fully refunded already'){
+                $booking->latestTransaction->type = 'refund';
+                $booking->latestTransaction->save();
+                $this->resetPage();
+                $this->dispatch('swal:block-notification', [
+                    'icon' => 'success',
+                    'title' => 'Refunded Successfully',
+                ]);
+            }else
+                $this->dispatch('swal:block-notification', [
+                    'icon' => 'error',
+                    'title' => $e->getMessage(),
+                ]);
+          }                
     }
 }
