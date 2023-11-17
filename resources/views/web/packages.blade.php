@@ -495,14 +495,16 @@
 
   <script>
     @php
-      foreach($ratings as $eachRating){ @endphp
-        document.querySelectorAll('.rating-filter-each-button').forEach(option => {
-          if(option.innerText == "@php echo $eachRating; @endphp"){
-            option.nextElementSibling.click();
-            option.classList.toggle("ratingChecked");
-          }
-        })
+      if(isset($ratings)){
+        foreach($ratings as $eachRating){ @endphp
+          document.querySelectorAll('.rating-filter-each-button').forEach(option => {
+            if(option.innerText == "@php echo $eachRating; @endphp"){
+              option.nextElementSibling.click();
+              option.classList.toggle("ratingChecked");
+            }
+          })
     @php }
+      }
     @endphp
   </script>
 
