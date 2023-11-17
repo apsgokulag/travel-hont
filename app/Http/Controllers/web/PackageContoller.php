@@ -12,7 +12,8 @@ class PackageContoller extends Controller
     public function packages()
     {
         $packages = Package::where('status', 'published')->simplePaginate(1);
-        return view('web.packages', compact('packages'));
+        $packagesCount = Package::where('status', 'published')->count();
+        return view('web.packages', compact('packages', 'packagesCount'));
     }
 
     public function package(String $slug)

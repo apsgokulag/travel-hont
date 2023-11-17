@@ -1900,42 +1900,44 @@
       if(mobileValDiv != ''){
         document.getElementById('price-range-div-mobile').innerHTML = mobileValDiv;
       }
-      var targets = document.querySelectorAll('.js-price-rangeSlider')
-
-      targets.forEach(el => {
-        var slider = el.querySelector('.js-slider')
-        slider.noUiSlider.destroy();
-
-        noUiSlider.create(slider, {
-          start: [searchParams.get("minval").replace(/\D/g, ""), searchParams.get("maxval").replace(/\D/g, "")],
-          step: 100,
-          connect: true,
-          range: {
-            'min': 0,
-            'max': 2000
-          },
-          format: {
-            to: function (value) {
-              return "$" + value
+      if (window.location.href.indexOf("filter-package") > -1) {
+        var targets = document.querySelectorAll('.js-price-rangeSlider')
+  
+        targets.forEach(el => {
+          var slider = el.querySelector('.js-slider')
+          slider.noUiSlider.destroy();
+  
+          noUiSlider.create(slider, {
+            start: [searchParams.get("minval").replace(/\D/g, ""), searchParams.get("maxval").replace(/\D/g, "")],
+            step: 100,
+            connect: true,
+            range: {
+              'min': 0,
+              'max': 2000
             },
-
-            from: function (value) {
-              return value;
+            format: {
+              to: function (value) {
+                return "$" + value
+              },
+  
+              from: function (value) {
+                return value;
+              }
             }
-          }
+          })
+  
+          var snapValues = [
+            el.querySelector('.js-lower'),
+            el.querySelector('.js-upper')
+          ]
+  
+          slider.noUiSlider.on('update', function (values, handle) {
+            snapValues[handle].innerHTML = values[handle];
+            document.getElementById('price-range-div').innerHTML = '<input type="hidden" name="minval" id="minval" value="' + values[0] + '"/> <input type="hidden" name="maxval" id="maxval" value="' + values[1] + '" />';
+            document.getElementById('price-range-div-mobile').innerHTML = '<input type="hidden" name="minval" id="minvalmobile" value="' + values[0] + '"/> <input type="hidden" name="maxval" id="maxvalmobile" value="' + values[1] + '" />';
+          })
         })
-
-        var snapValues = [
-          el.querySelector('.js-lower'),
-          el.querySelector('.js-upper')
-        ]
-
-        slider.noUiSlider.on('update', function (values, handle) {
-          snapValues[handle].innerHTML = values[handle];
-          document.getElementById('price-range-div').innerHTML = '<input type="hidden" name="minval" id="minval" value="' + values[0] + '"/> <input type="hidden" name="maxval" id="maxval" value="' + values[1] + '" />';
-          document.getElementById('price-range-div-mobile').innerHTML = '<input type="hidden" name="minval" id="minvalmobile" value="' + values[0] + '"/> <input type="hidden" name="maxval" id="maxvalmobile" value="' + values[1] + '" />';
-        })
-      })
+      }
     }
     pageLoaded = 0;
   }, 1000);
