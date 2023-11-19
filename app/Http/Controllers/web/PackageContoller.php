@@ -40,7 +40,8 @@ class PackageContoller extends Controller
     {
         $destText = $request['destination'];
         $packages = Package::where('status', 'published')->where('name', 'like', '%' . $destText . '%')->simplePaginate(1);
-        return view('web.packages', compact('packages'));
+        $packagesCount = Package::where('status', 'published')->where('name', 'like', '%' . $destText . '%')->count();
+        return view('web.packages', compact('packages', 'packagesCount'));
     }
 
     public function packagesFilter(Request $request)
