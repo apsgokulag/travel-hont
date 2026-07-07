@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" data-x="html" data-x-toggle="html-overflow-hidden">
+
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="<?php echo e(asset('css/vendors.css')); ?>">
+  <link rel="stylesheet" href="<?php echo e(asset('css/main.css')); ?>">
+    <?php echo $__env->yieldPushContent('styles'); ?>
+  <style>    
+    @media (min-width: 991px){
+        .mainSearch .button-grid {  
+            grid-template-columns: 1fr 250px auto;
+        }
+    }
+  </style>
+
+  <title><?php echo e(ucfirst(Route::currentRouteName())); ?></title>
+
+</head>
+
+<body>
+  
+    <?php if (isset($component)) { $__componentOriginal71c6471fa76ce19017edc287b6f4508c = $component; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.web.preloader','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('web.preloader'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal71c6471fa76ce19017edc287b6f4508c)): ?>
+<?php $component = $__componentOriginal71c6471fa76ce19017edc287b6f4508c; ?>
+<?php unset($__componentOriginal71c6471fa76ce19017edc287b6f4508c); ?>
+<?php endif; ?>
+
+    <main>
+
+
+        <header data-add-bg="<?php if(Route::is('home')): ?> <?php echo e('bg-dark-1'); ?> <?php endif; ?>" class="header js-header <?php if(Route::is('home')): ?> <?php echo e('bg-green'); ?> <?php else: ?> <?php echo e('bg-white'); ?> <?php endif; ?>" data-x="header" data-x-toggle="is-menu-opened">
+        <div data-anim="fade" class="header__container px-30 sm:px-20">
+            <div class="row justify-between items-center">
+
+            <div class="col-auto">
+                <div class="d-flex items-center">
+                <a href="<?php echo e(route('home')); ?>" class="header-logo mr-20" data-x="header-logo" data-x-toggle="is-logo-dark">
+                    <img src="<?php if(Route::is('home')): ?> <?php echo e(asset('img/general/logo-light.svg')); ?> <?php else: ?> <?php echo e(asset('img/general/logo-dark.svg')); ?> <?php endif; ?>" alt="logo icon">
+                    <img src="<?php echo e(asset('img/general/logo-dark.svg')); ?>" alt="logo icon">
+                </a>
+
+
+                <div class="header-menu " data-x="mobile-menu" data-x-toggle="is-menu-active">
+                    <div class="mobile-overlay"></div>
+
+                    <div class="header-menu__content">
+                    <div class="mobile-bg js-mobile-bg"></div>
+
+                    <div class="menu js-navList">
+                        <ul class="menu__nav -is-active <?php if(Route::is('home')): ?> <?php echo e('text-white'); ?> <?php endif; ?>">
+                            <li><a href="<?php echo e(route('home')); ?>">Home</a></li>
+                            <li><a href="<?php echo e(route('about')); ?>">About</a></li>
+                            <li><a href="<?php echo e(route('packages')); ?>">Packages</a></li>
+                            <li><a href="<?php echo e(route('contact')); ?>">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mobile-footer px-20 py-20 border-top-light js-mobile-footer">
+                    </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-auto">
+                <div class="d-flex items-center">
+
+
+
+
+                <div class="d-flex items-center ml-20 is-menu-opened-hide md:d-none">
+                    
+                </div>
+
+                <div class="d-none xl:d-flex x-gap-20 items-center pl-30 text-white" data-x="header-mobile-icons"
+                    data-x-toggle="text-white">
+                    <div class="dNone"><a href="login.html" class="d-flex items-center icon-user text-inherit text-22"></a></div>
+                    <div><button class="d-flex items-center icon-menu text-inherit text-20"
+                        data-x-click="html, header, header-logo, header-mobile-icons, mobile-menu"></button></div>
+                </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+        </header>
+
+        <?php echo $__env->yieldContent('content'); ?>
+
+        <footer class="footer -type-1">
+            <div class="container">
+            <div class="pt-60 pb-60">
+                <div class="row y-gap-40 justify-between xl:justify-start">
+                <div class="col-xl-2 col-lg-4 col-sm-6">
+                    <h5 class="text-16 fw-500 mb-30">Contact Us</h5>
+    
+                    <div class="mt-30">
+                    <div class="text-14 mt-30">Toll Free Customer Care</div>
+                    <a href="#" class="text-18 fw-500 text-blue-1 mt-5">+(1) 123 456 7890</a>
+                    </div>
+    
+                    <div class="mt-35">
+                    <div class="text-14 mt-30">Need live support?</div>
+                    <a href="#" class="text-18 fw-500 text-blue-1 mt-5">hi@gotrip.com</a>
+                    </div>
+                </div>
+    
+                <div class="col-xl-2 col-lg-4 col-sm-6">
+                    <h5 class="text-16 fw-500 mb-30">Company</h5>
+                    <div class="d-flex y-gap-10 flex-column">
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Press</a>
+                    <a href="#">Gift Cards</a>
+                    <a href="#">Magazine</a>
+                    </div>
+                </div>
+    
+                <div class="col-xl-2 col-lg-4 col-sm-6">
+                    <h5 class="text-16 fw-500 mb-30">Support</h5>
+                    <div class="d-flex y-gap-10 flex-column">
+                    <a href="#">Contact</a>
+                    <a href="#">Legal Notice</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms and Conditions</a>
+                    <a href="#">Sitemap</a>
+                    </div>
+                </div>
+    
+                <div class="col-xl-2 col-lg-4 col-sm-6">
+                    <h5 class="text-16 fw-500 mb-30">Other Services</h5>
+                    <div class="d-flex y-gap-10 flex-column">
+                    <a href="#">Car hire</a>
+                    <a href="#">Activity Finder</a>
+                    <a href="#">Tour List</a>
+                    <a href="#">Flight finder</a>
+                    <a href="#">Cruise Ticket</a>
+                    <a href="#">Holiday Rental</a>
+                    <a href="#">Travel Agents</a>
+                    </div>
+                </div>
+    
+                <div class="col-xl-2 col-lg-4 col-sm-6">
+                    <h5 class="text-16 fw-500 mb-30">Mobile</h5>
+    
+                    <div class="d-flex items-center px-20 py-10 rounded-4 border-light">
+                    <div class="icon-apple text-24"></div>
+                    <div class="ml-20">
+                        <div class="text-14 text-light-1">Download on the</div>
+                        <div class="text-15 lh-1 fw-500">Apple Store</div>
+                    </div>
+                    </div>
+    
+                    <div class="d-flex items-center px-20 py-10 rounded-4 border-light mt-20">
+                    <div class="icon-play-market text-24"></div>
+                    <div class="ml-20">
+                        <div class="text-14 text-light-1">Get in on</div>
+                        <div class="text-15 lh-1 fw-500">Google Play</div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+    
+            <div class="py-20 border-top-light">
+                <div class="row justify-between items-center y-gap-10">
+                <div class="col-auto">
+                    <div class="row x-gap-30 y-gap-10">
+                    <div class="col-auto">
+                        <div class="d-flex items-center">
+                        © <?php echo e(date('Y')); ?> GoTrip LLC All rights reserved.
+                        </div>
+                    </div>
+    
+                    <div class="col-auto">
+                        <div class="d-flex x-gap-15">
+                        <a href="#">Privacy</a>
+                        <a href="#">Terms</a>
+                        <a href="#">Site Map</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+    
+                <div class="col-auto">
+                    <div class="row y-gap-10 items-center">
+                    <div class="col-auto">
+                        <div class="d-flex items-center">                           
+                            <button class="d-flex items-center text-14 fw-500 text-dark-1">
+                                <span class="icon-inr text-16 mr-10">$</span>
+                                <span class="underline">USD</span>
+                            </button>
+                        </div>
+                    </div>
+    
+                    <div class="col-auto">
+                        <div class="d-flex x-gap-20 items-center">
+                        <a href="#"><i class="icon-facebook text-14"></i></a>
+                        <a href="#"><i class="icon-twitter text-14"></i></a>
+                        <a href="#"><i class="icon-instagram text-14"></i></a>
+                        <a href="#"><i class="icon-linkedin text-14"></i></a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </footer>
+  
+    </main>
+    
+    <script src="<?php echo e(asset('js/vendors.js')); ?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="<?php echo e(asset('js/main.js')); ?>"></script>
+    <?php echo $__env->yieldPushContent('scripts'); ?>
+  </body>
+  
+  
+  
+  </html><?php /**PATH D:\laragon\laragon\www\travel\resources\views/web/layout/app.blade.php ENDPATH**/ ?>
